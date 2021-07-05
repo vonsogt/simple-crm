@@ -17,7 +17,7 @@
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
     @yield('styles')
 </head>
