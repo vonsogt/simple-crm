@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" /> {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
     <title>{{ isset($data['title']) ? $data['title'] . ' | ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -36,6 +37,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -51,11 +53,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
                 @yield('content')
-            </section>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 

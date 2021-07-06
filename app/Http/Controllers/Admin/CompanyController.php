@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -28,7 +29,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Companies';
+
+        return view('admin.companies.create', compact('data'));
     }
 
     /**
@@ -50,7 +53,13 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $company = Company::findOrFail($id);
+
+        $data['company'] = $company;
+        $data['title'] = 'Companies';
+
+        return view('admin.companies.show', compact('data'));
     }
 
     /**
@@ -61,7 +70,12 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        $data['company'] = $company;
+        $data['title'] = 'Companies';
+
+        return view('admin.companies.edit', compact('data'));
     }
 
     /**
@@ -84,6 +98,6 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return DB::table('companies')->delete($id);
     }
 }

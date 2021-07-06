@@ -1,31 +1,39 @@
 @extends('layouts.admin')
-@php
-
-    $title = $data['title'];
-    $companies = $data['companies'];
-
-@endphp
 @section('content')
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1>
-                        {{ $title }}
+                        {{ $data['title'] }}
                     </h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">{{ $title }}</li>
+                        <li class="breadcrumb-item active">{{ $data['title'] }}</li>
                         <li class="breadcrumb-item active">List</li>
                     </ol>
                 </div><!-- /.col -->
-                <div class="col-12 mt-4">
+                <div class="col-sm-6 mt-2">
+                    <div class="d-print-none with-border">
+                        <a href="{{ route('admin.company.create') }}" class="btn btn-success" data-style="zoom-in"><span
+                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; Add company</span></a>
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $title }} List</h3>
+                            <h3 class="card-title"> List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -41,7 +49,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($companies as $key => $company)
+                                    @foreach ($data['companies'] as $key => $company)
                                         <tr data-entry-id="{{ $company->id }}">
                                             <td>{{ $company->id }}</td>
                                             <td>{{ $company->name }}</td>
@@ -49,13 +57,17 @@
                                             <td>{{ $company->logo }}</td>
                                             <td>{{ $company->website_link }}</td>
                                             <td>
-                                                <a class="btn btn-primary" title="Show" href="{{ route('admin.company.show', $company->id) }}">
+                                                <a class="btn btn-primary" title="Show"
+                                                    href="{{ route('admin.company.show', $company->id) }}">
                                                     <i class="far fa-eye"></i>
                                                 </a>
-                                                <a class="btn btn-success" title="Edit" href="{{ route('admin.company.edit', $company->id) }}">
+                                                <a class="btn btn-success" title="Edit"
+                                                    href="{{ route('admin.company.edit', $company->id) }}">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a class="btn btn-danger" title="Delete" href="javascript:void(0)" onclick="deleteEntry(this)" data-route="{{ route('admin.company.destroy', $company->id) }}">
+                                                <a class="btn btn-danger" title="Delete" href="javascript:void(0)"
+                                                    onclick="deleteEntry(this)"
+                                                    data-route="{{ route('admin.company.destroy', $company->id) }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -77,12 +89,15 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+
                 </div>
                 <!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 
 @section('scripts')
     {{-- Swal2 --}}
@@ -134,7 +149,7 @@
         });
 
         // DeleteButton
-        function deleteEntry(button){
+        function deleteEntry(button) {
             var route = $(button).attr('data-route');
 
             Swal.fire({
@@ -147,11 +162,42 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "DELETE",
+                        url: route,
+                        success: function(response) {
+                            if (response == 1) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                location.reload()
+                            } else {
+                                Swal.fire({
+                                    title: 'NOT deleted!',
+                                    text: 'There\'s been an error.',
+                                    icon: 'error',
+                                    timer: 4000,
+                                    showConfirmButton: false,
+
+                                })
+                            }
+                        },
+                        error: function(response) {
+                            Swal.fire({
+                                title: 'NOT deleted!',
+                                text: 'There\'s been an error.',
+                                icon: 'error',
+                                timer: 4000,
+                                showConfirmButton: false,
+
+                            })
+                        }
+                    })
                 }
             })
         }
