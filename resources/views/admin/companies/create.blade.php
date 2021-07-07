@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                        id="name" name="name" placeholder="Enter name" value="{{ old('name') }}">
+                                        id="name" name="name" placeholder="Enter name" value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
                                     @if ($errors->has('name'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('name') }}
@@ -58,7 +58,7 @@
                                     <label for="email">Email address</label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                        name="email" placeholder="Enter email" value="{{ old('email') }}">
+                                        name="email" placeholder="Enter email" value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
                                     @if ($errors->has('email'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
@@ -73,11 +73,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="webiste_link">Website Link</label>
+                                    <label for="website_link">Website Link</label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('website_link') ? 'is-invalid' : '' }}"
-                                        id="webiste_link" name="website_link" placeholder="Enter website link"
-                                        value="{{ old('website_link') }}">
+                                        id="website_link" name="website_link" placeholder="Enter website link"
+                                        value="{{ old('website_link', isset($data['company']) ? $data['company']->website_link : '') }}">
                                     @if ($errors->has('website_link'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('website_link') }}

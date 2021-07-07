@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeRequest;
+use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $data['companies'] = Employee::all();
+        $data['employees'] = Employee::all();
         $data['title'] = 'Employees';
 
         return view('admin.employees.index', compact('data'));
@@ -28,7 +31,12 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::all()->pluck('name', 'id');
+
+        $data['companies'] = $companies;
+        $data['title'] = 'Employees';
+
+        return view('admin.employees.create', compact('data'));
     }
 
     /**
@@ -37,9 +45,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        $employee = Employee::create($request->all());
+
+        return redirect()->route('admin.employee.index');
     }
 
     /**
@@ -50,7 +60,12 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+
+        $data['employee'] = $employee;
+        $data['title'] = 'Employees';
+
+        return view('admin.employees.show', compact('data'));
     }
 
     /**
@@ -61,7 +76,14 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $companies = Company::all()->pluck('name', 'id');
+
+        $data['companies'] = $companies;
+        $data['employee'] = $employee;
+        $data['title'] = 'Employees';
+
+        return view('admin.employees.edit', compact('data'));
     }
 
     /**
@@ -73,7 +95,11 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+
+        $employee->update($request->all());
+
+        return redirect()->route('admin.employee.index');
     }
 
     /**
@@ -84,6 +110,6 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return DB::table('employees')->delete($id);
     }
 }

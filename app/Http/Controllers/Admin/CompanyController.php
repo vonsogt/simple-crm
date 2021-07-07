@@ -43,7 +43,6 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        // $request = new CompanyRequest();
         $company = Company::create($request->all());
 
         return redirect()->route('admin.company.index');

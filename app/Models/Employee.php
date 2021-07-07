@@ -20,4 +20,30 @@ class Employee extends Model
      */
     // protected $primaryKey = 'id';
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'company_id',
+        'email',
+        'phone',
+        'created_at',
+        'updated_at',
+    ];
+
+    // Accessor
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    // Relation
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

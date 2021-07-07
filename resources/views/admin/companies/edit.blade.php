@@ -38,6 +38,7 @@
                             <h3 class="card-title">Edit</h3>
                         </div>
                         <!-- /.card-header -->
+                        
                         <!-- form start -->
                         <form method="POST" action="{{ route('admin.company.update', $data['company']->id) }}" enctype="multipart/form-data">
                             @csrf
