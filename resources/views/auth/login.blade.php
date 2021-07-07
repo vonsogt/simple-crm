@@ -9,7 +9,7 @@
                 <a href="#" class="h1">Simple<b>CRM</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">{{ __('simplecrm.sign_in_message') }}</p>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -47,13 +47,13 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
-                                    {{ __('Remember Me') }}
+                                    {{ __('simplecrm.remember_me') }}
                                 </label>
                             </div>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">{{ __('Sign In') }}</button>
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('simplecrm.sign_in') }}</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -62,7 +62,7 @@
                 <p class="mb-1">
                     @if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}">
-                            {{ __('I forgot my password') }}
+                            {{ __('simplecrm.i_forgot_my_password') }}
                         </a>
                     @endif
                 </p>

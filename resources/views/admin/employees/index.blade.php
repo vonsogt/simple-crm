@@ -13,13 +13,14 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-                        <li class="breadcrumb-item active">List</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
                         <a href="{{ route('admin.employee.create') }}" class="btn btn-success" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; Add employee</span></a>
+                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; {{ trans('simplecrm.add') }}
+                                employee</span></a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,19 +34,19 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"> List</h3>
+                            <h3 class="card-title"> {{ trans('simplecrm.list') }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="datatable-employee" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Full Name</th>
-                                        <th>Company</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Action</th>
+                                        <th>{{ trans('simplecrm.employee.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.full_name') }}</th>
+                                        <th>{{ trans('simplecrm.company.title') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.email') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.phone') }}</th>
+                                        <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,12 +77,12 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Full Name</th>
-                                        <th>Company</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Action</th>
+                                        <th>{{ trans('simplecrm.employee.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.full_name') }}</th>
+                                        <th>{{ trans('simplecrm.company.title') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.email') }}</th>
+                                        <th>{{ trans('simplecrm.employee.fields.phone') }}</th>
+                                        <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -191,13 +192,13 @@
             var route = $(button).attr('data-route');
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: '{{ trans("simplecrm.delete_confirmation_title") }}',
+                text: "{{ trans('simplecrm.delete_confirmation_text') }}",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: '{{ trans("simplecrm.delete_confirmation_confirm_button") }}'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -210,12 +211,11 @@
                             if (response == 1) {
 
                                 // Show success notification
-                                toastr.options =
-                                {
-                                "closeButton" : true,
-                                "progressBar" : true
+                                toastr.options = {
+                                    "closeButton": true,
+                                    "progressBar": true
                                 }
-                                toastr.success('The item has been deleted successfully.')
+                                toastr.success('{{ trans("simplecrm.delete_confirmation_message") }}')
 
                                 // remove current table row and draw table again
                                 var table = $('#datatable-employee').DataTable()

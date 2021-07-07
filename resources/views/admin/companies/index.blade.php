@@ -13,13 +13,13 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-                        <li class="breadcrumb-item active">List</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
                         <a href="{{ route('admin.company.create') }}" class="btn btn-success" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; Add company</span></a>
+                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; {{ trans('simplecrm.add') }} company</span></a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,19 +33,19 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"> List</h3>
+                            <h3 class="card-title"> {{ trans('simplecrm.list') }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="datatable-company" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Logo</th>
-                                        <th>Website Link</th>
-                                        <th>Action</th>
+                                        <th>{{ trans('simplecrm.company.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.name') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.email') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.logo') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.website_link') }}</th>
+                                        <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +60,7 @@
                                                         src="{{ URL::to('/storage/img/companies') . '/' . $company->logo }}"
                                                         class="rounded mx-auto d-block" alt="logo-{{ $company->name }}">
                                                 @else
-                                                    <span class="text-secondary">No Logo</span>
+                                                    <span class="text-secondary">{{ trans('simplecrm.company.fields.no_logo') }}</span>
                                                 @endif
                                             </td>
                                             <td>{{ $company->website_link }}</td>
@@ -84,12 +84,12 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Logo</th>
-                                        <th>Website Link</th>
-                                        <th>Action</th>
+                                        <th>{{ trans('simplecrm.company.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.name') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.email') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.logo') }}</th>
+                                        <th>{{ trans('simplecrm.company.fields.website_link') }}</th>
+                                        <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -199,13 +199,13 @@
             var route = $(button).attr('data-route');
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: '{{ trans("simplecrm.delete_confirmation_title") }}',
+                text: "{{ trans('simplecrm.delete_confirmation_text') }}",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: '{{ trans("simplecrm.delete_confirmation_confirm_button") }}',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -223,7 +223,7 @@
                                 "closeButton" : true,
                                 "progressBar" : true
                                 }
-                                toastr.success('The item has been deleted successfully.')
+                                toastr.success('{{ trans("simplecrm.delete_confirmation_message") }}')
 
                                 // remove current table row and draw table again
                                 var table = $('#datatable-company').DataTable()

@@ -65,7 +65,7 @@
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Logout
+                            {{ trans('simplecrm.sign_out') }}
                         </p>
                     </a>
                 </li>
