@@ -109,7 +109,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "order":[0, "desc"],
+                "order": [0, "desc"],
                 "buttons": [{
                         extend: "copy",
                         exportOptions: {
@@ -171,11 +171,9 @@
                         url: route,
                         success: function(response) {
                             if (response == 1) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
+
+                                // Show success notification
+                                toastr.success('The item has been deleted successfully.')
 
                                 // remove current table row and draw table again
                                 var table = $('#datatable-employee').DataTable()

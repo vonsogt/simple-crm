@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use App\Models\User;
+use App\Notifications\CompanyNotification;
 use Illuminate\Http\Request;
+use Notification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -46,9 +49,8 @@ class CompanyController extends Controller
     {
         $request_data = $request->all();
 
-        $logo_extension = $request->logo->extension() ?? null;
-        if ($logo_extension != null) {
-            $logo_name = time() . '.' . $logo_extension;
+        if (($request->logo ?? null) != null) {
+            $logo_name = time() . '.' . $request_data['logo']->extension();
             $request->logo->move(public_path('storage/img/companies/'), $logo_name);
 
             // file name to database
@@ -56,6 +58,8 @@ class CompanyController extends Controller
         }
 
         $company = Company::create($request_data);
+
+        $this->sendRegisteredNotification($company);
 
         return redirect()->route('admin.company.index');
     }
@@ -111,7 +115,7 @@ class CompanyController extends Controller
             $request->logo->move(public_path('storage/img/companies/'), $logo_name);
 
             // Delete old file before update file name to the database
-            File::delete(storage_path('app\public\img\companies\\') . $company->logo);
+            File::delete(public_path('storage\\img\\companies\\') . $company->logo);
 
             // file name to database
             $request_data['logo'] = $logo_name;
@@ -130,6 +134,23 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
+        // Get logo file name and delete it
+        $company = Company::find($id)->first();
+        File::delete(public_path('storage\\img\\companies\\') . $company->logo);
+
         return DB::table('companies')->delete($id);
+    }
+
+    /**
+     * Send Notification
+     *
+     * @param mixed $companyData
+     * @return void
+     */
+    public function sendRegisteredNotification($companyData)
+    {
+        $user = User::first();
+
+        Notification::send($user, new CompanyNotification($companyData->toArray()));
     }
 }

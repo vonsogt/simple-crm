@@ -55,8 +55,13 @@
                                             <td>{{ $company->name }}</td>
                                             <td>{{ $company->email }}</td>
                                             <td>
-                                                <img height="100px" src="{{ URL::to('/storage/img/companies') . '/' . $company->logo }}"
-                                                    class="rounded mx-auto d-block" alt="logo-{{ $company->name }}">
+                                                @if ($company->logo)
+                                                    <img height="100px"
+                                                        src="{{ URL::to('/storage/img/companies') . '/' . $company->logo }}"
+                                                        class="rounded mx-auto d-block" alt="logo-{{ $company->name }}">
+                                                @else
+                                                    <span class="text-secondary">No Logo</span>
+                                                @endif
                                             </td>
                                             <td>{{ $company->website_link }}</td>
                                             <td>
@@ -112,7 +117,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "order":[0, "desc"],
+                "order": [0, "desc"],
                 "buttons": [{
                         extend: "copy",
                         exportOptions: {
@@ -174,11 +179,9 @@
                         url: route,
                         success: function(response) {
                             if (response == 1) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
+
+                                // Show success notification
+                                toastr.success('The item has been deleted successfully.')
 
                                 // remove current table row and draw table again
                                 var table = $('#datatable-company').DataTable()

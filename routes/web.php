@@ -35,6 +35,9 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::resource('company', CompanyController::class);
     Route::resource('employee', EmployeeController::class);
+
+    Route::resource('company', CompanyController::class);
+    // Route::get('company/send-notification', [CompanyController::class, 'sendRegisteredNotification']);
+
 });
