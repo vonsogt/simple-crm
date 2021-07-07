@@ -49,7 +49,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::create($request->all());
 
-        return redirect()->route('admin.employee.index');
+        return redirect()->route('admin.employee.index')->with('message', 'The item has been added successfully.');
     }
 
     /**
@@ -99,7 +99,7 @@ class EmployeeController extends Controller
 
         $employee->update($request->all());
 
-        return redirect()->route('admin.employee.index');
+        return redirect()->route('admin.employee.index')->with('message', 'The item has been modified successfully.');
     }
 
     /**

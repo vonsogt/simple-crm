@@ -61,7 +61,7 @@ class CompanyController extends Controller
 
         $this->sendRegisteredNotification($company);
 
-        return redirect()->route('admin.company.index');
+        return redirect()->route('admin.company.index')->with('message', 'The item has been added successfully.');
     }
 
     /**
@@ -123,7 +123,7 @@ class CompanyController extends Controller
 
         $company->update($request_data);
 
-        return redirect()->route('admin.company.index');
+        return redirect()->route('admin.company.index')->with('message', 'The item has been modified successfully.');
     }
 
     /**
