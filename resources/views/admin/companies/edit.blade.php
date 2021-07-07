@@ -39,41 +39,55 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="{{ route('admin.company.update', $data['company']->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
-                            {{-- TODO Change this edit form --}}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter email">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                        id="name" name="name" placeholder="Enter name" value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
+                                    @if ($errors->has('name'))
+                                        <span id="name-error" class="error invalid-feedback">
+                                            {{ $errors->first('name') }}
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Password">
+                                    <label for="email">Email address</label>
+                                    <input type="email"
+                                        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
+                                        name="email" placeholder="Enter email" value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
+                                    @if ($errors->has('email'))
+                                        <span id="name-error" class="error invalid-feedback">
+                                            {{ $errors->first('email') }}
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
+                                    <label for="logo">Logo</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="logo" name="logo">
+                                        <label class="custom-file-label" for="logo">Choose file</label>
                                     </div>
                                 </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <div class="form-group">
+                                    <label for="webiste_link">Website Link</label>
+                                    <input type="text"
+                                        class="form-control {{ $errors->has('website_link') ? 'is-invalid' : '' }}"
+                                        id="webiste_link" name="website_link" placeholder="Enter website link"
+                                        value="{{ old('website_link', isset($data['company']) ? $data['company']->website_link : '') }}">
+                                    @if ($errors->has('website_link'))
+                                        <span id="name-error" class="error invalid-feedback">
+                                            {{ $errors->first('website_link') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <!-- /.card-body -->
 
+                            {{-- Save Button --}}
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fa fa-save"></i>
@@ -92,4 +106,13 @@
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 @endsection

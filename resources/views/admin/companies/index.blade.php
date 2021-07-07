@@ -105,7 +105,7 @@
     <script>
         // DataTable
         $(function() {
-            $("#datatable-company").DataTable({
+            var table = $("#datatable-company").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -175,7 +175,10 @@
                                     'Your file has been deleted.',
                                     'success'
                                 )
-                                location.reload()
+
+                                // remove current table row and draw table again
+                                var table = $('#datatable-company').DataTable()
+                                table.row($(button).parents('tr')).remove().draw(false);
                             } else {
                                 Swal.fire({
                                     title: 'NOT deleted!',
