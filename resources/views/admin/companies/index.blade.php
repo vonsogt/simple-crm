@@ -54,7 +54,10 @@
                                             <td>{{ $company->id }}</td>
                                             <td>{{ $company->name }}</td>
                                             <td>{{ $company->email }}</td>
-                                            <td>{{ $company->logo }}</td>
+                                            <td>
+                                                <img height="100px" src="{{ URL::to('/storage/img/companies') . '/' . $company->logo }}"
+                                                    class="rounded mx-auto d-block" alt="logo-{{ $company->name }}">
+                                            </td>
                                             <td>{{ $company->website_link }}</td>
                                             <td>
                                                 <a class="btn btn-primary" title="Show"
@@ -109,6 +112,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
+                "order":[0, "desc"],
                 "buttons": [{
                         extend: "copy",
                         exportOptions: {

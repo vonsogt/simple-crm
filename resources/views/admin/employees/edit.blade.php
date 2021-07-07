@@ -45,6 +45,18 @@
                             @method('PUT')
 
                             <div class="card-body">
+
+                                {{-- Error alerts --}}
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger pb-0">
+                                        <ul class="list-unstyled">
+                                            @foreach ($errors->all() as $error)
+                                                <li><i class="fa fa-info-circle"></i> {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label for="first_name">First Name</label>
                                     <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"

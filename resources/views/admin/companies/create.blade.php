@@ -44,10 +44,23 @@
                             @csrf
 
                             <div class="card-body">
+
+                                {{-- Error alerts --}}
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger pb-0">
+                                        <ul class="list-unstyled">
+                                            @foreach ($errors->all() as $error)
+                                                <li><i class="fa fa-info-circle"></i> {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                        id="name" name="name" placeholder="Enter name" value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
+                                        id="name" name="name" placeholder="Enter name"
+                                        value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
                                     @if ($errors->has('name'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('name') }}
@@ -58,7 +71,8 @@
                                     <label for="email">Email address</label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                        name="email" placeholder="Enter email" value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
+                                        name="email" placeholder="Enter email"
+                                        value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
                                     @if ($errors->has('email'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
@@ -68,8 +82,14 @@
                                 <div class="form-group">
                                     <label for="logo">Logo</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="logo" name="logo">
+                                        <input type="file" class="custom-file-input {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo">
                                         <label class="custom-file-label" for="logo">Choose file</label>
+                                        <small class="text-secondary">Minimum image size is 100x100.</small>
+                                        @if ($errors->has('logo'))
+                                            <span id="name-error" class="error invalid-feedback">
+                                                {{ $errors->first('logo') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">

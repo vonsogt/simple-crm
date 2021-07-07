@@ -24,7 +24,14 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>           'required|min:5|max:255',
+            'name' =>   'required|min:5|max:255',
+            'logo' =>   [
+                'sometimes',
+                'image',
+                'mimes:jpeg,png,jpg,gif,svg',
+                'dimensions:min_width=100,min_height=100',
+                'max:2048'
+            ]
         ];
     }
 }

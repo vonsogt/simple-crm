@@ -38,17 +38,30 @@
                             <h3 class="card-title">Edit</h3>
                         </div>
                         <!-- /.card-header -->
-                        
+
                         <!-- form start -->
                         <form method="POST" action="{{ route('admin.company.update', $data['company']->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="card-body">
+
+                                {{-- Error alerts --}}
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger pb-0">
+                                        <ul class="list-unstyled">
+                                            @foreach ($errors->all() as $error)
+                                                <li><i class="fa fa-info-circle"></i> {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                        id="name" name="name" placeholder="Enter name" value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
+                                        id="name" name="name" placeholder="Enter name"
+                                        value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
                                     @if ($errors->has('name'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('name') }}
@@ -59,7 +72,8 @@
                                     <label for="email">Email address</label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                        name="email" placeholder="Enter email" value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
+                                        name="email" placeholder="Enter email"
+                                        value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
                                     @if ($errors->has('email'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
@@ -68,16 +82,33 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="logo">Logo</label>
+
+                                    {{-- Show the file name on EDIT form. --}}
+                                    @if (!empty($data['company']->logo))
+                                        <div class="existing-file">
+                                            <a target="_blank"
+                                                href="{{ URL::to('/storage/img/companies') . '/' . $data['company']->logo }}">
+                                                {{ $data['company']->logo }}
+                                            </a>
+                                        </div>
+                                    @endif
+
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="logo" name="logo">
+                                        <input type="file" class="custom-file-input {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo">
                                         <label class="custom-file-label" for="logo">Choose file</label>
+                                        <small class="text-secondary">Minimum image size is 100x100. Upload image again to replace the current image.</small>
+                                        @if ($errors->has('logo'))
+                                            <span id="name-error" class="error invalid-feedback">
+                                                {{ $errors->first('logo') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="webiste_link">Website Link</label>
+                                    <label for="website_link">Website Link</label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('website_link') ? 'is-invalid' : '' }}"
-                                        id="webiste_link" name="website_link" placeholder="Enter website link"
+                                        id="website_link" name="website_link" placeholder="Enter website link"
                                         value="{{ old('website_link', isset($data['company']) ? $data['company']->website_link : '') }}">
                                     @if ($errors->has('website_link'))
                                         <span id="name-error" class="error invalid-feedback">

@@ -7,6 +7,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CompanyController extends Controller
 {
@@ -43,7 +44,18 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        $company = Company::create($request->all());
+        $request_data = $request->all();
+
+        $logo_extension = $request->logo->extension() ?? null;
+        if ($logo_extension != null) {
+            $logo_name = time() . '.' . $logo_extension;
+            $request->logo->move(public_path('storage/img/companies/'), $logo_name);
+
+            // file name to database
+            $request_data['logo'] = $logo_name;
+        }
+
+        $company = Company::create($request_data);
 
         return redirect()->route('admin.company.index');
     }
@@ -90,9 +102,22 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
+        $request_data = $request->all();
         $company = Company::findOrFail($id);
 
-        $company->update($request->all());
+        $logo_extension = $request->logo->extension() ?? null;
+        if ($logo_extension != null) {
+            $logo_name = time() . '.' . $logo_extension;
+            $request->logo->move(public_path('storage/img/companies/'), $logo_name);
+
+            // Delete old file before update file name to the database
+            File::delete(storage_path('app\public\img\companies\\') . $company->logo);
+
+            // file name to database
+            $request_data['logo'] = $logo_name;
+        }
+
+        $company->update($request_data);
 
         return redirect()->route('admin.company.index');
     }
