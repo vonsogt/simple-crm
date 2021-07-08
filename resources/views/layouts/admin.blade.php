@@ -64,7 +64,7 @@
             <strong>Copyright &copy; 2021 <a href="https://vonso.online">Vonso</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
+                <b>Version</b> 1.1.0
             </div>
         </footer>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
