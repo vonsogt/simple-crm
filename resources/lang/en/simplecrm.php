@@ -5,6 +5,8 @@ return [
     'dashboard'             => 'Dashboard',
     'search'                => 'Search',
     'main_menu'             => 'Main Menu',
+    'coming_soon'           => 'Coming Soon',
+    'more_info'             => 'More Info',
 
     // Auth
     'sign_in'               => 'Sign In',
@@ -37,6 +39,12 @@ return [
     'delete_confirmation_text'              => 'You will not be able to revert this!',
     'delete_confirmation_confirm_button'    => 'Yes, delete it!',
     'delete_confirmation_message'           => 'The item has been deleted successfully.',
+
+    // User CRUD
+    'user' => [
+        'title'             => 'Users',
+        'title_singular'    => 'User',
+    ],
 
     // Company CRUD
     'company' => [

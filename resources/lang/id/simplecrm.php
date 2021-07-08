@@ -5,6 +5,8 @@ return [
     'dashboard'             => 'Dasbor',
     'search'                => 'Cari',
     'main_menu'             => 'Menu Utama',
+    'coming_soon'           => 'Segera Hadir',
+    'more_info'             => 'Info lebih lanjut',
 
     // Auth
     'sign_in'               => 'Masuk',
@@ -37,6 +39,12 @@ return [
     'delete_confirmation_text'              => 'Anda tidak akan dapat mengembalikan ini!',
     'delete_confirmation_confirm_button'    => 'Ya, hapus!',
     'delete_confirmation_message'           => 'Item telah berhasil dihapus.',
+
+    // User CRUD
+    'user' => [
+        'title'             => 'Pengguna',
+        'title_singular'    => 'Pengguna',
+    ],
 
     // Company CRUD
     'company' => [

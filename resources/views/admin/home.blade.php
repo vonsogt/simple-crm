@@ -12,11 +12,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">{{ trans('simplecrm.dashboard') }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.dashboard') }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,12 +33,12 @@
                     <div class="inner">
                         <h3>{{ $count_users }}</h3>
 
-                        <p>Users</p>
+                        <p>{{ trans('simplecrm.user.title') }}</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -48,12 +48,12 @@
                     <div class="inner">
                         <h3>{{ $count_companies }}</h3>
 
-                        <p>Companies</p>
+                        <p>{{ trans('simplecrm.company.title') }}</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-briefcase"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -63,12 +63,12 @@
                     <div class="inner">
                         <h3>{{ $count_employees }}</h3>
 
-                        <p>Employees</p>
+                        <p>{{ trans('simplecrm.employee.title') }}</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -76,14 +76,14 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>Soon!</h3>
+                        <h3>{{ trans('simplecrm.coming_soon') }}!</h3>
 
-                        <p>Coming Soon!</p>
+                        <p>{{ trans('simplecrm.coming_soon') }}</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-speedometer"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
