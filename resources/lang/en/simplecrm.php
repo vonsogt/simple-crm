@@ -14,6 +14,7 @@ return [
     'sign_out'              => 'Sign Out',
     'remember_me'           => 'Remember me',
     'i_forgot_my_password'  => 'I forgot my password',
+    'register'              => 'Register',
 
     // Create Form
     'add'       => 'Add',

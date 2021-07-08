@@ -14,6 +14,7 @@ return [
     'sign_out'              => 'Keluar',
     'remember_me'           => 'Ingat saya',
     'i_forgot_my_password'  => 'Saya lupa password',
+    'register'              => 'Daftar',
 
     // Create Form
     'add'       => 'Tambah',
