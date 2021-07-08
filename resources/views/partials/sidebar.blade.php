@@ -21,7 +21,7 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="{{ trans('simplecrm.search') }}" aria-label="{{ trans('simplecrm.search') }}">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -39,16 +39,16 @@
                         class="nav-link {{ Request::routeIs('admin.home') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            {{ trans('simplecrm.dashboard') }}
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">MAIN MENU</li>
+                <li class="nav-header text-uppercase">{{ trans('simplecrm.main_menu') }}</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.company.index') }}" class="nav-link {{ Request::routeIs('admin.company.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-building"></i>
                         <p>
-                            Companies
+                            {{ trans('simplecrm.company.title') }}
                         </p>
                     </a>
                 </li>
@@ -56,7 +56,7 @@
                     <a href="{{ route('admin.employee.index') }}" class="nav-link {{ Request::routeIs('admin.employee.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Employees
+                            {{ trans('simplecrm.employee.title') }}
                         </p>
                     </a>
                 </li>

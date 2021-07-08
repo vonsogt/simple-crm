@@ -11,16 +11,19 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.employee.create') }}" class="btn btn-success" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fa fa-plus"></i>&nbsp; {{ trans('simplecrm.add') }}
-                                employee</span></a>
+                        <a href="{{ route('admin.employee.create') }}" class="btn btn-success" data-style="zoom-in">
+                            <span class="ladda-label"><i class="fa fa-plus"></i>&nbsp;
+                                {{ trans('simplecrm.add') }}
+                                {{ Str::lower(trans('simplecrm.employee.title_singular')) }}
+                            </span>
+                        </a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->

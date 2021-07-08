@@ -19,7 +19,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $data['employees'] = Employee::all();
-        $data['title'] = 'Employees';
+        $data['title'] = trans('simplecrm.employee.title');
 
         return view('admin.employees.index', compact('data'));
     }
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
         $companies = Company::all()->pluck('name', 'id');
 
         $data['companies'] = $companies;
-        $data['title'] = 'Employees';
+        $data['title'] = trans('simplecrm.employee.title');
 
         return view('admin.employees.create', compact('data'));
     }
@@ -63,7 +63,7 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
 
         $data['employee'] = $employee;
-        $data['title'] = 'Employees';
+        $data['title'] = trans('simplecrm.employee.title');
 
         return view('admin.employees.show', compact('data'));
     }
@@ -81,7 +81,7 @@ class EmployeeController extends Controller
 
         $data['companies'] = $companies;
         $data['employee'] = $employee;
-        $data['title'] = 'Employees';
+        $data['title'] = trans('simplecrm.employee.title');
 
         return view('admin.employees.edit', compact('data'));
     }

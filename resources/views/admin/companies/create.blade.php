@@ -11,16 +11,19 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-                        <li class="breadcrumb-item active">Add</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.add') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.company.index') }}" class="btn btn-secondary" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp; Back to
-                                companies</span></a>
+                        <a href="{{ route('admin.company.index') }}" class="btn btn-secondary" data-style="zoom-in">
+                            <span class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp;
+                                {{ trans('simplecrm.back_to_all') }}
+                                {{ Str::lower(trans('simplecrm.company.title')) }}
+                            </span>
+                        </a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,7 +38,7 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add</h3>
+                            <h3 class="card-title">{{ trans('simplecrm.add') }}</h3>
                         </div>
                         <!-- /.card-header -->
 
@@ -57,7 +60,9 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">
+                                        {{ trans('simplecrm.company.fields.name') }}
+                                    </label>
                                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
                                         id="name" name="name" placeholder="Enter name"
                                         value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
@@ -68,7 +73,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
+                                    <label for="email">
+                                        {{ trans('simplecrm.company.fields.email') }}
+                                    </label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
                                         name="email" placeholder="Enter email"
@@ -80,7 +87,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="logo">Logo</label>
+                                    <label for="logo">
+                                        {{ trans('simplecrm.company.fields.logo') }}
+                                    </label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo">
                                         <label class="custom-file-label" for="logo">Choose file</label>
@@ -93,7 +102,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="website_link">Website Link</label>
+                                    <label for="website_link">
+                                        {{ trans('simplecrm.company.fields.website_link') }}
+                                    </label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('website_link') ? 'is-invalid' : '' }}"
                                         id="website_link" name="website_link" placeholder="Enter website link"
@@ -110,12 +121,12 @@
                             {{-- Save Button --}}
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-save"></i>
-                                    &nbsp;Save
+                                    <i class="fa fa-save"></i>&nbsp;
+                                    {{ trans('simplecrm.save') }}
                                 </button>
                                 <a class="btn btn-secondary" href="{{ route('admin.company.index') }}">
-                                    <i class="fa fa-ban"></i>
-                                    &nbsp;Cancel
+                                    <i class="fa fa-ban"></i>&nbsp;
+                                    {{ trans('simplecrm.cancel') }}
                                 </a>
                             </div>
                         </form>

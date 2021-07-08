@@ -11,16 +11,19 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-                        <li class="breadcrumb-item active">Show</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.show') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.employee.index') }}" class="btn btn-secondary" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp; Back to
-                                employee</span></a>
+                        <a href="{{ route('admin.employee.index') }}" class="btn btn-secondary" data-style="zoom-in">
+                            <span class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp;
+                                {{ trans('simplecrm.back_to_all') }}
+                                {{ Str::lower(trans('simplecrm.employee.title')) }}
+                            </span>
+                        </a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,7 +38,7 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Show</h3>
+                            <h3 class="card-title">{{ trans('simplecrm.show') }}</h3>
                         </div>
                         <!-- /.card-header -->
 
@@ -44,7 +47,7 @@
                                 <tbody>
                                     <tr>
                                         <th>
-                                            ID
+                                            {{ trans('simplecrm.employee.fields.id') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->id }}
@@ -52,7 +55,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            First Name
+                                            {{ trans('simplecrm.employee.fields.first_name') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->first_name }}
@@ -60,7 +63,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Last Name
+                                            {{ trans('simplecrm.employee.fields.last_name') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->last_name }}
@@ -68,7 +71,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Company
+                                            {{ trans('simplecrm.company.title') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->company->name }}
@@ -76,7 +79,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Email
+                                            {{ trans('simplecrm.employee.fields.email') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->email }}
@@ -84,7 +87,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Phone
+                                            {{ trans('simplecrm.employee.fields.phone') }}
                                         </th>
                                         <td>
                                             {{ $data['employee']->phone }}

@@ -1,6 +1,11 @@
 <?php
 
 return [
+    // General
+    'dashboard'             => 'Dashboard',
+    'search'                => 'Search',
+    'main_menu'             => 'Main Menu',
+
     // Auth
     'sign_in'               => 'Sign In',
     'sign_in_message'       => 'Sign in to start your session',
@@ -14,13 +19,15 @@ return [
 
     // Edit Form
     'edit'      => 'Edit',
+    'save'      => 'Save',
 
-    // View
-    'view'      => 'View',
+    // Show
+    'show'      => 'Show',
 
     // List
-    'list'      => 'List',
-    'actions'   => 'Actions',
+    'list'          => 'List',
+    'actions'       => 'Actions',
+    'back_to_all'   => 'Back to all',
 
     // Delete
     'delete'    => 'Delete',
@@ -33,7 +40,8 @@ return [
 
     // Company CRUD
     'company' => [
-        'title'             => 'Company',
+        'title'             => 'Companies',
+        'title_singular'    => 'Company',
         'fields'            => [
             'id'            => 'ID',
             'name'          => 'Name',
@@ -46,7 +54,8 @@ return [
 
     // Employee CRUD
     'employee' => [
-        'title'             => 'Employee',
+        'title'             => 'Employees',
+        'title_singular'    => 'Employee',
         'fields'            => [
             'id'            => 'ID',
             'full_name'     => 'Full Name',

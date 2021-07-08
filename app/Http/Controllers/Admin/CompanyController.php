@@ -22,7 +22,7 @@ class CompanyController extends Controller
     public function index()
     {
         $data['companies'] = Company::all();
-        $data['title'] = 'Companies';
+        $data['title'] = trans('simplecrm.company.title');
 
         return view('admin.companies.index', compact('data'));
     }
@@ -34,7 +34,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        $data['title'] = 'Companies';
+        $data['title'] = trans('simplecrm.company.title');
 
         return view('admin.companies.create', compact('data'));
     }
@@ -76,7 +76,7 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
 
         $data['company'] = $company;
-        $data['title'] = 'Companies';
+        $data['title'] = trans('simplecrm.company.title');
 
         return view('admin.companies.show', compact('data'));
     }
@@ -92,7 +92,7 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
 
         $data['company'] = $company;
-        $data['title'] = 'Companies';
+        $data['title'] = trans('simplecrm.company.title');
 
         return view('admin.companies.edit', compact('data'));
     }

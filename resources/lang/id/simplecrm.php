@@ -1,6 +1,11 @@
 <?php
 
 return [
+    // General
+    'dashboard'             => 'Dasbor',
+    'search'                => 'Cari',
+    'main_menu'             => 'Menu Utama',
+
     // Auth
     'sign_in'               => 'Masuk',
     'sign_in_message'       => 'Masuk untuk memulai sesi anda',
@@ -14,13 +19,15 @@ return [
 
     // Edit Form
     'edit'      => 'Ubah',
+    'save'      => 'Simpan',
 
-    // View
-    'view'      => 'Lihat',
+    // Show
+    'show'      => 'Lihat',
 
     // List
-    'list'      => 'Daftar',
-    'actions'   => 'Aksi',
+    'list'          => 'Daftar',
+    'actions'       => 'Aksi',
+    'back_to_all'   => 'Kembali ke semua',
 
     // Delete
     'delete'    => 'Hapus',
@@ -34,6 +41,7 @@ return [
     // Company CRUD
     'company' => [
         'title'             => 'Perusahaan',
+        'title_singular'    => 'Perusahaan',
         'fields'            => [
             'id'            => 'ID',
             'name'          => 'Nama',
@@ -47,6 +55,7 @@ return [
     // Employee CRUD
     'employee' => [
         'title'             => 'Karyawan',
+        'title_singular'    => 'Karyawan',
         'fields'            => [
             'id'            => 'ID',
             'full_name'     => 'Nama Lengkap',

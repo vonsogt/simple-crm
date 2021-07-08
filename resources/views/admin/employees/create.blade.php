@@ -11,16 +11,19 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-                        <li class="breadcrumb-item active">Add</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.add') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.employee.index') }}" class="btn btn-secondary" data-style="zoom-in"><span
-                                class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp; Back to
-                                employees</span></a>
+                        <a href="{{ route('admin.employee.index') }}" class="btn btn-secondary" data-style="zoom-in">
+                            <span class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp;
+                                {{ trans('simplecrm.back_to_all') }}
+                                {{ Str::lower(trans('simplecrm.employee.title')) }}
+                            </span>
+                        </a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,7 +38,7 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add</h3>
+                            <h3 class="card-title">{{ trans('simplecrm.add') }}</h3>
                         </div>
                         <!-- /.card-header -->
 
@@ -57,7 +60,9 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="first_name">First Name</label>
+                                    <label for="first_name">
+                                        {{ trans('simplecrm.employee.fields.first_name') }}
+                                    </label>
                                     <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         id="first_name" name="first_name" placeholder="Enter first name" value="{{ old('first_name', isset($data['employee']) ? $data['employee']->first_name : '') }}">
                                     @if ($errors->has('first_name'))
@@ -67,7 +72,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="last_name">Last Name</label>
+                                    <label for="last_name">
+                                        {{ trans('simplecrm.employee.fields.last_name') }}
+                                    </label>
                                     <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                         id="last_name" name="last_name" placeholder="Enter last name" value="{{ old('last_name', isset($data['employee']) ? $data['employee']->last_name : '') }}">
                                     @if ($errors->has('last_name'))
@@ -77,7 +84,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>Company</label>
+                                    <label>
+                                        {{ trans('simplecrm.company.title_singular') }}
+                                    </label>
                                     <select name="company_id" id="company_id" class="form-control {{ $errors->has('company_id') ? 'is-invalid' : '' }}">
                                         <option value="">-</option>
                                         @foreach ($data['companies'] as $id => $company)
@@ -94,7 +103,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
+                                    <label for="email">
+                                        {{ trans('simplecrm.employee.fields.email') }}
+                                    </label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
                                         name="email" placeholder="Enter email" value="{{ old('email', isset($data['employee']) ? $data['employee']->email : '') }}">
@@ -105,7 +116,9 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">
+                                        {{ trans('simplecrm.employee.fields.phone') }}
+                                    </label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
                                         id="phone" name="phone" placeholder="Enter website link"
@@ -122,12 +135,12 @@
                             {{-- Save Button --}}
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-save"></i>
-                                    &nbsp;Save
+                                    <i class="fa fa-save"></i>&nbsp;
+                                    {{ trans('simplecrm.save') }}
                                 </button>
                                 <a class="btn btn-secondary" href="{{ route('admin.employee.index') }}">
-                                    <i class="fa fa-ban"></i>
-                                    &nbsp;Cancel
+                                    <i class="fa fa-ban"></i>&nbsp;
+                                    {{ trans('simplecrm.cancel') }}
                                 </a>
                             </div>
                         </form>
