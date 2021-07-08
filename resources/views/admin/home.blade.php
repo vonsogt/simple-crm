@@ -76,12 +76,12 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{ trans('simplecrm.coming_soon') }}!</h3>
+                        <h3>...</h3>
 
                         <p>{{ trans('simplecrm.coming_soon') }}</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-speedometer"></i>
+                        <i class="ion ion-jet"></i>
                     </div>
                     <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
