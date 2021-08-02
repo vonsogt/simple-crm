@@ -96,7 +96,7 @@
                                     @if (!empty($data['company']->logo))
                                         <div class="existing-file">
                                             <a target="_blank"
-                                                href="{{ URL::to('/storage/img/companies') . '/' . $data['company']->logo }}">
+                                                href="{{ URL::to('/storage/companies/images') . '/' . $data['company']->logo }}">
                                                 {{ $data['company']->logo }}
                                             </a>
                                         </div>

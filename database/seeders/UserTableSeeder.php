@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
             ],
         ];
 
-        // Checking if users table already have a query
+        // Checking if the table already have a query
         if (is_null(DB::table('users')->first()))
             DB::table('users')->insert($users);
         else

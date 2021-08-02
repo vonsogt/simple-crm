@@ -51,7 +51,7 @@ class CompanyController extends Controller
 
         if (($request->logo ?? null) != null) {
             $logo_name = time() . '.' . $request_data['logo']->extension();
-            $request->logo->move(public_path('storage/img/companies/'), $logo_name);
+            $request->logo->move(public_path('storage/companies/images/'), $logo_name);
 
             // file name to database
             $request_data['logo'] = $logo_name;
@@ -112,7 +112,7 @@ class CompanyController extends Controller
         $logo_extension = $request->logo->extension() ?? null;
         if ($logo_extension != null) {
             $logo_name = time() . '.' . $logo_extension;
-            $request->logo->move(public_path('storage/img/companies/'), $logo_name);
+            $request->logo->move(public_path('storage/companies/images/'), $logo_name);
 
             // Delete old file before update file name to the database
             File::delete(public_path('storage\\img\\companies\\') . $company->logo);

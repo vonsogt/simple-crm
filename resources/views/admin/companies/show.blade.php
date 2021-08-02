@@ -75,7 +75,7 @@
                                         </th>
                                         <td>
                                             <img height="200px"
-                                                src="{{ URL::to('/storage/img/companies') . '/' . $data['company']->logo }}"
+                                                src="{{ URL::to('/storage/companies/images') . '/' . $data['company']->logo }}"
                                                 class="rounded float-start d-block" alt="logo-{{ $data['company']->name }}">
                                         </td>
                                     </tr>

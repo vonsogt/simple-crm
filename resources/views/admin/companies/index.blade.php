@@ -61,7 +61,7 @@
                                             <td>
                                                 @if ($company->logo)
                                                     <img height="100px"
-                                                        src="{{ URL::to('/storage/img/companies') . '/' . $company->logo }}"
+                                                        src="{{ URL::to('/storage/companies/images') . '/' . $company->logo }}"
                                                         class="rounded mx-auto d-block" alt="logo-{{ $company->name }}">
                                                 @else
                                                     <span class="text-secondary">{{ trans('simplecrm.company.fields.no_logo') }}</span>
