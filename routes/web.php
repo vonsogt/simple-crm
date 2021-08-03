@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\API\V1\CompanyController as V1CompanyController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\HomeController;
@@ -35,4 +36,12 @@ Route::group([
 
     Route::resource('employee', EmployeeController::class);
     Route::resource('company', CompanyController::class);
+
+    Route::group([
+        'prefix' =>     'api/v1/',
+        'as' =>         'api.v1.',
+    ], function () {
+
+        Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
+    });
 });

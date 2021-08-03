@@ -25,7 +25,10 @@ return [
     'save'      => 'Save',
 
     // Show
-    'show'      => 'Show',
+    'show'          => 'Show',
+    'created_at'    => 'Created At',
+    'updated_at'    => 'Updated At',
+    'deleted_at'    => 'Deleted At',
 
     // List
     'list'          => 'List',
@@ -34,6 +37,15 @@ return [
 
     // Delete
     'delete'    => 'Delete',
+
+    // Datatables
+    'datatable' => [
+        'export'            => 'Export',
+        'column_visibility' => 'Column Visiblity',
+        'info_empty'        => 'No entries',
+        'info_filtered'     => '(filtered from _MAX_ total entries)',
+        'remove_filters'    => 'Remove filters',
+    ],
 
     // Confirmation messages and bubbles
     'delete_confirmation_title'             => 'Are you sure?',

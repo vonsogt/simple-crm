@@ -26,6 +26,9 @@ return [
 
     // Show
     'show'      => 'Lihat',
+    'created_at'    => 'Dibuat Pada',
+    'updated_at'    => 'Diubah Pada',
+    'deleted_at'    => 'Dihapus Pada',
 
     // List
     'list'          => 'Daftar',
@@ -34,6 +37,15 @@ return [
 
     // Delete
     'delete'    => 'Hapus',
+
+    // Datatables
+    'datatable' => [
+        'export'            => 'Ekspor',
+        'column_visibility' => 'Visibilitas Kolom',
+        'info_empty'        => 'Tidak ada entri',
+        'info_filtered'     => '(difilter dari _MAX_ total entri)',
+        'remove_filters'    => 'Hapus filter',
+    ],
 
     // Confirmation messages and bubbles
     'delete_confirmation_title'             => 'Apakah anda yakin?',

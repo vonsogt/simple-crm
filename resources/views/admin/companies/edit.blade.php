@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
-                        <li class="breadcrumb-item active">{{ $data['title'] }}</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.company.index') }}">{{ $data['title'] }}</a></li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.edit') }}</li>
                     </ol>
                 </div><!-- /.col -->
