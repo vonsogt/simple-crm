@@ -7,6 +7,8 @@ return [
     'main_menu'             => 'Main Menu',
     'coming_soon'           => 'Coming Soon',
     'more_info'             => 'More Info',
+    'jobs_singular'         => 'Job need to run',
+    'jobs_prular'           => 'Jobs need to run',
 
     // Auth
     'sign_in'               => 'Sign In',

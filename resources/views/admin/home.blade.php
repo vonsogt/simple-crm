@@ -4,6 +4,7 @@
     $count_users = \DB::table('users')->count();
     $count_companies = \DB::table('companies')->count();
     $count_employees = \DB::table('employees')->count();
+    $count_jobs = \DB::table('jobs')->count();
 
 @endphp
 @section('content')
@@ -76,14 +77,14 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>...</h3>
+                        <h3>{{ $count_jobs }}</h3>
 
-                        <p>{{ trans('simplecrm.coming_soon') }}</p>
+                        <p>{{ $count_jobs > 1 ? trans('simplecrm.jobs_prular') : trans('simplecrm.jobs_singular') }}</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-jet"></i>
                     </div>
-                    <a href="#" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="https://laravel.com/docs/queues" target="_blank" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

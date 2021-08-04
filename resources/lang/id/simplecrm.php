@@ -7,6 +7,8 @@ return [
     'main_menu'             => 'Menu Utama',
     'coming_soon'           => 'Segera Hadir',
     'more_info'             => 'Info lebih lanjut',
+    'jobs_singular'         => 'Tugas yang harus dijalankan',
+    'jobs_prular'           => 'Tugas yang harus dijalankan',
 
     // Auth
     'sign_in'               => 'Masuk',
