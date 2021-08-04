@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
 
 class LoginController extends Controller
 {
+    /**
+     * Create a new LoginController instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
     /**
@@ -37,16 +43,18 @@ class LoginController extends Controller
     }
 
     /**
-     * Sign out
+     * Log out
      */
-    public function signout()
+    public function logout()
     {
         auth()->logout();
         return response()->json(['message' => 'User loged out']);
     }
 
     /**
-     * Token refresh
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()
     {
@@ -54,7 +62,21 @@ class LoginController extends Controller
     }
 
     /**
-     * Generate token
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function userProfile()
+    {
+        return response()->json(auth()->user());
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function generateToken($token)
     {
