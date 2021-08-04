@@ -294,37 +294,33 @@
         $(document).ready(function() {
 
             // move "showing x out of y" info to header
-            $("#datatable_info_stack").html($("#datatable-employee_info")).css('display', 'inline-flex').css(
-                'font-size', '20px');
+            $("#datatable_info_stack").html($("#datatable-employee_info"))
+                .css('display', 'inline-flex')
+                .css('font-size', '20px');
 
-            // Add created_at filter daterange
+            // Add filter name
             $("#datatable-employee_wrapper .col-sm-6:eq(0)").append(
-                '<div class="input-group">' +
-                '<button type="button" class="btn btn-default float-right mr-2" id="daterange-btn">' +
-                '<i class="far fa-calendar-alt"></i> {{ trans('simplecrm.created_at') }} ' +
-                '<i class="fas fa-caret-down"></i>' +
-                '</button>' +
+                '<div class="form-row align-items-center" id="datatable_custom-filter">' +
+                    '<div class="col-auto">' +
+                        '<input type="text" class="form-control" id="search-by-name" placeholder="Search by full name">' +
+                    '</div>' +
                 '</div>');
 
-            // TODO: Add Company filter
-            // $("#datatable-employee_wrapper .col-sm-6:eq(0) .input-group").append(
-            //     '<div class="form-group">'+
-            //         '<select class="form-control select2" style="width: 158px;" placeholder="Company">' +
-            //             '<option>-</option>' +
-            //             $.ajax({
-            //                 type: "GET",
-            //                 url: "/admin/api/v1/company-options",
-            //                 success: function (response) {
-            //                     console.log(response);
-            //                 }
-            //             });
-            //         '</select>'+
-            //     '</div>');
+            // Add filter created_at daterange
+            $("#datatable-employee_wrapper .col-sm-6:eq(0) #datatable_custom-filter").append(
+                '<div class="col-auto">' +
+                    '<button type="button" class="btn btn-default float-right mr-2" id="daterange-btn">' +
+                        '<i class="far fa-calendar-alt"></i>' +
+                        ' {{ trans('simplecrm.created_at') }} ' +
+                        '<i class="fas fa-caret-down"></i>' +
+                    '</button>' +
+                '</div>');
 
             // Reset all filter
-            $("#datatable-employee_wrapper .col-sm-6:eq(0) .input-group").append(
-                '<a href="javascript:void(0)" id="remove_filters_button" class="btn invisible"><i class="fa fa-eraser"></i> {{ trans('simplecrm.datatable.remove_filters') }}</a>'
-            )
+            $("#datatable-employee_wrapper .col-sm-6:eq(0) #datatable_custom-filter").append(
+                '<div class="col-auto">' +
+                    '<a href="javascript:void(0)" id="remove_filters_button" class="btn invisible"><i class="fa fa-eraser"></i> {{ trans('simplecrm.datatable.remove_filters') }}</a>' +
+                '</div>');
 
             //Date range as a button
             var min = ''
@@ -346,9 +342,21 @@
                     // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
                     min = start.format('YYYY-MM-DD')
                     max = end.format('YYYY-MM-DD')
+                    $('#remove_filters_button').removeClass('invisible');
                     $("#datatable-employee").DataTable().draw()
                 }
             );
+
+            // Filter by name
+            $('#search-by-name').on('keyup', function() {
+                if (this.value == '') {
+                    $('#remove_filters_button').addClass('invisible');
+                    $("#datatable-employee").DataTable().columns(1).search(this.value).draw();
+                } else {
+                    $('#remove_filters_button').removeClass('invisible');
+                    $("#datatable-employee").DataTable().columns(1).search(this.value).draw();
+                }
+            });
 
             // Clear Filters
             $("#remove_filters_button").click(function(e) {
@@ -371,11 +379,15 @@
                     function(start, end) {
                         min = start.format('YYYY-MM-DD')
                         max = end.format('YYYY-MM-DD')
+                        $('#remove_filters_button').removeClass('invisible');
                         $("#datatable-employee").DataTable().draw()
                     }
                 );
                 min = ''
                 max = ''
+                // clear search by name
+                $('#search-by-name').val('')
+                $("#datatable-employee").DataTable().columns(1).search('').draw();
                 $("#datatable-employee").DataTable().search('').draw()
                 $('#remove_filters_button').addClass('invisible');
             })
@@ -383,9 +395,6 @@
             // Extend dataTables search
             $.fn.dataTable.ext.search.push(
                 function(settings, data, dataIndex) {
-                    // Show clear filters
-                    $('#remove_filters_button').removeClass('invisible');
-
                     var createdAt = (moment(data[5]).format('YYYY-MM-DD')) || 0; // Our date column in the table
 
                     if (

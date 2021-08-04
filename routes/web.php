@@ -37,11 +37,12 @@ Route::group([
     Route::resource('employee', EmployeeController::class);
     Route::resource('company', CompanyController::class);
 
+
+    // API V1 routes
     Route::group([
         'prefix' =>     'api/v1/',
         'as' =>         'api.v1.',
     ], function () {
-
         Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
     });
 });

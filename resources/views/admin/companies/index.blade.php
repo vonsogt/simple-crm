@@ -301,19 +301,29 @@
                 .css('display', 'inline-flex')
                 .css('font-size', '20px');
 
-            // Add created_at filter daterange
+            // Add filter name
             $("#datatable-company_wrapper .col-sm-6:eq(0)").append(
-                '<div class="input-group">' +
-                '<button type="button" class="btn btn-default float-right mr-2" id="daterange-btn">' +
-                '<i class="far fa-calendar-alt"></i> {{ trans('simplecrm.created_at') }} ' +
-                '<i class="fas fa-caret-down"></i>' +
-                '</button>' +
+                '<div class="form-row align-items-center" id="datatable_custom-filter">' +
+                    '<div class="col-auto">' +
+                        '<input type="text" class="form-control" id="search-by-name" placeholder="Search by name">' +
+                    '</div>' +
+                '</div>');
+
+            // Add filter created_at daterange
+            $("#datatable-company_wrapper .col-sm-6:eq(0) #datatable_custom-filter").append(
+                '<div class="col-auto">' +
+                    '<button type="button" class="btn btn-default float-right mr-2" id="daterange-btn">' +
+                        '<i class="far fa-calendar-alt"></i>' +
+                        ' {{ trans('simplecrm.created_at') }} ' +
+                        '<i class="fas fa-caret-down"></i>' +
+                    '</button>' +
                 '</div>');
 
             // Reset all filter
-            $("#datatable-company_wrapper .col-sm-6:eq(0) .input-group").append(
-                '<a href="javascript:void(0)" id="remove_filters_button" class="btn invisible"><i class="fa fa-eraser"></i> {{ trans('simplecrm.datatable.remove_filters') }}</a>'
-            )
+            $("#datatable-company_wrapper .col-sm-6:eq(0) #datatable_custom-filter").append(
+                '<div class="col-auto">' +
+                    '<a href="javascript:void(0)" id="remove_filters_button" class="btn invisible"><i class="fa fa-eraser"></i> {{ trans('simplecrm.datatable.remove_filters') }}</a>' +
+                '</div>');
 
             //Date range as a button
             var min = ''
@@ -335,13 +345,24 @@
                     // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
                     min = start.format('YYYY-MM-DD')
                     max = end.format('YYYY-MM-DD')
+                    $('#remove_filters_button').removeClass('invisible');
                     $("#datatable-company").DataTable().draw()
                 }
             );
 
+            // Filter by name
+            $('#search-by-name').on('keyup', function() {
+                if (this.value == '') {
+                    $('#remove_filters_button').addClass('invisible');
+                    $("#datatable-company").DataTable().columns(1).search(this.value).draw();
+                } else {
+                    $('#remove_filters_button').removeClass('invisible');
+                    $("#datatable-company").DataTable().columns(1).search(this.value).draw();
+                }
+            });
+
             // Clear Filters
             $("#remove_filters_button").click(function(e) {
-                // $('#daterange-btn').daterangepicker()
                 $('#daterange-btn').daterangepicker({
                         startDate: moment().subtract(29, 'days'),
                         endDate: moment(),
@@ -360,11 +381,15 @@
                     function(start, end) {
                         min = start.format('YYYY-MM-DD')
                         max = end.format('YYYY-MM-DD')
+                        $('#remove_filters_button').removeClass('invisible');
                         $("#datatable-company").DataTable().draw()
                     }
                 );
                 min = ''
                 max = ''
+                // clear search by name
+                $('#search-by-name').val('')
+                $("#datatable-company").DataTable().columns(1).search('').draw();
                 $("#datatable-company").DataTable().search('').draw()
                 $('#remove_filters_button').addClass('invisible');
             })
@@ -372,9 +397,6 @@
             // Extend dataTables search
             $.fn.dataTable.ext.search.push(
                 function(settings, data, dataIndex) {
-                    // Show clear filters
-                    $('#remove_filters_button').removeClass('invisible');
-
                     var createdAt = (moment(data[5]).format('YYYY-MM-DD')) || 0; // Our date column in the table
 
                     if (
