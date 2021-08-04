@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
+use App\Jobs\SendEmail;
 use App\Models\Company;
 use App\Models\User;
 use App\Notifications\CompanyNotification;
@@ -59,7 +60,11 @@ class CompanyController extends Controller
 
         $company = Company::create($request_data);
 
-        $this->sendRegisteredNotification($company);
+        // Send notification
+        // $this->sendRegisteredNotification($company);
+
+        // Enqueue email with company data
+        $this->enqueue($company);
 
         return redirect()->route('admin.company.index')->with('message', 'The item has been added successfully.');
     }
@@ -152,5 +157,17 @@ class CompanyController extends Controller
         $user = User::first();
 
         Notification::send($user, new CompanyNotification($companyData->toArray()));
+    }
+
+    /**
+     * Send Mail
+     *
+     * @param mixed $companyData
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     */
+    public function enqueue($companyData)
+    {
+        SendEmail::dispatch($companyData->toArray());
     }
 }
