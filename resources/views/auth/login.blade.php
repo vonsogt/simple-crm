@@ -11,8 +11,8 @@
             <div class="card-body">
                 <p class="login-box-msg">{{ __('simplecrm.sign_in_message') }}</p>
 
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
+                <form method="POST" action="{{ route('api.v1.auth.login') }}">
+                    {{-- @csrf --}}
 
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? 'admin@admin.com' }}" required autocomplete="email" autofocus placeholder="Email">

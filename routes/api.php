@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\Auth\LoginController;
-use App\Http\Controllers\API\Auth\RegisterController;
+use App\Http\Controllers\API\V1\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\JwtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +21,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'auth'
-], function ($router) {
-    Route::post('/register', [RegisterController::class, 'register']);
-    Route::post('/login', [LoginController::class, 'login']);
-    Route::post('/logout', [LoginController::class, 'logout']);
-    Route::post('/refresh', [LoginController::class, 'refresh']);
-    Route::get('/user-profile', [LoginController::class, 'userProfile']);
+    'as' =>         'api.v1.auth.',
+    'prefix' =>     'v1/auth',
+], function () {
+    // Route::post('register', [AuthController::class, 'register'])->name('register'); // Disabled
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('token-refresh', [AuthController::class, 'tokenRefresh'])->name('token-refresh');
+});
+
+Route::group([
+    'middleware' => 'api',
+    'as' =>         'api.v1.',
+    'prefix' =>     'v1',
+], function () {
+    Route::get('user-profile', [AuthController::class, 'userProfile'])->name('user-profile');
 });

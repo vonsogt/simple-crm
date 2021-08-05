@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 // Redirect route /home to /admin
 Route::redirect('/home', '/admin');
+
 // Disable auth register
 Auth::routes(['register' => false]);
 
@@ -30,7 +31,7 @@ Auth::routes(['register' => false]);
 Route::group([
     'prefix' =>     'admin',
     'as' =>         'admin.',
-    'middleware' => 'auth',
+    'middleware' => 'jwt.verify',
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 

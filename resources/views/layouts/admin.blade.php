@@ -70,7 +70,7 @@
                 <b>Version</b> 1.2.0
             </div>
         </footer>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('api.v1.auth.logout') }}" method="POST" class="d-none">
             @csrf
         </form>
     </div>
