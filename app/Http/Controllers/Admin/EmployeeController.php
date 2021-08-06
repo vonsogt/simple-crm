@@ -59,14 +59,14 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($lang, $id)
     {
         $employee = Employee::findOrFail($id);
 
         $data['employee'] = $employee;
         $data['title'] = trans('simplecrm.employee.title');
 
-        return view('admin.employees.show', compact('data'));
+        return view('admin.employees.show', compact('data', 'id'));
     }
 
     /**
@@ -75,7 +75,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($lang, $id)
     {
         $employee = Employee::findOrFail($id);
         $companies = Company::all()->pluck('name', 'id');
@@ -84,7 +84,7 @@ class EmployeeController extends Controller
         $data['employee'] = $employee;
         $data['title'] = trans('simplecrm.employee.title');
 
-        return view('admin.employees.edit', compact('data'));
+        return view('admin.employees.edit', compact('data', 'id'));
     }
 
     /**
@@ -109,7 +109,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($lang, $id)
     {
         return DB::table('employees')->delete($id);
     }

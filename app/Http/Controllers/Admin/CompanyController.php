@@ -75,7 +75,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($lang, $id)
     {
 
         $company = Company::findOrFail($id);
@@ -83,7 +83,7 @@ class CompanyController extends Controller
         $data['company'] = $company;
         $data['title'] = trans('simplecrm.company.title');
 
-        return view('admin.companies.show', compact('data'));
+        return view('admin.companies.show', compact('data', 'id'));
     }
 
     /**
@@ -92,14 +92,14 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($lang, $id)
     {
         $company = Company::findOrFail($id);
 
         $data['company'] = $company;
         $data['title'] = trans('simplecrm.company.title');
 
-        return view('admin.companies.edit', compact('data'));
+        return view('admin.companies.edit', compact('data', 'id'));
     }
 
     /**
@@ -137,7 +137,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($lang, $id)
     {
         // Get logo file name and delete it
         $company = Company::find($id)->first();

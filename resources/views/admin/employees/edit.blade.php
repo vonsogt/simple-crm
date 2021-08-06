@@ -90,10 +90,10 @@
                                     </label>
                                     <select name="company_id" id="company_id" class="form-control {{ $errors->has('company_id') ? 'is-invalid' : '' }}">
                                         <option value="">-</option>
-                                        @foreach ($data['companies'] as $id => $company)
-                                            <option value="{{ $id }}"
-                                                {{ (isset($data['employee']) && $data['employee']->company ? $data['employee']->company->id : old('company_id')) == $id ? 'selected' : '' }}>
-                                                {{ $company }}
+                                        @foreach ($data['companies'] as $company_id => $company_name)
+                                            <option value="{{ $company_id }}"
+                                                {{ (isset($data['employee']) && $data['employee']->company ? $data['employee']->company->id : old('company_id')) == $company_id ? 'selected' : '' }}>
+                                                {{ $company_name }}
                                             </option>
                                         @endforeach
                                     </select>

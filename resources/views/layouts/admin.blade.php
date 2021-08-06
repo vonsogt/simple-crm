@@ -58,12 +58,12 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Language Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle float-right" href="javascript:void(0)" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&#127760;
                         {{ trans('simplecrm.language') }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'id') }}">ID</a>
-                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a>
+                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), ['en', $id ?? null]) }}">EN</a>
+                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), ['id', $id ?? null]) }}">ID</a>
                     </div>
                 </li>
             </ul>

@@ -43,7 +43,7 @@
                         <!-- /.card-header -->
 
                         <!-- form start -->
-                        <form method="POST" action="{{ route('admin.company.update', $data['company']->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.company.update', [app()->getLocale(), $data['company']->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
