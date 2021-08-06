@@ -73,7 +73,7 @@ Sebelum menggunakan projek ini, diperlukanya [composer](https://getcomposer.org/
    ```sh
    composer install
    ```
-5. Copy file `.env.example` menjadi `.env`
+5. Copy file `.env.example` menjadi `.env` dan ubah `DB_*` sesuai database yang ingin diinstall
    ```sh
    cp .env.example .env
    ```
@@ -81,11 +81,15 @@ Sebelum menggunakan projek ini, diperlukanya [composer](https://getcomposer.org/
    ```sh
    php artisan migrate --seed
    ```
-7. Jalankan aplikasi
+7. Generate a key JWT terlebih dahulu
+   ```sh
+   php artisan jwt:secret
+   ```
+8. Jalankan aplikasi
    ```sh
    php artisan serve
    ```
-8. Enjoy!
+9. Enjoy!
 
 ## Petunjuk
 
