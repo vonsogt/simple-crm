@@ -32,19 +32,19 @@ class AuthController extends Controller
 
         // Return response with errors
         if ($validator->fails()) {
-            return redirect(route('login') . '?login=error&email=' . $request->email . '&msg=' . json_encode($validator->errors()));
+            return redirect(route('login', app()->getLocale()) . '?login=error&email=' . $request->email . '&msg=' . json_encode($validator->errors()));
             return response()->json($validator->errors(), 422);
         }
 
         // Return response unauthorized
         if (!$token = auth()->attempt($validator->validated())) {
-            return redirect(route('login') . '?login=unauthorized&email=' . $request->email);
+            return redirect(route('login', app()->getLocale()) . '?login=unauthorized&email=' . $request->email);
         }
 
         $access_token = json_decode($this->generateToken($token)->getContent())->access_token;
         $cookie = cookie('token', $access_token, config('jwt.ttl'));
 
-        return redirect(route('admin.home') . '?login=success')->withCookie($cookie);
+        return redirect(route('admin.home', app()->getLocale()) . '?login=success')->withCookie($cookie);
     }
 
     /**

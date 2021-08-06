@@ -19,7 +19,7 @@ class CompanyTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
-                ->visit(route('admin.company.index'))
+                ->visit(route('admin.company.index', app()->getLocale()))
                 ->assertRouteIs('admin.company.index');
         });
     }

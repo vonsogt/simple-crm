@@ -9,14 +9,17 @@ return [
     'more_info'             => 'Info lebih lanjut',
     'jobs_singular'         => 'Tugas yang harus dijalankan',
     'jobs_prular'           => 'Tugas yang harus dijalankan',
+    'language'              => 'Bahasa',
 
     // Auth
     'sign_in'               => 'Masuk',
     'sign_in_message'       => 'Masuk untuk memulai sesi anda',
     'sign_out'              => 'Keluar',
     'remember_me'           => 'Ingat saya',
-    'i_forgot_my_password'  => 'Saya lupa password',
+    'i_forgot_my_password'  => 'Saya lupa kata sandi',
     'register'              => 'Daftar',
+    'email'                 => 'Email',
+    'password'              => 'Kata sandi',
 
     // Create Form
     'add'       => 'Tambah',
@@ -44,6 +47,7 @@ return [
     'datatable' => [
         'export'            => 'Ekspor',
         'column_visibility' => 'Visibilitas Kolom',
+        'info'              => 'Menampilkan _START_ hingga _END_ dari _TOTAL_ entrian',
         'info_empty'        => 'Tidak ada entri',
         'info_filtered'     => '(difilter dari _MAX_ total entri)',
         'remove_filters'    => 'Hapus filter',

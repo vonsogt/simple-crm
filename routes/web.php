@@ -17,32 +17,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 // Redirect route /home to /admin
-Route::redirect('/home', '/admin');
+// Added language switch feature
+Route::redirect('/home', 'en/admin');
 
-// Disable auth register
-Auth::routes(['register' => false]);
+Route::redirect('/', '/en');
 
-// Route group for prefix admin
-Route::group([
-    'prefix' =>     'admin',
-    'as' =>         'admin.',
-    'middleware' => 'jwt.verify',
-], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+// Language
+Route::group(['prefix' => '{lang?}', 'where' => ['lang' => '[a-zA-Z]{2}']], function () {
 
-    Route::resource('employee', EmployeeController::class);
-    Route::resource('company', CompanyController::class);
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-    // API V1 routes
+    // Disable auth register
+    Auth::routes(['register' => false]);
+
+    // Route group for prefix admin
     Route::group([
-        'prefix' =>     'api/v1/',
-        'as' =>         'api.v1.',
+        'prefix' =>     'admin',
+        'as' =>         'admin.',
+        'middleware' => 'jwt.verify',
     ], function () {
-        Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+
+        Route::resource('employee', EmployeeController::class);
+        Route::resource('company', CompanyController::class);
+
+        // API V1 routes
+        Route::group([
+            'prefix' =>     'api/v1/',
+            'as' =>         'api.v1.',
+        ], function () {
+            Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
+        });
     });
 });

@@ -25,12 +25,12 @@
             @if (Route::has('login'))
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/admin') }}" class="text-sm text-gray-700 underline">{{ trans('simplecrm.dashboard') }}</a>
+                        <a href="{{ url('/admin', app()->getLocale()) }}" class="text-sm text-gray-700 underline">{{ trans('simplecrm.dashboard') }}</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">{{ trans('simplecrm.sign_in') }}</a>
+                        <a href="{{ route('login', app()->getLocale()) }}" class="text-sm text-gray-700 underline">{{ trans('simplecrm.sign_in') }}</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">{{ trans('simplecrm.register') }}</a>
+                        @if (Route::has('register', app()->getLocale()))
+                            <a href="{{ route('register', app()->getLocale()) }}" class="ml-4 text-sm text-gray-700 underline">{{ trans('simplecrm.register') }}</a>
                         @endif
                     @endauth
                 </div>

@@ -9,6 +9,7 @@ return [
     'more_info'             => 'More Info',
     'jobs_singular'         => 'Job need to run',
     'jobs_prular'           => 'Jobs need to run',
+    'language'              => 'Language',
 
     // Auth
     'sign_in'               => 'Sign In',
@@ -17,6 +18,8 @@ return [
     'remember_me'           => 'Remember me',
     'i_forgot_my_password'  => 'I forgot my password',
     'register'              => 'Register',
+    'email'                 => 'Email',
+    'password'              => 'Password',
 
     // Create Form
     'add'       => 'Add',
@@ -44,6 +47,7 @@ return [
     'datatable' => [
         'export'            => 'Export',
         'column_visibility' => 'Column Visiblity',
+        'info'              => 'Showing _START_ to _END_ of _TOTAL_ entries',
         'info_empty'        => 'No entries',
         'info_filtered'     => '(filtered from _MAX_ total entries)',
         'remove_filters'    => 'Remove filters',

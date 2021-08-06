@@ -35,7 +35,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.home') }}"
+                    <a href="{{ route('admin.home', app()->getLocale()) }}"
                         class="nav-link {{ Request::routeIs('admin.home') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -45,7 +45,7 @@
                 </li>
                 <li class="nav-header text-uppercase">{{ trans('simplecrm.main_menu') }}</li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.company.index') }}" class="nav-link {{ Request::routeIs('admin.company.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.company.index', app()->getLocale()) }}" class="nav-link {{ Request::routeIs('admin.company.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-building"></i>
                         <p>
                             {{ trans('simplecrm.company.title') }}
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.employee.index') }}" class="nav-link {{ Request::routeIs('admin.employee.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.employee.index', app()->getLocale()) }}" class="nav-link {{ Request::routeIs('admin.employee.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             {{ trans('simplecrm.employee.title') }}
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link"
+                    <a href="{{ route('logout', app()->getLocale()) }}" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>{{ trans('simplecrm.sign_out') }}</p>

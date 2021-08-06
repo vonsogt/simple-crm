@@ -5,16 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" /> {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
-    <title>{{ isset($data['title']) ? $data['title'] . ' | ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}</title>
+    <title>
+        {{ isset($data['title']) ? $data['title'] . ' | ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
+    </title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -51,7 +55,20 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <!-- Language Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&#127760;
+                        {{ trans('simplecrm.language') }}</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'id') }}">ID</a>
+                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a>
+                    </div>
+                </li>
+            </ul>
         </nav>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -59,7 +76,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-                @yield('content')
+            @yield('content')
         </div>
         <!-- /.content-wrapper -->
 
@@ -70,7 +87,7 @@
                 <b>Version</b> 1.2.0
             </div>
         </footer>
-        <form id="logout-form" action="{{ route('api.v1.auth.logout') }}" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('api.v1.auth.logout', app()->getLocale()) }}" method="POST" class="d-none">
             @csrf
         </form>
     </div>
@@ -153,7 +170,7 @@
         }
 
         // Get parameter from url
-        function getParam(key, sourceURL){
+        function getParam(key, sourceURL) {
             var url_string = sourceURL ?? window.location.href;
             var url = new URL(url_string);
             var param = url.searchParams.get(key);

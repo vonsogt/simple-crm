@@ -50,7 +50,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::create($request->all());
 
-        return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.insert_success'));
+        return redirect()->route('admin.employee.index', app()->getLocale())->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -100,7 +100,7 @@ class EmployeeController extends Controller
 
         $employee->update($request->all());
 
-        return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.update_success'));
+        return redirect()->route('admin.employee.index', app()->getLocale())->with('message', trans('simplecrm.update_success'));
     }
 
     /**

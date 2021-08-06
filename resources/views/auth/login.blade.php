@@ -11,11 +11,11 @@
             <div class="card-body">
                 <p class="login-box-msg">{{ __('simplecrm.sign_in_message') }}</p>
 
-                <form method="POST" action="{{ route('api.v1.auth.login') }}">
+                <form method="POST" action="{{ route('api.v1.auth.login', app()->getLocale()) }}">
                     {{-- @csrf --}}
 
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') == null ? request()->email : '' }}" required autocomplete="email" autofocus placeholder="Email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') == null ? request()->email : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('simplecrm.email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -29,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ trans('simplecrm.password') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -61,7 +61,7 @@
 
                 <p class="mb-1">
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">
+                        <a href="{{ route('password.request', app()->getLocale()) }}">
                             {{ __('simplecrm.i_forgot_my_password') }}
                         </a>
                     @endif

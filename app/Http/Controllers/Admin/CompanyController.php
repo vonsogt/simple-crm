@@ -66,7 +66,7 @@ class CompanyController extends Controller
         // Enqueue email with company data
         $this->enqueue($company);
 
-        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.insert_success'));
+        return redirect()->route('admin.company.index', app()->getLocale())->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -128,7 +128,7 @@ class CompanyController extends Controller
 
         $company->update($request_data);
 
-        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.update_success'));
+        return redirect()->route('admin.company.index', app()->getLocale())->with('message', trans('simplecrm.update_success'));
     }
 
     /**
