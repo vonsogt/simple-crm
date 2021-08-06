@@ -19,21 +19,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group([
-    'middleware' => 'api',
-    'as' =>         'api.v1.auth.',
-    'prefix' =>     'v1/auth',
-], function () {
-    // Route::post('register', [AuthController::class, 'register'])->name('register'); // Disabled
-    Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('token-refresh', [AuthController::class, 'tokenRefresh'])->name('token-refresh');
-});
 
-Route::group([
-    'middleware' => 'api',
-    'as' =>         'api.v1.',
-    'prefix' =>     'v1',
-], function () {
-    Route::get('user-profile', [AuthController::class, 'userProfile'])->name('user-profile');
+// Language
+Route::group(['prefix' => '{lang?}', 'where' => ['lang' => '[a-zA-Z]{2}']], function () {
+
+    Route::group([
+        'middleware' => 'api',
+        'as' =>         'api.v1.auth.',
+        'prefix' =>     'v1/auth',
+    ], function () {
+        // Route::post('register', [AuthController::class, 'register'])->name('register'); // Disabled
+        Route::post('login', [AuthController::class, 'login'])->name('login');
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+        Route::post('token-refresh', [AuthController::class, 'tokenRefresh'])->name('token-refresh');
+    });
+
+    Route::group([
+        'middleware' => 'api',
+        'as' =>         'api.v1.',
+        'prefix' =>     'v1',
+    ], function () {
+        Route::get('user-profile', [AuthController::class, 'userProfile'])->name('user-profile');
+    });
 });

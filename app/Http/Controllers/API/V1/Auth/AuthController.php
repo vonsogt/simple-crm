@@ -54,7 +54,7 @@ class AuthController extends Controller
     {
         auth()->logout();
         // Reset token or set null
-        return response()->redirectTo('/')->withCookie(cookie('token', null));
+        return response()->redirectTo(route('login', app()->getLocale()))->withCookie(cookie('token', null));
     }
 
     /**

@@ -23,7 +23,7 @@ class JwtMiddleware
             $user = JWTAuth::parseToken()->authenticate();
         } catch (Exception $e) {
             // Redirect to login if doesn't have any token or expired
-            return response()->redirectTo('login');
+            return response()->redirectTo(route('login', app()->getLocale()));
         }
         return $next($request);
     }
