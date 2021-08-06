@@ -66,7 +66,7 @@ class CompanyController extends Controller
         // Enqueue email with company data
         $this->enqueue($company);
 
-        return redirect()->route('admin.company.index')->with('message', 'The item has been added successfully.');
+        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -114,7 +114,7 @@ class CompanyController extends Controller
         $request_data = $request->all();
         $company = Company::findOrFail($id);
 
-        $logo_extension = $request->logo->extension() ?? null;
+        $logo_extension = ($request->logo) ? $request->logo->extension() : null;
         if ($logo_extension != null) {
             $logo_name = time() . '.' . $logo_extension;
             $request->logo->move(public_path('storage/companies/images/'), $logo_name);
@@ -128,7 +128,7 @@ class CompanyController extends Controller
 
         $company->update($request_data);
 
-        return redirect()->route('admin.company.index')->with('message', 'The item has been modified successfully.');
+        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.update_success'));
     }
 
     /**

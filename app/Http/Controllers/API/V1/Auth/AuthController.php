@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -31,17 +32,19 @@ class AuthController extends Controller
 
         // Return response with errors
         if ($validator->fails()) {
+            return redirect(route('login') . '?login=error&email=' . $request->email . '&msg=' . json_encode($validator->errors()));
             return response()->json($validator->errors(), 422);
         }
 
         // Return response unauthorized
         if (!$token = auth()->attempt($validator->validated())) {
-            return response()->json(['Auth error' => 'Unauthorized'], 401);
+            return redirect(route('login') . '?login=unauthorized&email=' . $request->email);
         }
 
         $access_token = json_decode($this->generateToken($token)->getContent())->access_token;
         $cookie = cookie('token', $access_token, config('jwt.ttl'));
-        return response()->redirectTo('/home')->withCookie($cookie);
+
+        return redirect(route('admin.home') . '?login=success')->withCookie($cookie);
     }
 
     /**

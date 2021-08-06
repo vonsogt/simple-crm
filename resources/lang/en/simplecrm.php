@@ -54,6 +54,10 @@ return [
     'delete_confirmation_text'              => 'You will not be able to revert this!',
     'delete_confirmation_confirm_button'    => 'Yes, delete it!',
     'delete_confirmation_message'           => 'The item has been deleted successfully.',
+    'insert_success'                        => 'The item has been added successfully.',
+    'update_success'                        => 'The item has been modified successfully.',
+    'login_successful'                      => 'Login successful',
+    'reset_password_successful'             => 'Successfully reset password',
 
     // User CRUD
     'user' => [

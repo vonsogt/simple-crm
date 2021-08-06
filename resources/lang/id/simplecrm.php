@@ -54,6 +54,10 @@ return [
     'delete_confirmation_text'              => 'Anda tidak akan dapat mengembalikan ini!',
     'delete_confirmation_confirm_button'    => 'Ya, hapus!',
     'delete_confirmation_message'           => 'Item telah berhasil dihapus.',
+    'insert_success'                        => 'Item telah berhasil ditambahkan.',
+    'update_success'                        => 'Item telah berhasil diubah.',
+    'login_successful'                      => 'Berhasil masuk',
+    'reset_password_successful'             => 'Berhasil mengatur ulang kata sandi',
 
     // User CRUD
     'user' => [

@@ -93,3 +93,18 @@
     </div>
     <!-- /.container-fluid -->
 @endsection
+@section('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            // Remove param for clean look
+            if (getParam('login', window.location.href) == 'success') {
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true
+                }
+                toastr.success("{{ trans('simplecrm.login_successful') }}");
+                window.history.replaceState(null, null, removeParam('login', window.location.href));
+            }
+        });
+    </script>
+@endsection

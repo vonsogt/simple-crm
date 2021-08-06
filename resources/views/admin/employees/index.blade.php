@@ -110,8 +110,6 @@
     <!-- /.content -->
 
 @section('scripts')
-    {{-- Swal2 --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Notification bubble
         @if (Session::has('message'))

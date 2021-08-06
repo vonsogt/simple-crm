@@ -20,7 +20,7 @@ class JwtMiddleware
     {
         try {
             $this->setJwtTokenToHeader($request);
-            $user = JWTAuth::parseToken()->authenticate(); 
+            $user = JWTAuth::parseToken()->authenticate();
         } catch (Exception $e) {
             // Redirect to login if doesn't have any token or expired
             return response()->redirectTo('login');

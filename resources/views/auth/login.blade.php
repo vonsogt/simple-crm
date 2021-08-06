@@ -15,7 +15,7 @@
                     {{-- @csrf --}}
 
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? 'admin@admin.com' }}" required autocomplete="email" autofocus placeholder="Email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') == null ? request()->email : '' }}" required autocomplete="email" autofocus placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -29,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="password" required autocomplete="current-password" placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -72,4 +72,77 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+@endsection
+@section('scripts')
+    <script>
+        function insertAfter(referenceNode, newNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        function emailInputError(text = null){
+            var email_input = document.getElementsByName('email')[0].nextSibling.nextSibling;
+            var err = document.createElement('span');
+            err.classList.add('invalid-feedback');
+            err.innerHTML = text != null ? '<strong>' + text + '</strong>' : '<strong>{{ trans("auth.failed") }}</strong>';
+
+            insertAfter(email_input, err);
+            document.getElementsByName('email')[0].classList.add("is-invalid");
+        }
+
+        function passwordInputError(text = null){
+            var email_input = document.getElementsByName('password')[0].nextSibling.nextSibling;
+            var err = document.createElement('span');
+            err.classList.add('invalid-feedback');
+            err.innerHTML = text != null ? '<strong>' + text + '</strong>' : '<strong>{{ trans("auth.password") }}</strong>';
+
+            insertAfter(email_input, err);
+            document.getElementsByName('password')[0].classList.add("is-invalid");
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            var current_url = window.location.href;
+            var msg = '';
+
+            // Check if any error from param msg
+            if(msg = getParam('msg', current_url)){
+                var message = JSON.parse(msg);
+
+                // Check msg
+                for (const [key, value] of Object.entries(message)) {
+                    if(`${key}` == 'password')
+                        passwordInputError(`${value}`)
+                    else if(`${key}` == 'email')
+                        emailInputError(`${value}`)
+                }
+
+                // Remove param
+                current_url = removeParam('login', current_url);
+                current_url = removeParam('msg', current_url);
+            }
+
+            // Add user unauthorized
+            if (getParam('login', current_url) == 'unauthorized') {
+                emailInputError();
+                // Remove param
+                current_url = removeParam('login', current_url);
+            }
+
+            // Remove param
+            if(getParam('email', current_url) || getParam('email', current_url) == '')
+                current_url = removeParam('email', current_url);
+
+            // Replace param
+            window.history.replaceState(null, null, current_url);
+        });
+
+        var previous_url = '{{ url()->previous() }}';
+        if (previous_url.indexOf('/password/reset/') > -1 && getParam('email', previous_url)) {
+            console.log('test')
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.success("{{ trans('simplecrm.reset_password_successful') }}");
+        }
+    </script>
 @endsection
