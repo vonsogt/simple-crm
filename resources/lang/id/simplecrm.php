@@ -2,9 +2,11 @@
 
 return [
     // General
+    'general'               => 'Umum',
     'dashboard'             => 'Dasbor',
     'search'                => 'Cari',
     'main_menu'             => 'Menu Utama',
+    'admin_menu'            => 'Menu Admin',
     'coming_soon'           => 'Segera Hadir',
     'more_info'             => 'Info lebih lanjut',
     'jobs_singular'         => 'Tugas yang harus dijalankan',
@@ -12,6 +14,7 @@ return [
     'language'              => 'Bahasa',
     'login_info_title'      => 'Info',
     'login_info_text'       => 'Silahkan masuk menggunakan',
+    'profile'               => 'Profil',
 
     // Auth
     'sign_in'               => 'Masuk',
@@ -98,4 +101,9 @@ return [
             'phone'         => 'Telepon',
         ],
     ],
+
+    // Admin Preference
+    'preference' => [
+        'title'             => 'Preferensi',
+    ]
 ];

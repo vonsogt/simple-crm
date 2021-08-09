@@ -30,6 +30,9 @@ class AuthController extends Controller
             'password' => 'required|string|min:5',
         ]);
 
+        // Get remember me request
+        $expire_in = $request->remember_me == 'on' ? (60 * 24 * 30) : 60;
+
         // Return response with errors
         if ($validator->fails()) {
             return redirect(route('login', app()->getLocale()) . '?login=error&email=' . $request->email . '&msg=' . json_encode($validator->errors()));
@@ -37,12 +40,12 @@ class AuthController extends Controller
         }
 
         // Return response unauthorized
-        if (!$token = auth()->attempt($validator->validated())) {
+        if (!$token = auth()->setTTL($expire_in)->attempt($validator->validated())) {
             return redirect(route('login', app()->getLocale()) . '?login=unauthorized&email=' . $request->email);
         }
 
-        $access_token = json_decode($this->generateToken($token)->getContent())->access_token;
-        $cookie = cookie('token', $access_token, config('jwt.ttl'));
+        $access_token = json_decode($this->generateToken($token, $expire_in)->getContent())->access_token;
+        $cookie = cookie('token', $access_token, $expire_in);
 
         return redirect(route('admin.home', app()->getLocale()) . '?login=success')->withCookie($cookie);
     }
@@ -84,12 +87,12 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function generateToken($token)
+    protected function generateToken($token, $expire_in = 60)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
+            'expires_in' => $expire_in,
             'user' => auth()->user()
         ]);
     }

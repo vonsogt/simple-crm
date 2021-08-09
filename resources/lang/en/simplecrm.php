@@ -2,9 +2,11 @@
 
 return [
     // General
+    'general'               => 'General',
     'dashboard'             => 'Dashboard',
     'search'                => 'Search',
     'main_menu'             => 'Main Menu',
+    'admin_menu'            => 'Admin Menu',
     'coming_soon'           => 'Coming Soon',
     'more_info'             => 'More Info',
     'jobs_singular'         => 'Job need to run',
@@ -12,6 +14,7 @@ return [
     'language'              => 'Language',
     'login_info_title'      => 'Info',
     'login_info_text'       => 'Please login using',
+    'profile'               => 'Profile',
 
     // Auth
     'sign_in'               => 'Sign In',
@@ -98,4 +101,9 @@ return [
             'phone'         => 'Phone',
         ],
     ],
+
+    // Admin Preference
+    'preference' => [
+        'title'             => 'Preferences',
+    ]
 ];

@@ -56,15 +56,47 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                {{-- Timezone Selection --}}
+                <select name="timezone" id="timezone" class="form-control">
+                    @foreach (timezone_identifiers_list() as $timezone)
+                        <option value="{{ $timezone }}" {{ $timezone == old('timezone') ? ' selected' : '' }}>
+                            {{ $timezone }}</option>
+                    @endforeach
+                </select>
                 <!-- Language Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle float-right" href="javascript:void(0)" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&#127760;
+                    <a class="nav-link dropdown-toggle float-right" href="javascript:void(0)" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&#127760;
                         {{ trans('simplecrm.language') }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), ['en', $id ?? null]) }}">EN</a>
-                        <a class="dropdown-item" href="{{ route(Route::currentRouteName(), ['id', $id ?? null]) }}">ID</a>
+                        <a class="dropdown-item"
+                            href="{{ route(Route::currentRouteName(), ['en', $id ?? null]) }}">EN</a>
+                        <a class="dropdown-item"
+                            href="{{ route(Route::currentRouteName(), ['id', $id ?? null]) }}">ID</a>
                     </div>
+                </li>
+                <li class="nav-item dropdown user-menu">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2"
+                            alt="User Image">
+                        <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <!-- User image -->
+                        <li class="user-header bg-primary">
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+
+                            <p>
+                                {{ Auth::user()->name }} - Web Developer
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <a href="#" class="btn btn-default btn-flat">{{ trans('simplecrm.profile') }}</a>
+                            <a href="{{ route('logout', app()->getLocale()) }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right">{{ trans('simplecrm.sign_out') }}</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -84,7 +116,7 @@
             <strong>Copyright &copy; 2021 <a href="https://vonso.online">Vonso</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.2.0
+                <b>Version</b> 1.3.0
             </div>
         </footer>
         <form id="logout-form" action="{{ route('api.v1.auth.logout', app()->getLocale()) }}" method="POST" class="d-none">
