@@ -3,6 +3,13 @@
 @section('content')
 
     <div class="login-box">
+        {{-- Demo info --}}
+        @if (env('APP_ENV') == 'local')
+            <div class="callout callout-info">
+                <h5>{{ trans('simplecrm.login_info_title') }}</h5>
+                <p>{{ trans('simplecrm.login_info_text') }}: <br><b>admin@admin.com / password</b></p>
+            </div>
+        @endif
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">

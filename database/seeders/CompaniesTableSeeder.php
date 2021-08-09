@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,7 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now()->format('Y-m-d H:i:s');
         $companies = array(
             0 =>
             array(
@@ -23,8 +25,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'rice.isai@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://bechtelar.biz/pariatur-perferendis-maiores-explicabo-aperiam-blanditiis-molestias-delectus',
-                'created_at' => '2021-08-02 12:52:19',
-                'updated_at' => '2021-08-02 12:52:19',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             1 =>
             array(
@@ -33,8 +35,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'kihn.blanca@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://shields.com/impedit-aliquid-aperiam-quos-eum-suscipit-quae',
-                'created_at' => '2021-08-02 12:52:21',
-                'updated_at' => '2021-08-02 12:52:21',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             2 =>
             array(
@@ -43,8 +45,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'gussie76@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://ritchie.com/iusto-odit-eius-maxime-facere-non-a-deleniti.html',
-                'created_at' => '2021-08-02 12:52:22',
-                'updated_at' => '2021-08-02 12:52:22',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             3 =>
             array(
@@ -53,8 +55,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'oweissnat@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.hodkiewicz.com/autem-libero-dolores-ea-fugit',
-                'created_at' => '2021-08-02 12:52:23',
-                'updated_at' => '2021-08-02 12:52:23',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             4 =>
             array(
@@ -63,8 +65,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'mattie01@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.casper.com/commodi-aut-sed-temporibus-aspernatur-exercitationem-quia-sint-culpa',
-                'created_at' => '2021-08-02 12:52:24',
-                'updated_at' => '2021-08-02 12:52:24',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             5 =>
             array(
@@ -73,8 +75,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'angela45@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.walsh.com/sed-eveniet-et-ea-hic-aut-fugiat-rerum',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             6 =>
             array(
@@ -83,8 +85,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'tyrese.simonis@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.bahringer.info/',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             7 =>
             array(
@@ -93,8 +95,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'shyann.howell@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://breitenberg.com/et-reprehenderit-nostrum-soluta-sapiente.html',
-                'created_at' => '2021-08-02 12:52:26',
-                'updated_at' => '2021-08-02 12:52:26',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             8 =>
             array(
@@ -103,8 +105,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'trevion.turcotte@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://dare.biz/consequatur-aut-quos-sint-sint.html',
-                'created_at' => '2021-08-02 12:52:27',
-                'updated_at' => '2021-08-02 12:52:27',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             9 =>
             array(
@@ -113,8 +115,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'kathlyn66@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.gerlach.info/',
-                'created_at' => '2021-08-02 12:52:28',
-                'updated_at' => '2021-08-02 12:52:28',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             10 =>
             array(
@@ -123,8 +125,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'art32@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.hills.net/aliquam-dignissimos-quo-consequatur-corrupti-voluptatibus-magnam-ut-aspernatur',
-                'created_at' => '2021-08-02 12:52:29',
-                'updated_at' => '2021-08-02 12:52:29',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             11 =>
             array(
@@ -133,8 +135,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'renner.jordane@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.predovic.com/',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             12 =>
             array(
@@ -143,8 +145,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'cmarks@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'https://www.oreilly.com/consequatur-aut-veniam-animi',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             13 =>
             array(
@@ -163,8 +165,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'mikel.lind@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://wintheiser.com/',
-                'created_at' => '2021-08-02 12:52:32',
-                'updated_at' => '2021-08-02 12:52:32',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             15 =>
             array(
@@ -173,8 +175,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'mozell.hickle@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.koss.com/quia-voluptatem-modi-sit-cum',
-                'created_at' => '2021-08-02 12:52:33',
-                'updated_at' => '2021-08-02 12:52:33',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             16 =>
             array(
@@ -183,8 +185,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'alexandra.hermann@example.net',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://schultz.info/in-vero-quae-fuga-laudantium-aperiam-facere-cumque.html',
-                'created_at' => '2021-08-02 12:52:34',
-                'updated_at' => '2021-08-02 12:52:34',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             17 =>
             array(
@@ -193,8 +195,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'name56@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'https://www.christiansen.com/id-omnis-eveniet-ipsam-repudiandae-odit',
-                'created_at' => '2021-08-02 12:52:35',
-                'updated_at' => '2021-08-02 12:52:35',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             18 =>
             array(
@@ -203,8 +205,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'lboyle@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.nicolas.com/omnis-dolor-optio-fuga-nisi-dolor-atque-aut',
-                'created_at' => '2021-08-02 12:52:36',
-                'updated_at' => '2021-08-02 12:52:36',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             19 =>
             array(
@@ -213,8 +215,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'courtney49@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://veum.com/',
-                'created_at' => '2021-08-02 12:52:38',
-                'updated_at' => '2021-08-02 12:52:38',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             20 =>
             array(
@@ -223,8 +225,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'alysson26@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://ferry.com/qui-maxime-assumenda-ea-voluptatibus-eius',
-                'created_at' => '2021-08-02 12:52:40',
-                'updated_at' => '2021-08-02 12:52:40',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             21 =>
             array(
@@ -233,8 +235,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'einar21@example.com',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://www.walsh.com/',
-                'created_at' => '2021-08-02 12:52:42',
-                'updated_at' => '2021-08-02 12:52:42',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             22 =>
             array(
@@ -243,8 +245,8 @@ class CompaniesTableSeeder extends Seeder
                 'email' => 'casey.zboncak@example.org',
                 'logo' => 'sample-logo.png',
                 'website_link' => 'http://friesen.com/eos-ut-autem-eum-nihil',
-                'created_at' => '2021-08-02 12:52:43',
-                'updated_at' => '2021-08-02 12:52:43',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
         );
 

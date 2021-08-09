@@ -10,6 +10,8 @@ return [
     'jobs_singular'         => 'Tugas yang harus dijalankan',
     'jobs_prular'           => 'Tugas yang harus dijalankan',
     'language'              => 'Bahasa',
+    'login_info_title'      => 'Info',
+    'login_info_text'       => 'Silahkan masuk menggunakan',
 
     // Auth
     'sign_in'               => 'Masuk',

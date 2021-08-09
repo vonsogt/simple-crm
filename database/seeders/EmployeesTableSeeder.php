@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,7 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now()->format('Y-m-d H:i:s');
         $employees = array(
             0 =>
             array(
@@ -24,8 +26,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 1,
                 'email' => 'bwyman@example.org',
                 'phone' => '856-681-2583',
-                'created_at' => '2021-08-02 12:52:19',
-                'updated_at' => '2021-08-02 12:52:19',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             1 =>
             array(
@@ -35,8 +37,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 1,
                 'email' => 'catharine74@example.org',
                 'phone' => '+1.820.761.5755',
-                'created_at' => '2021-08-02 12:52:19',
-                'updated_at' => '2021-08-02 12:52:19',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             2 =>
             array(
@@ -46,8 +48,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 1,
                 'email' => 'garrick.schulist@example.org',
                 'phone' => '(971) 432-6175',
-                'created_at' => '2021-08-02 12:52:19',
-                'updated_at' => '2021-08-02 12:52:19',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             3 =>
             array(
@@ -57,8 +59,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 2,
                 'email' => 'pjast@example.net',
                 'phone' => '830-804-1414',
-                'created_at' => '2021-08-02 12:52:21',
-                'updated_at' => '2021-08-02 12:52:21',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             4 =>
             array(
@@ -68,8 +70,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 2,
                 'email' => 'zbogan@example.net',
                 'phone' => '332.589.3850',
-                'created_at' => '2021-08-02 12:52:21',
-                'updated_at' => '2021-08-02 12:52:21',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             5 =>
             array(
@@ -79,8 +81,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 2,
                 'email' => 'yadira.haag@example.org',
                 'phone' => '+1 (872) 523-5385',
-                'created_at' => '2021-08-02 12:52:21',
-                'updated_at' => '2021-08-02 12:52:21',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             6 =>
             array(
@@ -90,8 +92,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 3,
                 'email' => 'bradly.pacocha@example.org',
                 'phone' => '+1-731-665-1047',
-                'created_at' => '2021-08-02 12:52:22',
-                'updated_at' => '2021-08-02 12:52:22',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             7 =>
             array(
@@ -101,8 +103,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 3,
                 'email' => 'raynor.margarett@example.com',
                 'phone' => '+1.361.797.2938',
-                'created_at' => '2021-08-02 12:52:22',
-                'updated_at' => '2021-08-02 12:52:22',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             8 =>
             array(
@@ -112,8 +114,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 3,
                 'email' => 'darrel.hilpert@example.org',
                 'phone' => '708.392.2124',
-                'created_at' => '2021-08-02 12:52:22',
-                'updated_at' => '2021-08-02 12:52:22',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             9 =>
             array(
@@ -123,8 +125,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 4,
                 'email' => 'penelope27@example.net',
                 'phone' => '301.535.1353',
-                'created_at' => '2021-08-02 12:52:23',
-                'updated_at' => '2021-08-02 12:52:23',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             10 =>
             array(
@@ -134,8 +136,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 4,
                 'email' => 'zzieme@example.org',
                 'phone' => '+1 (847) 630-9094',
-                'created_at' => '2021-08-02 12:52:23',
-                'updated_at' => '2021-08-02 12:52:23',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             11 =>
             array(
@@ -145,8 +147,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 4,
                 'email' => 'alvah22@example.org',
                 'phone' => '718.504.1965',
-                'created_at' => '2021-08-02 12:52:23',
-                'updated_at' => '2021-08-02 12:52:23',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             12 =>
             array(
@@ -156,8 +158,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 5,
                 'email' => 'sawayn.dallin@example.org',
                 'phone' => '1-231-358-3891',
-                'created_at' => '2021-08-02 12:52:24',
-                'updated_at' => '2021-08-02 12:52:24',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             13 =>
             array(
@@ -167,8 +169,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 5,
                 'email' => 'znitzsche@example.org',
                 'phone' => '520.874.9714',
-                'created_at' => '2021-08-02 12:52:24',
-                'updated_at' => '2021-08-02 12:52:24',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             14 =>
             array(
@@ -178,8 +180,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 5,
                 'email' => 'milton.lehner@example.com',
                 'phone' => '+1-872-356-2714',
-                'created_at' => '2021-08-02 12:52:24',
-                'updated_at' => '2021-08-02 12:52:24',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             15 =>
             array(
@@ -189,8 +191,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 6,
                 'email' => 'qratke@example.org',
                 'phone' => '985-665-4144',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             16 =>
             array(
@@ -200,8 +202,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 6,
                 'email' => 'saul35@example.net',
                 'phone' => '646.700.9722',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             17 =>
             array(
@@ -211,8 +213,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 6,
                 'email' => 'gerson24@example.net',
                 'phone' => '1-332-242-2257',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             18 =>
             array(
@@ -222,8 +224,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 7,
                 'email' => 'tferry@example.org',
                 'phone' => '(856) 834-5116',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             19 =>
             array(
@@ -233,8 +235,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 7,
                 'email' => 'laura77@example.org',
                 'phone' => '1-304-485-7598',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             20 =>
             array(
@@ -244,8 +246,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 7,
                 'email' => 'jerome29@example.com',
                 'phone' => '+14307367478',
-                'created_at' => '2021-08-02 12:52:25',
-                'updated_at' => '2021-08-02 12:52:25',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             21 =>
             array(
@@ -255,8 +257,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 8,
                 'email' => 'coberbrunner@example.org',
                 'phone' => '+1.267.610.0945',
-                'created_at' => '2021-08-02 12:52:26',
-                'updated_at' => '2021-08-02 12:52:26',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             22 =>
             array(
@@ -266,8 +268,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 8,
                 'email' => 'tfadel@example.com',
                 'phone' => '951-845-2511',
-                'created_at' => '2021-08-02 12:52:26',
-                'updated_at' => '2021-08-02 12:52:26',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             23 =>
             array(
@@ -277,8 +279,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 8,
                 'email' => 'faltenwerth@example.com',
                 'phone' => '(509) 355-7321',
-                'created_at' => '2021-08-02 12:52:26',
-                'updated_at' => '2021-08-02 12:52:26',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             24 =>
             array(
@@ -288,8 +290,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 9,
                 'email' => 'ryley33@example.org',
                 'phone' => '878.419.3980',
-                'created_at' => '2021-08-02 12:52:27',
-                'updated_at' => '2021-08-02 12:52:27',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             25 =>
             array(
@@ -299,8 +301,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 9,
                 'email' => 'heathcote.ana@example.org',
                 'phone' => '661-876-2566',
-                'created_at' => '2021-08-02 12:52:27',
-                'updated_at' => '2021-08-02 12:52:27',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             26 =>
             array(
@@ -310,8 +312,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 9,
                 'email' => 'jackeline75@example.net',
                 'phone' => '479.491.4528',
-                'created_at' => '2021-08-02 12:52:27',
-                'updated_at' => '2021-08-02 12:52:27',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             27 =>
             array(
@@ -321,8 +323,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 10,
                 'email' => 'elza.murray@example.org',
                 'phone' => '+1.559.826.1133',
-                'created_at' => '2021-08-02 12:52:28',
-                'updated_at' => '2021-08-02 12:52:28',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             28 =>
             array(
@@ -332,8 +334,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 10,
                 'email' => 'brakus.jewel@example.org',
                 'phone' => '1-843-956-6373',
-                'created_at' => '2021-08-02 12:52:28',
-                'updated_at' => '2021-08-02 12:52:28',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             29 =>
             array(
@@ -343,8 +345,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 10,
                 'email' => 'buster.metz@example.com',
                 'phone' => '602-476-0134',
-                'created_at' => '2021-08-02 12:52:28',
-                'updated_at' => '2021-08-02 12:52:28',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             30 =>
             array(
@@ -354,8 +356,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 11,
                 'email' => 'ebert.darien@example.com',
                 'phone' => '+1 (341) 853-5654',
-                'created_at' => '2021-08-02 12:52:29',
-                'updated_at' => '2021-08-02 12:52:29',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             31 =>
             array(
@@ -365,8 +367,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 11,
                 'email' => 'kris.vada@example.net',
                 'phone' => '1-520-903-1505',
-                'created_at' => '2021-08-02 12:52:29',
-                'updated_at' => '2021-08-02 12:52:29',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             32 =>
             array(
@@ -376,8 +378,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 11,
                 'email' => 'jody45@example.net',
                 'phone' => '507-439-8016',
-                'created_at' => '2021-08-02 12:52:29',
-                'updated_at' => '2021-08-02 12:52:29',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             33 =>
             array(
@@ -387,8 +389,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 12,
                 'email' => 'gerlach.arjun@example.com',
                 'phone' => '678-408-4581',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             34 =>
             array(
@@ -398,8 +400,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 12,
                 'email' => 'flavio.cassin@example.net',
                 'phone' => '463-222-9003',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             35 =>
             array(
@@ -409,8 +411,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 12,
                 'email' => 'gibson.clifton@example.com',
                 'phone' => '+1-425-554-0019',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             36 =>
             array(
@@ -420,8 +422,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 13,
                 'email' => 'jennings.ferry@example.org',
                 'phone' => '1-252-950-2718',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             37 =>
             array(
@@ -431,8 +433,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 13,
                 'email' => 'bernhard.izabella@example.com',
                 'phone' => '+1.731.561.6307',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             38 =>
             array(
@@ -442,8 +444,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 13,
                 'email' => 'agustin.parker@example.org',
                 'phone' => '1-314-522-3395',
-                'created_at' => '2021-08-02 12:52:30',
-                'updated_at' => '2021-08-02 12:52:30',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             39 =>
             array(
@@ -453,8 +455,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 14,
                 'email' => 'auer.albert@example.net',
                 'phone' => '+1.323.405.0467',
-                'created_at' => '2021-08-02 12:52:31',
-                'updated_at' => '2021-08-02 12:52:31',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             40 =>
             array(
@@ -464,8 +466,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 14,
                 'email' => 'mona27@example.net',
                 'phone' => '435.771.7413',
-                'created_at' => '2021-08-02 12:52:31',
-                'updated_at' => '2021-08-02 12:52:31',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             41 =>
             array(
@@ -475,8 +477,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 14,
                 'email' => 'chanelle07@example.net',
                 'phone' => '1-530-584-2729',
-                'created_at' => '2021-08-02 12:52:31',
-                'updated_at' => '2021-08-02 12:52:31',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             42 =>
             array(
@@ -486,8 +488,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 15,
                 'email' => 'tiana.pacocha@example.com',
                 'phone' => '+1.854.219.2616',
-                'created_at' => '2021-08-02 12:52:32',
-                'updated_at' => '2021-08-02 12:52:32',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             43 =>
             array(
@@ -497,8 +499,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 15,
                 'email' => 'efrain.brown@example.org',
                 'phone' => '218.557.7968',
-                'created_at' => '2021-08-02 12:52:32',
-                'updated_at' => '2021-08-02 12:52:32',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             44 =>
             array(
@@ -508,8 +510,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 15,
                 'email' => 'adele58@example.com',
                 'phone' => '(810) 558-1561',
-                'created_at' => '2021-08-02 12:52:32',
-                'updated_at' => '2021-08-02 12:52:32',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             45 =>
             array(
@@ -519,8 +521,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 16,
                 'email' => 'sabryna10@example.net',
                 'phone' => '+1-413-900-8820',
-                'created_at' => '2021-08-02 12:52:33',
-                'updated_at' => '2021-08-02 12:52:33',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             46 =>
             array(
@@ -530,8 +532,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 16,
                 'email' => 'xreichel@example.org',
                 'phone' => '704-780-8736',
-                'created_at' => '2021-08-02 12:52:33',
-                'updated_at' => '2021-08-02 12:52:33',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             47 =>
             array(
@@ -541,8 +543,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 16,
                 'email' => 'kimberly.lakin@example.org',
                 'phone' => '918-930-6236',
-                'created_at' => '2021-08-02 12:52:33',
-                'updated_at' => '2021-08-02 12:52:33',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             48 =>
             array(
@@ -552,8 +554,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 17,
                 'email' => 'darrel90@example.net',
                 'phone' => '281-888-8580',
-                'created_at' => '2021-08-02 12:52:34',
-                'updated_at' => '2021-08-02 12:52:34',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             49 =>
             array(
@@ -563,8 +565,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 17,
                 'email' => 'toney.crona@example.org',
                 'phone' => '+1 (623) 742-1506',
-                'created_at' => '2021-08-02 12:52:34',
-                'updated_at' => '2021-08-02 12:52:34',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             50 =>
             array(
@@ -574,8 +576,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 17,
                 'email' => 'bledner@example.org',
                 'phone' => '540-932-6034',
-                'created_at' => '2021-08-02 12:52:34',
-                'updated_at' => '2021-08-02 12:52:34',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             51 =>
             array(
@@ -585,8 +587,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 18,
                 'email' => 'tmoore@example.com',
                 'phone' => '470.310.3709',
-                'created_at' => '2021-08-02 12:52:35',
-                'updated_at' => '2021-08-02 12:52:35',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             52 =>
             array(
@@ -596,8 +598,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 18,
                 'email' => 'lucinda.mcclure@example.org',
                 'phone' => '743-564-0121',
-                'created_at' => '2021-08-02 12:52:35',
-                'updated_at' => '2021-08-02 12:52:35',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             53 =>
             array(
@@ -607,8 +609,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 18,
                 'email' => 'jaqueline77@example.org',
                 'phone' => '+1-279-922-5817',
-                'created_at' => '2021-08-02 12:52:35',
-                'updated_at' => '2021-08-02 12:52:35',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             54 =>
             array(
@@ -618,8 +620,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 19,
                 'email' => 'ohara.nayeli@example.com',
                 'phone' => '(463) 753-8742',
-                'created_at' => '2021-08-02 12:52:36',
-                'updated_at' => '2021-08-02 12:52:36',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             55 =>
             array(
@@ -629,8 +631,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 19,
                 'email' => 'mariane.huels@example.net',
                 'phone' => '838-809-8441',
-                'created_at' => '2021-08-02 12:52:36',
-                'updated_at' => '2021-08-02 12:52:36',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             56 =>
             array(
@@ -640,8 +642,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 19,
                 'email' => 'ggoodwin@example.com',
                 'phone' => '+1-332-722-0658',
-                'created_at' => '2021-08-02 12:52:36',
-                'updated_at' => '2021-08-02 12:52:36',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             57 =>
             array(
@@ -651,8 +653,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 20,
                 'email' => 'tom96@example.org',
                 'phone' => '1-323-886-3473',
-                'created_at' => '2021-08-02 12:52:38',
-                'updated_at' => '2021-08-02 12:52:38',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             58 =>
             array(
@@ -662,8 +664,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 20,
                 'email' => 'flo.wintheiser@example.com',
                 'phone' => '417.455.3362',
-                'created_at' => '2021-08-02 12:52:38',
-                'updated_at' => '2021-08-02 12:52:38',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             59 =>
             array(
@@ -673,8 +675,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 20,
                 'email' => 'hayley.terry@example.com',
                 'phone' => '(662) 393-6984',
-                'created_at' => '2021-08-02 12:52:38',
-                'updated_at' => '2021-08-02 12:52:38',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             60 =>
             array(
@@ -684,8 +686,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 21,
                 'email' => 'malcolm.schroeder@example.net',
                 'phone' => '+1.541.864.1008',
-                'created_at' => '2021-08-02 12:52:40',
-                'updated_at' => '2021-08-02 12:52:40',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             61 =>
             array(
@@ -695,8 +697,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 21,
                 'email' => 'icruickshank@example.com',
                 'phone' => '1-283-297-2889',
-                'created_at' => '2021-08-02 12:52:40',
-                'updated_at' => '2021-08-02 12:52:40',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             62 =>
             array(
@@ -706,8 +708,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 21,
                 'email' => 'jerad.kilback@example.net',
                 'phone' => '+1-818-748-3882',
-                'created_at' => '2021-08-02 12:52:40',
-                'updated_at' => '2021-08-02 12:52:40',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             63 =>
             array(
@@ -717,8 +719,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 22,
                 'email' => 'ruthe84@example.org',
                 'phone' => '+19036256021',
-                'created_at' => '2021-08-02 12:52:42',
-                'updated_at' => '2021-08-02 12:52:42',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             64 =>
             array(
@@ -728,8 +730,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 22,
                 'email' => 'magali.mcglynn@example.org',
                 'phone' => '380.323.5254',
-                'created_at' => '2021-08-02 12:52:42',
-                'updated_at' => '2021-08-02 12:52:42',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             65 =>
             array(
@@ -739,8 +741,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 22,
                 'email' => 'ksimonis@example.com',
                 'phone' => '+1.860.238.8699',
-                'created_at' => '2021-08-02 12:52:42',
-                'updated_at' => '2021-08-02 12:52:42',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             66 =>
             array(
@@ -750,8 +752,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 23,
                 'email' => 'murphy.aryanna@example.org',
                 'phone' => '(971) 504-4831',
-                'created_at' => '2021-08-02 12:52:43',
-                'updated_at' => '2021-08-02 12:52:43',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             67 =>
             array(
@@ -761,8 +763,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 23,
                 'email' => 'laverne38@example.org',
                 'phone' => '480.503.1858',
-                'created_at' => '2021-08-02 12:52:43',
-                'updated_at' => '2021-08-02 12:52:43',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
             68 =>
             array(
@@ -772,8 +774,8 @@ class EmployeesTableSeeder extends Seeder
                 'company_id' => 23,
                 'email' => 'yost.gertrude@example.com',
                 'phone' => '+1 (323) 877-4130',
-                'created_at' => '2021-08-02 12:52:43',
-                'updated_at' => '2021-08-02 12:52:43',
+                'created_at' => $now,
+                'updated_at' => $now,
             ),
         );
 

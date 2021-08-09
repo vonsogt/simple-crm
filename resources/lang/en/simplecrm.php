@@ -10,6 +10,8 @@ return [
     'jobs_singular'         => 'Job need to run',
     'jobs_prular'           => 'Jobs need to run',
     'language'              => 'Language',
+    'login_info_title'      => 'Info',
+    'login_info_text'       => 'Please login using',
 
     // Auth
     'sign_in'               => 'Sign In',
