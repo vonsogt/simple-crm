@@ -48,6 +48,10 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
+        // Add request created & updated by user_id
+        $user_id = auth()->user()->id;
+        $request->request->add(['created_by_id' => $user_id, 'updated_by_id' => $user_id]);
+
         $request_data = $request->all();
 
         if (($request->logo ?? null) != null) {
@@ -66,7 +70,7 @@ class CompanyController extends Controller
         // Enqueue email with company data
         $this->enqueue($company);
 
-        return redirect()->route('admin.company.index', app()->getLocale())->with('message', trans('simplecrm.insert_success'));
+        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -75,7 +79,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($lang, $id)
+    public function show($id)
     {
 
         $company = Company::findOrFail($id);
@@ -92,7 +96,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($lang, $id)
+    public function edit($id)
     {
         $company = Company::findOrFail($id);
 
@@ -111,6 +115,10 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
+        // Add request updated by user_id
+        $user_id = auth()->user()->id;
+        $request->request->add(['updated_by_id' => $user_id]);
+
         $request_data = $request->all();
         $company = Company::findOrFail($id);
 
@@ -128,7 +136,7 @@ class CompanyController extends Controller
 
         $company->update($request_data);
 
-        return redirect()->route('admin.company.index', app()->getLocale())->with('message', trans('simplecrm.update_success'));
+        return redirect()->route('admin.company.index')->with('message', trans('simplecrm.update_success'));
     }
 
     /**
@@ -137,7 +145,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($lang, $id)
+    public function destroy($id)
     {
         // Get logo file name and delete it
         $company = Company::find($id)->first();

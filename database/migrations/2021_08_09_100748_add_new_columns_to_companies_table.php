@@ -14,8 +14,8 @@ class AddNewColumnsToCompaniesTable extends Migration
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->unsignedBigInteger('created_by_id')->after('website_link');
-            $table->unsignedBigInteger('updated_by_id')->after('created_by_id');
+            $table->unsignedBigInteger('created_by_id')->default(0)->after('website_link');
+            $table->unsignedBigInteger('updated_by_id')->default(0)->after('created_by_id');
         });
     }
 

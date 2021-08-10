@@ -11,14 +11,14 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home', app()->getLocale()) }}">{{ trans('simplecrm.dashboard') }}</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.company.index', app()->getLocale()) }}">{{ $data['title'] }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.company.index') }}">{{ $data['title'] }}</a></li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.show') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.company.index', app()->getLocale()) }}" class="btn btn-secondary" data-style="zoom-in">
+                        <a href="{{ route('admin.company.index') }}" class="btn btn-secondary" data-style="zoom-in">
                             <span class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp;
                                 {{ trans('simplecrm.back_to_all') }}
                                 {{ Str::lower(trans('simplecrm.company.title')) }}
@@ -85,6 +85,22 @@
                                         </th>
                                         <td>
                                             {{ $data['company']->website_link }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            {{ trans('simplecrm.created_by_id') }}
+                                        </th>
+                                        <td>
+                                            {{ \App\Models\User::find($data['company']->created_by_id)->name ?? '' }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            {{ trans('simplecrm.updated_by_id') }}
+                                        </th>
+                                        <td>
+                                            {{ \App\Models\User::find($data['company']->updated_by_id)->name ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>

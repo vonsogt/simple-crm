@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -23,8 +24,9 @@ class JwtMiddleware
             $user = JWTAuth::parseToken()->authenticate();
         } catch (Exception $e) {
             // Redirect to login if doesn't have any token or expired
-            return response()->redirectTo(route('login', app()->getLocale()));
+            return response()->redirectTo(route('login'));
         }
+        $this->setUserPreferences($user->id, $request);
         return $next($request);
     }
 
@@ -43,5 +45,27 @@ class JwtMiddleware
 
         if ($bearer_token !== '')
             $request->headers->set('Authorization', "Bearer " . $bearer_token);
+    }
+
+    public static function setUserPreferences($id, $request)
+    {
+        $jwt = new JwtMiddleware;
+        $language = $jwt->getUserPreference($id, 'language') ?? 'en';
+        $timezone = $jwt->getUserPreference($id, 'timezone') ?? 'UTC';
+        config(['app.timezone' => $timezone]);
+        \App::setLocale($language);
+    }
+
+    public static function getUserPreference($id, $name)
+    {
+        $preferences = User::find($id)->preferences()->get();
+        $preference_data = null;
+
+        foreach ($preferences as $preference) {
+            if ($preference->name == $name)
+                $preference_data = $preference->data;
+        }
+
+        return $preference_data;
     }
 }

@@ -42,6 +42,10 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    /*
+     * JWT
+     *
+     */
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -50,5 +54,14 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    /**
+     * Relationship
+     *
+     */
+    public function preferences()
+    {
+        return $this->hasMany(Preference::class);
     }
 }

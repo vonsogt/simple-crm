@@ -18,7 +18,7 @@
             <div class="card-body">
                 <p class="login-box-msg">{{ __('simplecrm.sign_in_message') }}</p>
 
-                <form method="POST" action="{{ route('api.v1.auth.login', app()->getLocale()) }}">
+                <form method="POST" action="{{ route('api.v1.auth.login') }}">
                     {{-- @csrf --}}
 
                     <div class="input-group mb-3">
@@ -68,7 +68,7 @@
 
                 <p class="mb-1">
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request', app()->getLocale()) }}">
+                        <a href="{{ route('password.request') }}">
                             {{ __('simplecrm.i_forgot_my_password') }}
                         </a>
                     @endif

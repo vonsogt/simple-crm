@@ -54,7 +54,7 @@
                     <div class="icon">
                         <i class="ion ion-briefcase"></i>
                     </div>
-                    <a href="{{ route('admin.company.index', app()->getLocale()) }}" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('admin.company.index') }}" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -69,7 +69,7 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="{{ route('admin.employee.index', app()->getLocale()) }}" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('admin.employee.index') }}" class="small-box-footer">{{ trans('simplecrm.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

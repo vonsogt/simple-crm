@@ -13,7 +13,7 @@
                     </div>
                 @endif
                 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-                <form method="POST" action="{{ route('password.email', app()->getLocale()) }}">
+                <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
                     <div class="input-group mb-3">
@@ -41,7 +41,7 @@
                     </div>
                 </form>
                 <p class="mt-3 mb-1">
-                    <a href="{{ route('login', app()->getLocale()) }}">{{ __('Login') }}</a>
+                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

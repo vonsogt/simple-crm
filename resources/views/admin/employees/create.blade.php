@@ -11,14 +11,14 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home', app()->getLocale()) }}">{{ trans('simplecrm.dashboard') }}</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.employee.index', app()->getLocale()) }}">{{ $data['title'] }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.employee.index') }}">{{ $data['title'] }}</a></li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.add') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.employee.index', app()->getLocale()) }}" class="btn btn-secondary" data-style="zoom-in">
+                        <a href="{{ route('admin.employee.index') }}" class="btn btn-secondary" data-style="zoom-in">
                             <span class="ladda-label"><i class="fas fa-angle-double-left"></i>&nbsp;
                                 {{ trans('simplecrm.back_to_all') }}
                                 {{ Str::lower(trans('simplecrm.employee.title')) }}
@@ -43,7 +43,7 @@
                         <!-- /.card-header -->
 
                         <!-- form start -->
-                        <form method="POST" action="{{ route('admin.employee.store', app()->getLocale()) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.employee.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="card-body">
@@ -138,7 +138,7 @@
                                     <i class="fa fa-save"></i>&nbsp;
                                     {{ trans('simplecrm.save') }}
                                 </button>
-                                <a class="btn btn-secondary" href="{{ route('admin.employee.index', app()->getLocale()) }}">
+                                <a class="btn btn-secondary" href="{{ route('admin.employee.index') }}">
                                     <i class="fa fa-ban"></i>&nbsp;
                                     {{ trans('simplecrm.cancel') }}
                                 </a>

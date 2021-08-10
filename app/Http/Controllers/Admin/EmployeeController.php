@@ -48,9 +48,13 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
+        // Add request created & updated by user_id
+        $user_id = auth()->user()->id;
+        $request->request->add(['created_by_id' => $user_id, 'updated_by_id' => $user_id]);
+
         $employee = Employee::create($request->all());
 
-        return redirect()->route('admin.employee.index', app()->getLocale())->with('message', trans('simplecrm.insert_success'));
+        return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -59,7 +63,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($lang, $id)
+    public function show($id)
     {
         $employee = Employee::findOrFail($id);
 
@@ -75,7 +79,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($lang, $id)
+    public function edit($id)
     {
         $employee = Employee::findOrFail($id);
         $companies = Company::all()->pluck('name', 'id');
@@ -98,9 +102,13 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrFail($id);
 
+        // Add request updated by user_id
+        $user_id = auth()->user()->id;
+        $request->request->add(['updated_by_id' => $user_id]);
+
         $employee->update($request->all());
 
-        return redirect()->route('admin.employee.index', app()->getLocale())->with('message', trans('simplecrm.update_success'));
+        return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.update_success'));
     }
 
     /**
@@ -109,7 +117,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($lang, $id)
+    public function destroy($id)
     {
         return DB::table('employees')->delete($id);
     }

@@ -41,6 +41,8 @@ return [
     'created_at'    => 'Created At',
     'updated_at'    => 'Updated At',
     'deleted_at'    => 'Deleted At',
+    'created_by_id' => 'Created By',
+    'updated_by_id' => 'Updated By',
 
     // List
     'list'          => 'List',
@@ -109,5 +111,7 @@ return [
         'title'             => 'Preferences',
         'choose_language'   => 'Choose language',
         'choose_timezone'   => 'Choose timezone',
+        'update_success'    => 'Successfully saved changes',
+        'update_error'      => 'An error occurred, please try again!',
     ]
 ];

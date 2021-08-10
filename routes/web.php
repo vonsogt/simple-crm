@@ -21,41 +21,35 @@ use Illuminate\Support\Facades\Route;
 
 
 // Redirect route /home to /admin
-// Added language switch feature
-Route::redirect('/home', 'en/admin');
+Route::redirect('/home', '/admin');
 
-Route::redirect('/', '/en');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Language
-Route::group(['prefix' => '{lang?}', 'where' => ['lang' => '[a-zA-Z]{2}']], function () {
+// Disable auth register
+Auth::routes(['register' => false]);
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+// Route group for prefix admin
+Route::group([
+    'prefix' =>     'admin',
+    'as' =>         'admin.',
+    'middleware' => 'jwt.verify',
+], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    // Disable auth register
-    Auth::routes(['register' => false]);
+    Route::resource('employee', EmployeeController::class);
+    Route::resource('company', CompanyController::class);
 
-    // Route group for prefix admin
+    // Admin's preference route
+    Route::get('preferences', [PreferenceController::class, 'index'])->name('preference.index');
+    Route::put('preferences/{user}', [PreferenceController::class, 'update'])->name('preference.update');
+
+    // API V1 routes
     Route::group([
-        'prefix' =>     'admin',
-        'as' =>         'admin.',
-        'middleware' => 'jwt.verify',
+        'prefix' =>     'api/v1/',
+        'as' =>         'api.v1.',
     ], function () {
-        Route::get('/', [HomeController::class, 'index'])->name('home');
-
-        Route::resource('employee', EmployeeController::class);
-        Route::resource('company', CompanyController::class);
-
-        // Admin's preference route
-        Route::get('preferences', [PreferenceController::class, 'index'])->name('preference.index');
-
-        // API V1 routes
-        Route::group([
-            'prefix' =>     'api/v1/',
-            'as' =>         'api.v1.',
-        ], function () {
-            Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
-        });
+        Route::get('company-options', [V1CompanyController::class, 'companyOptions'])->name('company-options');
     });
 });

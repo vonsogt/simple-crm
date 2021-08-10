@@ -10,8 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
-                            <a
-                                href="{{ route('admin.home', app()->getLocale()) }}">{{ trans('simplecrm.dashboard') }}</a>
+                            <a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a>
                         </li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.profile') }}</li>
                     </ol>
@@ -50,7 +49,10 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-md-9">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"
+                        action="{{ route('admin.preference.update', ['user' => auth()->user()->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
@@ -69,9 +71,10 @@
                                             <div class="col-sm-10">
                                                 <select name="language" id="language" class="form-control">
                                                     <option value="" selected disabled>
-                                                        {{ trans('simplecrm.preference.choose_language') }}</option>
-                                                    <option value="en">EN</option>
-                                                    <option value="id">ID</option>
+                                                        {{ trans('simplecrm.preference.choose_language') }}
+                                                    </option>
+                                                    <option value="en" @if(app()->getLocale() == 'en') selected="" @endif>EN</option>
+                                                    <option value="id" @if(app()->getLocale() == 'id') selected="" @endif>ID</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -85,7 +88,7 @@
                                                         {{ trans('simplecrm.preference.choose_timezone') }}</option>
                                                     @foreach (timezone_identifiers_list() as $timezone)
                                                         <option value="{{ $timezone }}"
-                                                            {{ $timezone == old('timezone') ? ' selected' : '' }}>
+                                                            {{ $timezone == (old('timezone') ?? config('app.timezone')) ? ' selected' : '' }}>
                                                             {{ $timezone }}</option>
                                                     @endforeach
                                                 </select>
@@ -100,8 +103,7 @@
                         <!-- /.card -->
                         <div class="row pb-3">
                             <div class="col-12">
-                                <input type="submit" value="{{ trans('simplecrm.save_changes') }}"
-                                    class="btn btn-success">
+                                <input type="submit" value="{{ trans('simplecrm.save_changes') }}" class="btn btn-success">
                             </div>
                         </div>
                     </form>
@@ -112,4 +114,44 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+@section('scripts')
+    <script>
+        // Notification bubble
+        @if (Session::has('message'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('message') }}");
+        @endif
+
+        @if (Session::has('error'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if (Session::has('info'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if (Session::has('warning'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
+@endsection
 @endsection

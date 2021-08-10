@@ -9,8 +9,26 @@ class Preference extends Model
 {
     use HasFactory;
 
+    /**
+     * table
+     *
+     * @var string
+     */
     protected $table = 'preferences';
+
+    /**
+     * fillable
+     *
+     * @var array
+     */
     protected $fillable = ['user_id', 'name', 'data'];
+
+     /**
+     * timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = true;
 
     /**
      * Relationship

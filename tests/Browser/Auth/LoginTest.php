@@ -24,7 +24,7 @@ class LoginTest extends DuskTestCase
                 ->type('email', $user->email)
                 ->type('password', 'password')
                 ->press(trans('simplecrm.sign_in'))
-                ->click('a[href="' . route('logout', app()->getLocale()) . '"]')
+                ->click('a[href="' . route('logout') . '"]')
                 ->visit('/admin')
                 ->assertPathIs('/login');
         });

@@ -13,15 +13,15 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a
-                                href="{{ route('admin.home', app()->getLocale()) }}">{{ trans('simplecrm.dashboard') }}</a></li>
+                                href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active"><a
-                                href="{{ route('admin.employee.index', app()->getLocale()) }}">{{ $data['title'] }}</a></li>
+                                href="{{ route('admin.employee.index') }}">{{ $data['title'] }}</a></li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <div class="d-print-none with-border">
-                        <a href="{{ route('admin.employee.create', app()->getLocale()) }}" class="btn btn-success" data-style="zoom-in">
+                        <a href="{{ route('admin.employee.create') }}" class="btn btn-success" data-style="zoom-in">
                             <span class="ladda-label"><i class="fa fa-plus"></i>&nbsp;
                                 {{ trans('simplecrm.add') }}
                                 {{ Str::lower(trans('simplecrm.employee.title_singular')) }}
@@ -67,16 +67,16 @@
                                             <td>{{ $employee->created_at }}</td>
                                             <td>
                                                 <a class="btn btn-primary" title="Show"
-                                                    href="{{ route('admin.employee.show', [app()->getLocale(), $employee->id]) }}">
+                                                    href="{{ route('admin.employee.show', [$employee->id]) }}">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-success" title="Edit"
-                                                    href="{{ route('admin.employee.edit', [app()->getLocale(), $employee->id]) }}">
+                                                    href="{{ route('admin.employee.edit', [$employee->id]) }}">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-danger" title="Delete" href="javascript:void(0)"
                                                     onclick="deleteEntry(this)"
-                                                    data-route="{{ route('admin.employee.destroy', [app()->getLocale(), $employee->id]) }}">
+                                                    data-route="{{ route('admin.employee.destroy', [$employee->id]) }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -157,7 +157,7 @@
                 "autoWidth": false,
                 "order": [0, "desc"],
                 // "serverSide": true,
-                // "ajax": "{{ route('admin.employee.index', app()->getLocale()) }}",
+                // "ajax": "{{ route('admin.employee.index') }}",
                 // "columns": [
                 //     {data: 'id', name: 'ID'}
                 // ],

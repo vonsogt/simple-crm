@@ -41,6 +41,8 @@ return [
     'created_at'    => 'Dibuat Pada',
     'updated_at'    => 'Diubah Pada',
     'deleted_at'    => 'Dihapus Pada',
+    'created_by_id' => 'Dibuat Oleh',
+    'updated_by_id' => 'Diubah Oleh',
 
     // List
     'list'          => 'Daftar',
@@ -109,5 +111,7 @@ return [
         'title'             => 'Preferensi',
         'choose_language'   => 'Pilih bahasa',
         'choose_timezone'   => 'Pilih zona waktu',
+        'update_success'    => 'Berhasil menyimpan perubahan',
+        'update_error'      => 'Terjadi kesalahan, silahkan coba lagi!',
     ]
 ];
