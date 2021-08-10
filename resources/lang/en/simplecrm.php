@@ -15,6 +15,8 @@ return [
     'login_info_title'      => 'Info',
     'login_info_text'       => 'Please login using',
     'profile'               => 'Profile',
+    'save_changes'          => 'Save Changes',
+    'timezone'              => 'Timezone',
 
     // Auth
     'sign_in'               => 'Sign In',
@@ -105,5 +107,7 @@ return [
     // Admin Preference
     'preference' => [
         'title'             => 'Preferences',
+        'choose_language'   => 'Choose language',
+        'choose_timezone'   => 'Choose timezone',
     ]
 ];

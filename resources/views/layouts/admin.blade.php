@@ -56,13 +56,6 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                {{-- Timezone Selection --}}
-                <select name="timezone" id="timezone" class="form-control">
-                    @foreach (timezone_identifiers_list() as $timezone)
-                        <option value="{{ $timezone }}" {{ $timezone == old('timezone') ? ' selected' : '' }}>
-                            {{ $timezone }}</option>
-                    @endforeach
-                </select>
                 <!-- Language Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle float-right" href="javascript:void(0)" id="navbarDropdown"

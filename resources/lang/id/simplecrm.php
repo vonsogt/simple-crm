@@ -15,6 +15,8 @@ return [
     'login_info_title'      => 'Info',
     'login_info_text'       => 'Silahkan masuk menggunakan',
     'profile'               => 'Profil',
+    'save_changes'          => 'Simpan Perubahan',
+    'timezone'              => 'Zona waktu',
 
     // Auth
     'sign_in'               => 'Masuk',
@@ -105,5 +107,7 @@ return [
     // Admin Preference
     'preference' => [
         'title'             => 'Preferensi',
+        'choose_language'   => 'Pilih bahasa',
+        'choose_timezone'   => 'Pilih zona waktu',
     ]
 ];

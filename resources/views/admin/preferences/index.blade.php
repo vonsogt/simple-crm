@@ -50,82 +50,61 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#general"
-                                        data-toggle="tab">{{ trans('simplecrm.general') }}</a>
-                                </li>
-                            </ul>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="general">
-                                    <form class="form-horizontal">
+                    <form class="form-horizontal">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#general"
+                                            data-toggle="tab">{{ trans('simplecrm.general') }}</a>
+                                    </li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="general">
                                         <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                            <label for="language"
+                                                class="col-sm-2 col-form-label">{{ trans('simplecrm.language') }}</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                                <select name="language" id="language" class="form-control">
+                                                    <option value="" selected disabled>
+                                                        {{ trans('simplecrm.preference.choose_language') }}</option>
+                                                    <option value="en">EN</option>
+                                                    <option value="id">ID</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                            <label for="timezone"
+                                                class="col-sm-2 col-form-label">{{ trans('simplecrm.timezone') }}</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail"
-                                                    placeholder="Email">
+                                                {{-- Timezone Selection --}}
+                                                <select name="timezone" id="timezone" class="form-control">
+                                                    <option value="" selected disabled>
+                                                        {{ trans('simplecrm.preference.choose_timezone') }}</option>
+                                                    @foreach (timezone_identifiers_list() as $timezone)
+                                                        <option value="{{ $timezone }}"
+                                                            {{ $timezone == old('timezone') ? ' selected' : '' }}>
+                                                            {{ $timezone }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience"
-                                                    placeholder="Experience"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills"
-                                                    placeholder="Skills">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> I agree to the <a href="#">terms and
-                                                            conditions</a>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="btn btn-secondary">Cancel</a>
-                                                <input type="submit" value="Save Changes"
-                                                    class="btn btn-success float-right">
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <!-- /.tab-pane -->
                                 </div>
-                                <!-- /.tab-pane -->
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <div class="row pb-3">
+                            <div class="col-12">
+                                <input type="submit" value="{{ trans('simplecrm.save_changes') }}"
+                                    class="btn btn-success">
                             </div>
-                            <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+                        </div>
+                    </form>
                 </div>
                 <!-- /.col -->
             </div>
