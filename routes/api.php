@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\CompanyApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,5 @@ Route::group([
     'prefix' =>     'v1',
 ], function () {
     Route::get('user-profile', [AuthController::class, 'userProfile'])->name('user-profile');
+    Route::get('company-employees', [CompanyApiController::class, 'getCompanyEmployees'])->name('company-employees');
 });
