@@ -65,7 +65,7 @@
                                         {{ trans('simplecrm.employee.fields.first_name') }}
                                     </label>
                                     <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
-                                        id="first_name" name="first_name" placeholder="Enter first name" value="{{ old('first_name', isset($data['employee']) ? $data['employee']->first_name : '') }}">
+                                        id="first_name" name="first_name" placeholder="{{ trans('simplecrm.employee.fields.first_name_input') }}" value="{{ old('first_name', isset($data['employee']) ? $data['employee']->first_name : '') }}">
                                     @if ($errors->has('first_name'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('first_name') }}
@@ -77,7 +77,7 @@
                                         {{ trans('simplecrm.employee.fields.last_name') }}
                                     </label>
                                     <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
-                                        id="last_name" name="last_name" placeholder="Enter last name" value="{{ old('last_name', isset($data['employee']) ? $data['employee']->last_name : '') }}">
+                                        id="last_name" name="last_name" placeholder="{{ trans('simplecrm.employee.fields.last_name_input') }}" value="{{ old('last_name', isset($data['employee']) ? $data['employee']->last_name : '') }}">
                                     @if ($errors->has('last_name'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('last_name') }}
@@ -89,7 +89,7 @@
                                         {{ trans('simplecrm.company.title_singular') }}
                                     </label>
                                     <select name="company_id" id="company_id" class="form-control {{ $errors->has('company_id') ? 'is-invalid' : '' }}">
-                                        <option value="">-</option>
+                                        <option value="" selected disabled>{{ trans('simplecrm.employee.fields.company_select') }}</option>
                                         @foreach ($data['companies'] as $company_id => $company_name)
                                             <option value="{{ $company_id }}"
                                                 {{ (isset($data['employee']) && $data['employee']->company ? $data['employee']->company->id : old('company_id')) == $company_id ? 'selected' : '' }}>
@@ -109,7 +109,7 @@
                                     </label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                        name="email" placeholder="Enter email" value="{{ old('email', isset($data['employee']) ? $data['employee']->email : '') }}">
+                                        name="email" placeholder="{{ trans('simplecrm.employee.fields.email_input') }}" value="{{ old('email', isset($data['employee']) ? $data['employee']->email : '') }}">
                                     @if ($errors->has('email'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
@@ -122,13 +122,36 @@
                                     </label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                        id="phone" name="phone" placeholder="Enter website link"
+                                        id="phone" name="phone" placeholder="{{ trans('simplecrm.employee.fields.phone_input') }}"
                                         value="{{ old('phone', isset($data['employee']) ? $data['employee']->phone : '') }}">
                                     @if ($errors->has('phone'))
                                         <span id="name-error" class="error invalid-feedback">
                                             {{ $errors->first('phone') }}
                                         </span>
                                     @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">
+                                        {{ trans('simplecrm.employee.fields.password') }}
+                                    </label>
+                                    <input type="password"
+                                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+                                        id="password" name="password" placeholder="{{ trans('simplecrm.employee.fields.password_input') }}"
+                                        value="{{ old('password', isset($data['employee']) ? $data['employee']->password : '') }}">
+                                    @if ($errors->has('password'))
+                                        <span id="name-error" class="error invalid-feedback">
+                                            {{ $errors->first('password') }}
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_confirmation">
+                                        {{ trans('simplecrm.employee.fields.password_confirmation') }}
+                                    </label>
+                                    <input type="password"
+                                        class="form-control"
+                                        id="password_confirmation" name="password_confirmation" placeholder="{{ trans('simplecrm.employee.fields.password_confirmation_input') }}"
+                                        value="{{ old('password_confirmation', isset($data['employee']) ? $data['employee']->password : '') }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

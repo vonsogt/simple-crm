@@ -94,15 +94,26 @@ return [
 
     // Employee CRUD
     'employee' => [
-        'title'             => 'Employees',
-        'title_singular'    => 'Employee',
-        'fields'            => [
-            'id'            => 'ID',
-            'full_name'     => 'Full Name',
-            'first_name'    => 'First Name',
-            'last_name'     => 'Last Name',
-            'email'         => 'Email',
-            'phone'         => 'Phone',
+        'title'                             => 'Employees',
+        'title_singular'                    => 'Employee',
+        'fields'                            => [
+            'id'                            => 'ID',
+            'full_name'                     => 'Full Name',
+            'full_name_input'               => 'Enter full name',
+            'first_name'                    => 'First Name',
+            'first_name_input'              => 'Enter first name',
+            'last_name'                     => 'Last Name',
+            'last_name_input'               => 'Enter last name',
+            'company'                       => 'Company',
+            'company_select'                => 'Choose company',
+            'email'                         => 'Email',
+            'email_input'                   => 'Enter email',
+            'phone'                         => 'Phone',
+            'phone_input'                   => 'Enter phone',
+            'password'                      => 'Password',
+            'password_input'                => 'Enter password',
+            'password_confirmation'         => 'Password Confirmation',
+            'password_confirmation_input'   => 'Enter password confirmation',
         ],
     ],
 

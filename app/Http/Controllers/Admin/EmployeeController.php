@@ -9,6 +9,7 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -51,6 +52,9 @@ class EmployeeController extends Controller
         // Add request created & updated by user_id
         $user_id = auth()->user()->id;
         $request->request->add(['created_by_id' => $user_id, 'updated_by_id' => $user_id]);
+
+        // Hash the password
+        $request->password = Hash::make($request->password);
 
         $employee = Employee::create($request->all());
 
@@ -98,7 +102,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeRequest $request, $id)
     {
         $employee = Employee::findOrFail($id);
 
@@ -106,7 +110,13 @@ class EmployeeController extends Controller
         $user_id = auth()->user()->id;
         $request->request->add(['updated_by_id' => $user_id]);
 
-        $employee->update($request->all());
+        // Check if updated password same like in database
+        $isChangePassword = $request->password != $employee->password;
+
+        $employee->update([
+            $request->all(),
+            'password' => $isChangePassword ? Hash::make($request->password) : $employee->password,
+        ]);
 
         return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.update_success'));
     }

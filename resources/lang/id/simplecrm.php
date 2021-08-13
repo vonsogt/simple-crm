@@ -94,15 +94,26 @@ return [
 
     // Employee CRUD
     'employee' => [
-        'title'             => 'Karyawan',
-        'title_singular'    => 'Karyawan',
-        'fields'            => [
-            'id'            => 'ID',
-            'full_name'     => 'Nama Lengkap',
-            'first_name'    => 'Nama Depan',
-            'last_name'     => 'Nama Belakang',
-            'email'         => 'Surel',
-            'phone'         => 'Telepon',
+        'title'                             => 'Karyawan',
+        'title_singular'                    => 'Karyawan',
+        'fields'                            => [
+            'id'                            => 'ID',
+            'full_name'                     => 'Nama Lengkap',
+            'full_name_input'               => 'Masukkan nama lengkap',
+            'first_name'                    => 'Nama Depan',
+            'first_name_input'              => 'Masukkan nama depan',
+            'last_name'                     => 'Nama Belakang',
+            'last_name_input'               => 'Masukkan nama belakang',
+            'company'                       => 'Perusahan',
+            'company_select'                => 'Pilih perusahaan',
+            'email'                         => 'Surel',
+            'email_input'                   => 'Masukkan surel',
+            'phone'                         => 'Telepon',
+            'phone_input'                   => 'Masukkan telepon',
+            'password'                      => 'Kata Sandi',
+            'password_input'                => 'Masukkan kata sandi',
+            'password_confirmation'         => 'Konfirmasi Kata Sandi',
+            'password_confirmation_input'   => 'Masukkan konfirmasi kata sandi',
         ],
     ],
 
