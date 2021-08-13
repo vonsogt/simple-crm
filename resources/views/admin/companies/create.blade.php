@@ -64,7 +64,7 @@
                                         {{ trans('simplecrm.company.fields.name') }}
                                     </label>
                                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                        id="name" name="name" placeholder="Enter name"
+                                        id="name" name="name" placeholder="{{ trans('simplecrm.company.fields.name_input') }}"
                                         value="{{ old('name', isset($data['company']) ? $data['company']->name : '') }}">
                                     @if ($errors->has('name'))
                                         <span id="name-error" class="error invalid-feedback">
@@ -78,7 +78,7 @@
                                     </label>
                                     <input type="email"
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                        name="email" placeholder="Enter email"
+                                        name="email" placeholder="{{ trans('simplecrm.company.fields.email_input') }}"
                                         value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
                                     @if ($errors->has('email'))
                                         <span id="name-error" class="error invalid-feedback">
@@ -92,8 +92,8 @@
                                     </label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo">
-                                        <label class="custom-file-label" for="logo">Choose file</label>
-                                        <small class="text-secondary">Minimum image size is 100x100.</small>
+                                        <label class="custom-file-label" for="logo">{{ trans('simplecrm.company.fields.logo_input') }}</label>
+                                        <small class="text-secondary">{{ trans('simplecrm.company.fields.logo_help_create') }}</small>
                                         @if ($errors->has('logo'))
                                             <span id="name-error" class="error invalid-feedback">
                                                 {{ $errors->first('logo') }}
@@ -107,7 +107,7 @@
                                     </label>
                                     <input type="text"
                                         class="form-control {{ $errors->has('website_link') ? 'is-invalid' : '' }}"
-                                        id="website_link" name="website_link" placeholder="Enter website link"
+                                        id="website_link" name="website_link" placeholder="{{ trans('simplecrm.company.fields.website_link_input') }}"
                                         value="{{ old('website_link', isset($data['company']) ? $data['company']->website_link : '') }}">
                                     @if ($errors->has('website_link'))
                                         <span id="name-error" class="error invalid-feedback">

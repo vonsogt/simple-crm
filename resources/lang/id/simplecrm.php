@@ -80,15 +80,21 @@ return [
 
     // Company CRUD
     'company' => [
-        'title'             => 'Perusahaan',
-        'title_singular'    => 'Perusahaan',
-        'fields'            => [
-            'id'            => 'ID',
-            'name'          => 'Nama',
-            'email'         => 'Surel',
-            'logo'          => 'Logo',
-            'website_link'  => 'Tautan Situs Web',
-            'no_logo'       => 'Tidak ada Logo',
+        'title'                     => 'Perusahaan',
+        'title_singular'            => 'Perusahaan',
+        'fields'                    => [
+            'id'                    => 'ID',
+            'name'                  => 'Nama',
+            'name_input'            => 'Masukkan nama',
+            'email'                 => 'Surel',
+            'email_input'           => 'Masukkan surel',
+            'logo'                  => 'Logo',
+            'logo_input'            => 'Pilih file logo',
+            'logo_help_create'      => 'Ukuran gambar minimal 100x100.',
+            'logo_help_edit'        => 'Ukuran gambar minimal 100x100. Unggah gambar lagi untuk menggantikan gambar saat ini.',
+            'website_link'          => 'Tautan Situs Web',
+            'website_link_input'    => 'Masukan tautan situs web',
+            'no_logo'               => 'Tidak ada Logo',
         ],
     ],
 

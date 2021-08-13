@@ -80,15 +80,21 @@ return [
 
     // Company CRUD
     'company' => [
-        'title'             => 'Companies',
-        'title_singular'    => 'Company',
-        'fields'            => [
-            'id'            => 'ID',
-            'name'          => 'Name',
-            'email'         => 'Email',
-            'logo'          => 'Logo',
-            'website_link'  => 'Website Link',
-            'no_logo'       => 'No Logo',
+        'title'                     => 'Companies',
+        'title_singular'            => 'Company',
+        'fields'                    => [
+            'id'                    => 'ID',
+            'name'                  => 'Name',
+            'name_input'            => 'Enter name',
+            'email'                 => 'Email',
+            'email_input'           => 'Enter email',
+            'logo'                  => 'Logo',
+            'logo_input'            => 'Choose logo file',
+            'logo_help_create'      => 'Minimum image size is 100x100.',
+            'logo_help_edit'        => 'Minimum image size is 100x100. Upload image again to replace the current image.',
+            'website_link'          => 'Website Link',
+            'website_link_input'    => 'Enter website link',
+            'no_logo'               => 'No Logo',
         ],
     ],
 
