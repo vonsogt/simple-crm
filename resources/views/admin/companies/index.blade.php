@@ -226,10 +226,14 @@
                     "info":         "{{ trans('simplecrm.datatable.info') }}",
                     "infoEmpty":    "{{ trans('simplecrm.datatable.info_empty') }}",
                     "infoFiltered": "{{ trans('simplecrm.datatable.info_filtered') }}",
+                    "paginate": {
+                        "next":     ">",
+                        "previous": "<"
+                    },
                 },
                 "dom": "<'row hidden'<'col-sm-6'i><'col-sm-6 d-print-none'f>>" +
                     "<'row'<'col-sm-12'tr>>" +
-                    "<'row mt-2 d-print-none '<'col-sm-12 col-md-4'l><'col-sm-0 col-md-4 text-center'B><'col-sm-12 col-md-4 'p>>",
+                    "<'row mt-2 d-print-none '<'col-sm-12 col-md-4'l><'col-sm-0 col-md-4 text-center d-none d-md-block'B><'col-sm-12 col-md-4 'p>>",
             }).buttons().container().appendTo('#datatable-company_wrapper .col-md-6:eq(0)');
         });
 

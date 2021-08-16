@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $request->request->add(['created_by_id' => $user_id, 'updated_by_id' => $user_id]);
 
         // Hash the password
-        $request->password = Hash::make($request->password);
+        $request->request->add(['password' => Hash::make($request->password)]);
 
         $employee = Employee::create($request->all());
 
@@ -112,11 +112,9 @@ class EmployeeController extends Controller
 
         // Check if updated password same like in database
         $isChangePassword = $request->password != $employee->password;
+        $isChangePassword ? $request->request->add(['password' => Hash::make($request->password)]) : $employee->password;
 
-        $employee->update([
-            $request->all(),
-            'password' => $isChangePassword ? Hash::make($request->password) : $employee->password,
-        ]);
+        $employee->update($request->all());
 
         return redirect()->route('admin.employee.index')->with('message', trans('simplecrm.update_success'));
     }
