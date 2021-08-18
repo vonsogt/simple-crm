@@ -4,15 +4,40 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeRequest;
+use App\Imports\EmployeeImport;
 use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
+    /**
+     * importExcel
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function importExcel(Request $request)
+    {
+        // Validate the file
+        $validator = $request->validate([
+            'excel_import' =>   'required|mimes:csv,xls,xlsx',
+        ]);
+
+        // Get file and store to storage
+        $file = $request->file('excel_import');
+        $file_name = time() . $file->getClientOriginalName();
+        $file->move(public_path('storage/employees/excel-import/'), $file_name);
+
+        Excel::import(new EmployeeImport, public_path('storage/employees/excel-import/' . $file_name));
+
+        return redirect()->route('admin.employee.index')->with('message', 'Import success!');
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -27,6 +27,10 @@
                                 {{ Str::lower(trans('simplecrm.employee.title_singular')) }}
                             </span>
                         </a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-import-excel">
+                            <span class="ladda-label"><i class="fa fa-file-import"></i>&nbsp;
+                            {{ trans('simplecrm.import_excel') }}
+                        </button>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -108,6 +112,43 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+    <div class="modal fade" id="modal-import-excel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ trans('simplecrm.import_excel') }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.employee.import-excel') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input {{ $errors->has('excel_import') ? 'is-invalid' : '' }}" id="excel_import" name="excel_import" required>
+                                <label class="custom-file-label" for="logo">{{ trans('simplecrm.import_excel_input') }}</label>
+                                <small class="text-secondary">{{ trans('simplecrm.import_excel_help') }}</small>
+                                @if ($errors->has('excel_import'))
+                                    <span id="excel_import-error" class="error invalid-feedback">
+                                        {{ $errors->first('excel_import') }}
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('simplecrm.close') }}</button>
+                    <input type="submit" class="btn btn-primary" value="{{ trans('simplecrm.import') }}">
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 @section('scripts')
     <script>
@@ -413,6 +454,13 @@
 
             //Initialize Select2 Elements
             $('.select2').select2()
+        });
+    </script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
 @endsection

@@ -17,6 +17,7 @@ return [
     'profile'               => 'Profil',
     'save_changes'          => 'Simpan Perubahan',
     'timezone'              => 'Zona waktu',
+    'import'                => 'Impor',
 
     // Auth
     'sign_in'               => 'Masuk',
@@ -31,6 +32,7 @@ return [
     // Create Form
     'add'       => 'Tambah',
     'cancel'    => 'Batal',
+    'close'     => 'Tutup',
 
     // Edit Form
     'edit'      => 'Ubah',
@@ -45,9 +47,12 @@ return [
     'updated_by_id' => 'Diubah Oleh',
 
     // List
-    'list'          => 'Daftar',
-    'actions'       => 'Aksi',
-    'back_to_all'   => 'Kembali ke semua',
+    'list'                  => 'Daftar',
+    'actions'               => 'Aksi',
+    'back_to_all'           => 'Kembali ke semua',
+    'import_excel'          => 'Impor Excel',
+    'import_excel_input'    => 'Pilih file excel',
+    'import_excel_help'     => 'Ekstensi file harus: csv,xls,xlsx',
 
     // Delete
     'delete'    => 'Hapus',

@@ -38,8 +38,12 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::resource('employee', EmployeeController::class);
     Route::resource('company', CompanyController::class);
+    Route::resource('employee', EmployeeController::class);
+
+    // Import
+    Route::post('company-import-excel', [CompanyController::class, 'importExcel'])->name('company.import-excel');
+    Route::post('employee-import-excel', [EmployeeController::class, 'importExcel'])->name('employee.import-excel');
 
     // Admin's preference route
     Route::get('preferences', [PreferenceController::class, 'index'])->name('preference.index');

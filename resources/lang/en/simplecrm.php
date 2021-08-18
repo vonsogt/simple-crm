@@ -17,6 +17,7 @@ return [
     'profile'               => 'Profile',
     'save_changes'          => 'Save Changes',
     'timezone'              => 'Timezone',
+    'import'                => 'Import',
 
     // Auth
     'sign_in'               => 'Sign In',
@@ -31,6 +32,7 @@ return [
     // Create Form
     'add'       => 'Add',
     'cancel'    => 'Cancel',
+    'close'     => 'Close',
 
     // Edit Form
     'edit'      => 'Edit',
@@ -45,9 +47,12 @@ return [
     'updated_by_id' => 'Updated By',
 
     // List
-    'list'          => 'List',
-    'actions'       => 'Actions',
-    'back_to_all'   => 'Back to all',
+    'list'                  => 'List',
+    'actions'               => 'Actions',
+    'back_to_all'           => 'Back to all',
+    'import_excel'          => 'Import Excel',
+    'import_excel_input'    => 'Choose excel file',
+    'import_excel_help'     => 'The file extension must be: csv,xls,xlsx',
 
     // Delete
     'delete'    => 'Delete',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
+use App\Imports\CompanyImport;
 use App\Jobs\SendEmail;
 use App\Models\Company;
 use App\Models\User;
@@ -12,9 +13,33 @@ use Illuminate\Http\Request;
 use Notification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyController extends Controller
 {
+    /**
+     * importExcel
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function importExcel(Request $request)
+    {
+        // Validate the file
+        $validator = $request->validate([
+            'excel_import' =>   'required|mimes:csv,xls,xlsx',
+        ]);
+
+        // Get file and store to storage
+        $file = $request->file('excel_import');
+        $file_name = time() . $file->getClientOriginalName();
+        $file->move(public_path('storage/companies/excel-import/'), $file_name);
+
+        Excel::import(new CompanyImport, public_path('storage/companies/excel-import/' . $file_name));
+
+        return redirect()->route('admin.company.index')->with('message', 'Import success!');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -128,7 +153,7 @@ class CompanyController extends Controller
             $request->logo->move(public_path('storage/companies/images/'), $logo_name);
 
             // Delete old file before update file name to the database
-            File::delete(public_path('storage\\img\\companies\\') . $company->logo);
+            File::delete(public_path('storage/companies/images/') . $company->logo);
 
             // file name to database
             $request_data['logo'] = $logo_name;
@@ -149,7 +174,7 @@ class CompanyController extends Controller
     {
         // Get logo file name and delete it
         $company = Company::find($id)->first();
-        File::delete(public_path('storage\\img\\companies\\') . $company->logo);
+        File::delete(public_path('storage/companies/images/') . $company->logo);
 
         return DB::table('companies')->delete($id);
     }
