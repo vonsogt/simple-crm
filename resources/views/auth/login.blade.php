@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="login-box">
-        {{-- Demo info --}}
-        @if (strpos('localhost', env('APP_URL')) !== false)
+        {{-- Demo info just for domain 'simple-crm.vonso.online' --}}
+        @if (\Str::contains(url()->current(), 'simple-crm.vonso.online'))
             <div class="callout callout-info">
                 <h5>{{ trans('simplecrm.login_info_title') }}</h5>
                 <p>{{ trans('simplecrm.login_info_text') }}: <br><b>admin@admin.com / password</b></p>
