@@ -40,6 +40,14 @@
                 </li>
                 <li class="nav-header text-uppercase">{{ trans('simplecrm.admin_menu') }}</li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.translation.index') }}" class="nav-link {{ Request::routeIs('admin.translation.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-language"></i>
+                        <p>
+                            {{ trans('simplecrm.translation.title') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.preference.index') }}" class="nav-link {{ Request::routeIs('admin.preference.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>

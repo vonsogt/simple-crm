@@ -135,5 +135,10 @@ return [
         'choose_timezone'   => 'Pilih zona waktu',
         'update_success'    => 'Berhasil menyimpan perubahan',
         'update_error'      => 'Terjadi kesalahan, silahkan coba lagi!',
-    ]
+    ],
+
+    // Translation
+    'translation' => [
+        'title'             => 'Terjemahan',
+    ],
 ];

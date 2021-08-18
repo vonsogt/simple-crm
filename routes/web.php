@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PreferenceController;
+use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,9 @@ Route::group([
     // Admin's preference route
     Route::get('preferences', [PreferenceController::class, 'index'])->name('preference.index');
     Route::put('preferences/{user}', [PreferenceController::class, 'update'])->name('preference.update');
+
+    // Translations
+    Route::get('translation', [TranslationController::class, 'index'])->name('translation.index');
 
     // API V1 routes
     Route::group([

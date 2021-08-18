@@ -135,5 +135,10 @@ return [
         'choose_timezone'   => 'Choose timezone',
         'update_success'    => 'Successfully saved changes',
         'update_error'      => 'An error occurred, please try again!',
-    ]
+    ],
+
+    // Translation
+    'translation' => [
+        'title'             => 'Translation',
+    ],
 ];
