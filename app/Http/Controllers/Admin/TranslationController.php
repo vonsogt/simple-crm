@@ -23,14 +23,6 @@ class TranslationController extends Controller
 
             return Datatables::of($language_line)
                 ->addIndexColumn()
-                // ->editColumn('text', function (LanguageLine $lang) {
-                //     $row = [];
-                //     foreach ($lang->text as $key => $value) {
-                //         $row[] = '<span class="right badge badge-primary" style="width: 2rem;">' . $key . '</span> ' . $value;
-                //         // $row[] = 'jehe';
-                //     }
-                //     return implode('<br>', $row);
-                // })
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary" title="Show" href="' .
                         route("admin.translation.show", [$row->id]) .
