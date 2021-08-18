@@ -16,7 +16,8 @@
         "maatwebsite/excel": "^3.1",
         "orangehill/iseed": "^3.0",
         "spatie/laravel-translation-loader": "^2.7",
-        "tymon/jwt-auth": "1.*"
+        "tymon/jwt-auth": "1.*",
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

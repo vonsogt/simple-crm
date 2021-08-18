@@ -140,5 +140,11 @@ return [
     // Translation
     'translation' => [
         'title'             => 'Terjemahan',
+        'fields'            => [
+            'id'            => 'ID',
+            'group'         => 'Grup',
+            'key'           => 'Kunci',
+            'text'          => 'Teks',
+        ],
     ],
 ];

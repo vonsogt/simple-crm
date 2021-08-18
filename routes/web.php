@@ -52,6 +52,7 @@ Route::group([
 
     // Translations
     Route::get('translation', [TranslationController::class, 'index'])->name('translation.index');
+    Route::get('translation/{id}', [TranslationController::class, 'show'])->name('translation.show');
 
     // API V1 routes
     Route::group([

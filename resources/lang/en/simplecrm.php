@@ -140,5 +140,11 @@ return [
     // Translation
     'translation' => [
         'title'             => 'Translation',
+        'fields'            => [
+            'id'            => 'ID',
+            'group'         => 'Group',
+            'key'           => 'Key',
+            'text'          => 'Text',
+        ],
     ],
 ];
