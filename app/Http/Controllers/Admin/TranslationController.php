@@ -19,7 +19,7 @@ class TranslationController extends Controller
     {
 
         if ($request->ajax()) {
-            $language_line = LanguageLine::all();
+            $language_line = LanguageLine::orderBy('id', 'DESC')->get();
 
             return Datatables::of($language_line)
                 ->addIndexColumn()
