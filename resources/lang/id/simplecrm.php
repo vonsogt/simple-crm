@@ -39,7 +39,7 @@ return [
     'save'      => 'Simpan',
 
     // Show
-    'show'      => 'Lihat',
+    'show'          => 'Lihat',
     'created_at'    => 'Dibuat Pada',
     'updated_at'    => 'Diubah Pada',
     'deleted_at'    => 'Dihapus Pada',
