@@ -77,19 +77,21 @@ Sebelum menggunakan projek ini, diperlukanya [composer](https://getcomposer.org/
    ```sh
    cp .env.example .env
    ```
-6. Jalankan `migrasi` dan `seeder`
+6. Sebelum ke step selanjutnya, pastikan konfigurasi `DB_*` sudah diubah sesuai dengan database anda
+7. (Opsional) Silahkan ubah `COMPANY_APP_URL` pada file `.env` yang dicopy tadi sesuai dengan URL dari aplikasi [company-app](https://github.com/vonsogt/company-app)
+8. Jalankan `migrasi` dan `seeder`
    ```sh
    php artisan migrate --seed
    ```
-7. Generate a key JWT terlebih dahulu
+9. Generate a key JWT terlebih dahulu
    ```sh
    php artisan jwt:secret
    ```
-8. Jalankan aplikasi
-   ```sh
-   php artisan serve
-   ```
-9. Enjoy!
+10. Jalankan aplikasi
+    ```sh
+    php artisan serve
+    ```
+11. Enjoy!
 
 ## Petunjuk
 
