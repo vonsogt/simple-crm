@@ -58,6 +58,15 @@ class Company extends Model
     ];
 
     /**
+     * Relationship
+     *
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
+    /**
      * Accessor
      *
      */

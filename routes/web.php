@@ -35,7 +35,7 @@ Auth::routes(['register' => false]);
 Route::group([
     'prefix' =>     'admin',
     'as' =>         'admin.',
-    'middleware' => 'jwt.verify',
+    'middleware' => ['jwt.verify', 'assign.guard:api'],
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
