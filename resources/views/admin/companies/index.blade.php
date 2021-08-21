@@ -88,6 +88,10 @@
                                                     href="{{ route('admin.company.edit', [$company->id]) }}">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
+                                                <a class="btn btn-success" title="Link" target="_blank"
+                                                    href="{{ env('COMPANY_APP_URL', 'http://localhost:8001') . '/?company='. str_replace(' ', '-', strtolower($company->name ?? null)) }}">
+                                                    <i class="fas fa-link"></i>
+                                                </a>
                                                 <a class="btn btn-danger" title="Delete" href="javascript:void(0)"
                                                     onclick="deleteEntry(this)"
                                                     data-route="{{ route('admin.company.destroy', [$company->id]) }}">
