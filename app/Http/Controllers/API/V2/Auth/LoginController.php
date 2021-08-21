@@ -75,6 +75,10 @@ class LoginController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        // Get remember me request
+        $expire_in = $request->remember_me ?  (24 * 30) /* 30 Days */ : 60;
+
+        // Change guards
         Config::set('auth.defaults.guard', 'employees');
 
         // // Checking the employee
@@ -90,7 +94,7 @@ class LoginController extends Controller
         // }
 
         // Return response unauthorized
-        if (!$token = auth()->attempt($validator->validated())) {
+        if (!$token = auth()->setTTL($expire_in)->attempt($validator->validated())) {
             return response()->json(['error' => ['email' => trans('auth.failed')]], 401);
         }
 
