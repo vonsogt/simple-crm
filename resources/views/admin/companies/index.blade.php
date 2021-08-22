@@ -80,19 +80,19 @@
                                             <td>{{ $company->website_link }}</td>
                                             <td>{{ $company->created_at }}</td>
                                             <td>
-                                                <a class="btn btn-primary" title="Show"
-                                                    href="{{ route('admin.company.show', [$company->id]) }}">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                                <a class="btn btn-success" title="Edit"
-                                                    href="{{ route('admin.company.edit', [$company->id]) }}">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a class="btn btn-success" title="Link" target="_blank"
+                                                <a class="btn btn-warning mt-md-1" title="Link" target="_blank"
                                                     href="{{ env('COMPANY_APP_URL', 'http://localhost:8001') . '/?company='. str_replace(' ', '-', strtolower($company->name ?? null)) }}">
                                                     <i class="fas fa-link"></i>
                                                 </a>
-                                                <a class="btn btn-danger" title="Delete" href="javascript:void(0)"
+                                                <a class="btn btn-primary mt-md-1" title="Show"
+                                                    href="{{ route('admin.company.show', [$company->id]) }}">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                                <a class="btn btn-success mt-md-1" title="Edit"
+                                                    href="{{ route('admin.company.edit', [$company->id]) }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-danger mt-md-1" title="Delete" href="javascript:void(0)"
                                                     onclick="deleteEntry(this)"
                                                     data-route="{{ route('admin.company.destroy', [$company->id]) }}">
                                                     <i class="far fa-trash-alt"></i>
