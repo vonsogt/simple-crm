@@ -12,9 +12,9 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-sell"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
-                        <li class="breadcrumb-sell active"><a href="{{ route('admin.sell.index') }}">{{ trans('simplecrm.sell.title') }}</a></li>
-                        <li class="breadcrumb-sell active">{{ trans('simplecrm.list') }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.sell.index') }}">{{ trans('simplecrm.sell.title') }}</a></li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
