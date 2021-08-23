@@ -53,7 +53,7 @@
                                     <tr>
                                         <th>{{ trans('simplecrm.employee.fields.id') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.full_name') }}</th>
-                                        <th>{{ trans('simplecrm.company.title') }}</th>
+                                        <th>{{ trans('simplecrm.company.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.email') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.phone') }}</th>
                                         <th>{{ trans('simplecrm.created_at') }}</th>
@@ -91,7 +91,7 @@
                                     <tr>
                                         <th>{{ trans('simplecrm.employee.fields.id') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.full_name') }}</th>
-                                        <th>{{ trans('simplecrm.company.title') }}</th>
+                                        <th>{{ trans('simplecrm.company.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.email') }}</th>
                                         <th>{{ trans('simplecrm.employee.fields.phone') }}</th>
                                         <th>{{ trans('simplecrm.created_at') }}</th>

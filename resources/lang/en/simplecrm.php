@@ -147,4 +147,36 @@ return [
             'text'          => 'Text',
         ],
     ],
+
+    // Item CRUD
+    'item' => [
+        'title'             => 'Items',
+        'title_singular'    => 'Item',
+        'fields'            => [
+            'id'            => 'ID',
+            'name'          => 'Name',
+            'price'         => 'Price',
+        ],
+    ],
+
+    // Sell CRUD
+    'sell' => [
+        'title'             => 'Sells',
+        'title_singular'    => 'Sell',
+        'fields'            => [
+            'id'            => 'ID',
+            'created_date'  => 'Created Date',
+            'price'         => 'Price',
+            'discount'      => 'Discount',
+        ],
+    ],
+
+    // Sell Summary READ only
+    'sell_summary'          => [
+        'title'             => 'Sell Summaries',
+        'title_singular'    => 'Sell Summary',
+        'fields'            => [
+            'id'            => 'ID',
+        ],
+    ],
 ];

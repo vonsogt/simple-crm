@@ -38,6 +38,30 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.item.index') }}" class="nav-link {{ Request::routeIs('admin.item.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-boxes"></i>
+                        <p>
+                            {{ trans('simplecrm.item.title') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.sell.index') }}" class="nav-link {{ Request::routeIs('admin.sell.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>
+                            {{ trans('simplecrm.sell.title') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.sell-summary.index') }}" class="nav-link {{ Request::routeIs('admin.sell-summary.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                            {{ trans('simplecrm.sell_summary.title') }}
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header text-uppercase">{{ trans('simplecrm.admin_menu') }}</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.translation.index') }}" class="nav-link {{ Request::routeIs('admin.translation.*') ? 'active' : '' }}">

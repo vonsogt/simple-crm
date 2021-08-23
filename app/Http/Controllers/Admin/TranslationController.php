@@ -24,7 +24,7 @@ class TranslationController extends Controller
             return Datatables::of($language_line)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a class="btn btn-primary" title="Show" href="' .
+                    $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' .
                         route("admin.translation.show", [$row->id]) .
                         '"><i class="far fa-eye"></i></a>';
                     return $btn;
