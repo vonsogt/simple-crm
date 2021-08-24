@@ -155,19 +155,26 @@ return [
         'fields'            => [
             'id'            => 'ID',
             'name'          => 'Name',
+            'name_input'    => 'Enter name',
             'price'         => 'Price',
+            'price_input'   => 'Enter price',
         ],
     ],
 
     // Sell CRUD
     'sell' => [
-        'title'             => 'Sells',
-        'title_singular'    => 'Sell',
-        'fields'            => [
-            'id'            => 'ID',
-            'created_date'  => 'Created Date',
-            'price'         => 'Price',
-            'discount'      => 'Discount',
+        'title'                     => 'Sells',
+        'title_singular'            => 'Sell',
+        'fields'                    => [
+            'id'                    => 'ID',
+            'created_date'          => 'Created Date',
+            'created_date_input'    => 'Enter created date',
+            'item_select'           => 'Choose item',
+            'price'                 => 'Price',
+            'price_input'           => 'Enter price',
+            'discount'              => 'Discount',
+            'discount_input'        => 'Enter discount',
+            'employee_select'       => 'Choose employee',
         ],
     ],
 

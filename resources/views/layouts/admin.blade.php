@@ -42,6 +42,9 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
 
+    <!-- Custom style -->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     @yield('styles')
 </head>
 

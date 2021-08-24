@@ -49,7 +49,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.created_date') }}</th>
                                         <th>{{ trans('simplecrm.item.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
-                                        <th>{{ trans('simplecrm.sell.fields.discount') }}</th>
+                                        <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
@@ -63,7 +63,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.created_date') }}</th>
                                         <th>{{ trans('simplecrm.item.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
-                                        <th>{{ trans('simplecrm.sell.fields.discount') }}</th>
+                                        <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
@@ -85,6 +85,43 @@
 
     @section('scripts')
         <script>
+            // Notification bubble
+            @if (Session::has('message'))
+                toastr.options =
+                {
+                "closeButton" : true,
+                "progressBar" : true
+                }
+                toastr.success("{{ session('message') }}");
+            @endif
+
+            @if (Session::has('error'))
+                toastr.options =
+                {
+                "closeButton" : true,
+                "progressBar" : true
+                }
+                toastr.error("{{ session('error') }}");
+            @endif
+
+            @if (Session::has('info'))
+                toastr.options =
+                {
+                "closeButton" : true,
+                "progressBar" : true
+                }
+                toastr.info("{{ session('info') }}");
+            @endif
+
+            @if (Session::has('warning'))
+                toastr.options =
+                {
+                "closeButton" : true,
+                "progressBar" : true
+                }
+                toastr.warning("{{ session('warning') }}");
+            @endif
+
             $(function() {
 
                 // Data table
@@ -163,6 +200,65 @@
                     }
                 }).buttons().container().appendTo('#datatable-sell_wrapper .col-md-6:eq(0)');
             });
+
+            // DeleteButton
+            function deleteEntry(button) {
+                var route = $(button).attr('data-route');
+
+                Swal.fire({
+                    title: '{{ trans('simplecrm.delete_confirmation_title') }}',
+                    text: "{{ trans('simplecrm.delete_confirmation_text') }}",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{{ trans('simplecrm.delete_confirmation_confirm_button') }}',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type: "DELETE",
+                            url: route,
+                            success: function(response) {
+                                if (response == 1) {
+
+                                    // Show success notification
+                                    toastr.options = {
+                                        "closeButton": true,
+                                        "progressBar": true
+                                    }
+                                    toastr.success(
+                                        '{{ trans('simplecrm.delete_confirmation_message') }}')
+
+                                    // Refresh datatable
+                                    $('#datatable-sell').DataTable().ajax.reload()
+                                } else {
+                                    Swal.fire({
+                                        title: 'NOT deleted!',
+                                        text: 'There\'s been an error.',
+                                        icon: 'error',
+                                        timer: 4000,
+                                        showConfirmButton: false,
+
+                                    })
+                                }
+                            },
+                            error: function(response) {
+                                Swal.fire({
+                                    title: 'NOT deleted!',
+                                    text: 'There\'s been an error.',
+                                    icon: 'error',
+                                    timer: 4000,
+                                    showConfirmButton: false,
+
+                                })
+                            }
+                        })
+                    }
+                })
+            }
 
             $(document).ready(function() {
                 // move "showing x out of y" info to header

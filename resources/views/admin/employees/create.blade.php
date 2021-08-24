@@ -59,31 +59,31 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="first_name">
                                         {{ trans('simplecrm.employee.fields.first_name') }}
                                     </label>
                                     <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         id="first_name" name="first_name" placeholder="{{ trans('simplecrm.employee.fields.first_name_input') }}" value="{{ old('first_name', isset($data['employee']) ? $data['employee']->first_name : '') }}">
                                     @if ($errors->has('first_name'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="first_name-error" class="error invalid-feedback">
                                             {{ $errors->first('first_name') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="last_name">
                                         {{ trans('simplecrm.employee.fields.last_name') }}
                                     </label>
                                     <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                         id="last_name" name="last_name" placeholder="{{ trans('simplecrm.employee.fields.last_name_input') }}" value="{{ old('last_name', isset($data['employee']) ? $data['employee']->last_name : '') }}">
                                     @if ($errors->has('last_name'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="last_name-error" class="error invalid-feedback">
                                             {{ $errors->first('last_name') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label>
                                         {{ trans('simplecrm.company.title_singular') }}
                                     </label>
@@ -97,7 +97,7 @@
                                         @endforeach
                                     </select>
                                     @if ($errors->has('company_id'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="company_id-error" class="error invalid-feedback">
                                             {{ $errors->first('company_id') }}
                                         </span>
                                     @endif
@@ -110,7 +110,7 @@
                                         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
                                         name="email" placeholder="{{ trans('simplecrm.employee.fields.email_input') }}" value="{{ old('email', isset($data['employee']) ? $data['employee']->email : '') }}">
                                     @if ($errors->has('email'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="email-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
                                         </span>
                                     @endif
@@ -124,12 +124,12 @@
                                         id="phone" name="phone" placeholder="{{ trans('simplecrm.employee.fields.phone_input') }}"
                                         value="{{ old('phone', isset($data['employee']) ? $data['employee']->phone : '') }}">
                                     @if ($errors->has('phone'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="phone-error" class="error invalid-feedback">
                                             {{ $errors->first('phone') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="password">
                                         {{ trans('simplecrm.employee.fields.password') }}
                                     </label>
@@ -138,12 +138,12 @@
                                         id="password" name="password" placeholder="{{ trans('simplecrm.employee.fields.password_input') }}"
                                         value="{{ old('password', isset($data['employee']) ? $data['employee']->password : '') }}">
                                     @if ($errors->has('password'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="password-error" class="error invalid-feedback">
                                             {{ $errors->first('password') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="password_confirmation">
                                         {{ trans('simplecrm.employee.fields.password_confirmation') }}
                                     </label>
@@ -176,11 +176,12 @@
     </section>
 @endsection
 @section('scripts')
-    <!-- bs-custom-file-input -->
-    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
-        $(function() {
-            bsCustomFileInput.init();
+        jQuery('document').ready(function($){
+            // prevent duplicate entries on double-clicking the submit form
+            $(".card-footer").parents("form").submit(function (event) {
+                $("button[type=submit]").prop('disabled', true);
+            });
         });
     </script>
 @endsection

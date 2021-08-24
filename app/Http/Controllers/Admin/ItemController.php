@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemRequest;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class ItemController extends Controller
@@ -23,8 +25,8 @@ class ItemController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.item.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
-                    $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.company.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
-                    $btn .= '<a class="btn btn-danger mt-md-1" title="Delete" href="javascript:void(0)" onclick="deleteEntry(this)" data-route="' . route('admin.company.destroy', [$row->id]) . '"><i class="far fa-trash-alt"></i></a> ';
+                    $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.item.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
+                    $btn .= '<a class="btn btn-danger mt-md-1" title="Delete" href="javascript:void(0)" onclick="deleteEntry(this)" data-route="' . route('admin.item.destroy', [$row->id]) . '"><i class="far fa-trash-alt"></i></a> ';
 
                     return $btn;
                 })
@@ -42,7 +44,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $data['title'] = trans('simplecrm.item.title');
+        $data['title'] = trans('simplecrm.item.title_singular');
 
         return view('admin.items.create', compact('data'));
     }
@@ -53,9 +55,11 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
-        //
+        $item = Item::create($request->all());
+
+        return redirect()->route('admin.item.index')->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -66,7 +70,12 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        $data['item'] = $item;
+        $data['title'] = trans('simplecrm.item.title_singular');
+
+        return view('admin.items.show', compact('data', 'id'));
     }
 
     /**
@@ -77,7 +86,12 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        $data['item'] = $item;
+        $data['title'] = trans('simplecrm.item.title_singular');
+
+        return view('admin.items.edit', compact('data', 'id'));
     }
 
     /**
@@ -87,9 +101,13 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ItemRequest $request, $id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        $item->update($request->all());
+
+        return redirect()->route('admin.item.index')->with('message', trans('simplecrm.update_success'));
     }
 
     /**
@@ -100,6 +118,6 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return DB::table('items')->delete($id);
     }
 }

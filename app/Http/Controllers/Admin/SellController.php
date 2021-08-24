@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SellRequest;
+use App\Models\Employee;
+use App\Models\Item;
 use App\Models\Sell;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class SellController extends Controller
@@ -21,10 +25,17 @@ class SellController extends Controller
 
             return DataTables::of($sells)
                 ->addIndexColumn()
+                ->editColumn('item_id', function (Sell $sell) {
+                    return $sell->item->name;
+                })
+                ->editColumn('employee_id', function (Sell $sell) {
+                    $employee = $sell->employee;
+                    return $employee->first_name . ' ' . $employee->last_name;
+                })
                 ->addColumn('action', function ($row) {
-                    $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.item.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
-                    $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.company.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
-                    $btn .= '<a class="btn btn-danger mt-md-1" title="Delete" href="javascript:void(0)" onclick="deleteEntry(this)" data-route="' . route('admin.company.destroy', [$row->id]) . '"><i class="far fa-trash-alt"></i></a> ';
+                    $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.sell.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
+                    $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.sell.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
+                    $btn .= '<a class="btn btn-danger mt-md-1" title="Delete" href="javascript:void(0)" onclick="deleteEntry(this)" data-route="' . route('admin.sell.destroy', [$row->id]) . '"><i class="far fa-trash-alt"></i></a> ';
 
                     return $btn;
                 })
@@ -42,7 +53,17 @@ class SellController extends Controller
      */
     public function create()
     {
-        //
+        $items = Item::all()->pluck('name', 'id');
+        $employees = Employee::select([
+            'id',
+            DB::raw('CONCAT(`first_name`, " ", `last_name`) as `name`')
+        ])->get()->pluck('name', 'id');
+
+        $data['items'] = $items;
+        $data['employees'] = $employees;
+        $data['title'] = trans('simplecrm.sell.title_singular');
+
+        return view('admin.sells.create', compact('data'));
     }
 
     /**
@@ -51,9 +72,11 @@ class SellController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SellRequest $request)
     {
-        //
+        $sell = Sell::create($request->all());
+
+        return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.insert_success'));
     }
 
     /**
@@ -64,7 +87,12 @@ class SellController extends Controller
      */
     public function show($id)
     {
-        //
+        $sell = Sell::findOrFail($id);
+
+        $data['sell'] = $sell;
+        $data['title'] = trans('simplecrm.sell.title_singular');
+
+        return view('admin.sells.show', compact('data', 'id'));
     }
 
     /**
@@ -75,7 +103,19 @@ class SellController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sell = Sell::findOrFail($id);
+        $items = Item::all()->pluck('name', 'id');
+        $employees = Employee::select([
+            'id',
+            DB::raw('CONCAT(`first_name`, " ", `last_name`) as `name`')
+        ])->get()->pluck('name', 'id');
+
+        $data['items'] = $items;
+        $data['employees'] = $employees;
+        $data['sell'] = $sell;
+        $data['title'] = trans('simplecrm.sell.title_singular');
+
+        return view('admin.sells.edit', compact('data', 'id'));
     }
 
     /**
@@ -85,9 +125,13 @@ class SellController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SellRequest $request, $id)
     {
-        //
+        $sell = Sell::findOrFail($id);
+
+        $sell->update($request->all());
+
+        return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.update_success'));
     }
 
     /**
@@ -98,6 +142,6 @@ class SellController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return DB::table('sells')->delete($id);
     }
 }

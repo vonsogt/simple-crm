@@ -13,7 +13,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
                         <li class="breadcrumb-item active"><a href="{{ route('admin.item.index') }}">{{ $data['title'] }}</a></li>
-                        <li class="breadcrumb-item active">{{ trans('simplecrm.add') }}</li>
+                        <li class="breadcrumb-item active">{{ trans('simplecrm.edit') }}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
@@ -38,13 +38,14 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ trans('simplecrm.add') }}</h3>
+                            <h3 class="card-title">{{ trans('simplecrm.edit') }}</h3>
                         </div>
                         <!-- /.card-header -->
 
                         <!-- form start -->
-                        <form method="POST" action="{{ route('admin.item.store') }}">
+                        <form method="POST" action="{{ route('admin.item.update',  ['item' => $id]) }}">
                             @csrf
+                            @method('PUT')
 
                             <div class="card-body">
 

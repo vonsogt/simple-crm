@@ -15,7 +15,7 @@ class CreateSellsTable extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
-            $table->date('created_date');
+            $table->dateTime('created_date');
             $table->foreignId('item_id')->constrained();
             $table->integer('price');
             $table->decimal('discount');

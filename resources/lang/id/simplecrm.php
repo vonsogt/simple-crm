@@ -147,4 +147,43 @@ return [
             'text'          => 'Teks',
         ],
     ],
+
+    // Item CRUD
+    'item' => [
+        'title'             => 'Item',
+        'title_singular'    => 'Item',
+        'fields'            => [
+            'id'            => 'ID',
+            'name'          => 'Nama',
+            'name_input'    => 'Masukkan nama',
+            'price'         => 'Harga',
+            'price_input'   => 'Masukkan harga',
+        ],
+    ],
+
+    // Sell CRUD
+    'sell' => [
+        'title'                     => 'Penjualan',
+        'title_singular'            => 'Penjualan',
+        'fields'                    => [
+            'id'                    => 'ID',
+            'created_date'          => 'Tanggal Dibuat',
+            'created_date_input'    => 'Masukkan tanggal dibuat',
+            'item_select'           => 'Pilih item',
+            'price'                 => 'Harga',
+            'price_input'           => 'Masukkan harga',
+            'discount'              => 'Diskon',
+            'discount_input'        => 'Masukkan diskon',
+            'employee_select'       => 'Pilih karyawan',
+        ],
+    ],
+
+    // Sell Summary READ only
+    'sell_summary'          => [
+        'title'             => 'Ringkasan Penjualan',
+        'title_singular'    => 'Ringkasan Penjualan',
+        'fields'            => [
+            'id'            => 'ID',
+        ],
+    ],
 ];

@@ -59,7 +59,7 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="name">
                                         {{ trans('simplecrm.company.fields.name') }}
                                     </label>
@@ -81,7 +81,7 @@
                                         name="email" placeholder="{{ trans('simplecrm.company.fields.email_input') }}"
                                         value="{{ old('email', isset($data['company']) ? $data['company']->email : '') }}">
                                     @if ($errors->has('email'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="email-error" class="error invalid-feedback">
                                             {{ $errors->first('email') }}
                                         </span>
                                     @endif
@@ -95,7 +95,7 @@
                                         <label class="custom-file-label" for="logo">{{ trans('simplecrm.company.fields.logo_input') }}</label>
                                         <small class="text-secondary">{{ trans('simplecrm.company.fields.logo_help_create') }}</small>
                                         @if ($errors->has('logo'))
-                                            <span id="name-error" class="error invalid-feedback">
+                                            <span id="custom-file-error" class="error invalid-feedback">
                                                 {{ $errors->first('logo') }}
                                             </span>
                                         @endif
@@ -110,7 +110,7 @@
                                         id="website_link" name="website_link" placeholder="{{ trans('simplecrm.company.fields.website_link_input') }}"
                                         value="{{ old('website_link', isset($data['company']) ? $data['company']->website_link : '') }}">
                                     @if ($errors->has('website_link'))
-                                        <span id="name-error" class="error invalid-feedback">
+                                        <span id="website_link-error" class="error invalid-feedback">
                                             {{ $errors->first('website_link') }}
                                         </span>
                                     @endif
@@ -139,11 +139,20 @@
     </section>
 @endsection
 @section('scripts')
+
+
     <!-- bs-custom-file-input -->
     <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
         $(function() {
             bsCustomFileInput.init();
+        });
+
+        jQuery('document').ready(function($){
+            // prevent duplicate entries on double-clicking the submit form
+            $(".card-footer").parents("form").submit(function (event) {
+                $("button[type=submit]").prop('disabled', true);
+            });
         });
     </script>
 @endsection

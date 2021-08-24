@@ -22,4 +22,29 @@ class Item extends Model
      * @var string
      */
     // protected $primaryKey = 'id
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'price'];
+
+    /**
+     * Accessor
+     *
+     */
+    public function getPriceAttribute($value)
+    {
+        return $value / 100;
+    }
+
+    /**
+     * Mutators
+     *
+     */
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = $value * 100;
+    }
 }
