@@ -179,7 +179,7 @@
             //Date and time picker
             $('#created_date-datetime').datetimepicker({
                 icons: { time: 'far fa-clock' },
-                format: "Y-MM-DD H:m"
+                format: "Y-MM-DD HH:mm"
             });
         });
 

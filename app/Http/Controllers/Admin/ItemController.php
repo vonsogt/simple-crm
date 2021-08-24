@@ -19,9 +19,6 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // if ($search = $request->input('search.value')) {
-            //     $items = Item::where('id', 'LIKE', "%{$search}%")
-            // }
 
             $items = Item::orderBy('id', 'DESC')->get();
 
@@ -34,18 +31,6 @@ class ItemController extends Controller
 
                     return $btn;
                 })
-                // ->filter(function ($instance) use ($request) {
-                //     if ($request->get('status') == '0' || $request->get('status') == '1') {
-                //         $instance->where('status', $request->get('status'));
-                //     }
-                //     if (!empty($request->get('search'))) {
-                //         $instance->where(function ($w) use ($request) {
-                //             $search = $request->get('search');
-                //             $w->orWhere('name', 'LIKE', "%$search%")
-                //                 ->orWhere('email', 'LIKE', "%$search%");
-                //         });
-                //     }
-                // })
                 ->rawColumns(['action'])
                 ->make();
         }

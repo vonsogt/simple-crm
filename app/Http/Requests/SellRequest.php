@@ -24,7 +24,7 @@ class SellRequest extends FormRequest
     public function rules()
     {
         return [
-            'created_date' =>       'required|date',
+            'created_date' =>       'required|date|date_format:Y-m-d H:i',
             'item_id' =>            'required',
             'price' =>              'required|regex:/^\d+(\.\d{1,2})?$/',
             'discount' =>           'required|max:100',

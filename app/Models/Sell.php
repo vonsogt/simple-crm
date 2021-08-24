@@ -31,6 +31,15 @@ class Sell extends Model
     protected $fillable = ['created_date', 'item_id', 'price', 'discount', 'employee_id'];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'price' => 'integer',
+    ];
+
+    /**
      * Relationship
      *
      */
