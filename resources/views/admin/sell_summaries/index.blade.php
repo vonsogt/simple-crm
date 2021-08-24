@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h2>
-                        <span class="text-capitalize">{{ trans('simplecrm.translation.title') }}</span>
+                        <span class="text-capitalize">{{ trans('simplecrm.sell_summary.title') }}</span>
                         <small id="datatable_info_stack"></small>
                     </h2>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ trans('simplecrm.dashboard') }}</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.translation.index') }}">{{ trans('simplecrm.translation.title') }}</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.sell-summary.index') }}">{{ trans('simplecrm.sell_summary.title') }}</a></li>
                         <li class="breadcrumb-item active">{{ trans('simplecrm.list') }}</li>
                     </ol>
                 </div><!-- /.col -->
@@ -32,13 +32,16 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="datatable-translation" class="table table-bordered table-striped table-hover">
+                            <table id="datatable-sell_summary" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ trans('simplecrm.translation.fields.id') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.group') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.key') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.text') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.date') }}</th>
+                                        <th>{{ trans('simplecrm.employee.title_singular') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.price_total') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.discount_total') }} (%)</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.total') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.last_update') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </thead>
@@ -47,10 +50,13 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>{{ trans('simplecrm.translation.fields.id') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.group') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.key') }}</th>
-                                        <th>{{ trans('simplecrm.translation.fields.text') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.id') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.date') }}</th>
+                                        <th>{{ trans('simplecrm.employee.title_singular') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.price_total') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.discount_total') }} (%)</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.total') }}</th>
+                                        <th>{{ trans('simplecrm.sell_summary.fields.last_update') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </tfoot>
@@ -74,32 +80,23 @@
             $(function() {
 
                 // Data table
-                var table = $("#datatable-translation").DataTable({
+                var table = $("#datatable-sell_summary").DataTable({
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
                     "order": [0, "desc"],
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "{{ route('admin.translation.index') }}",
+                    "ajax": "{{ route('admin.sell-summary.index') }}",
                     "columns": [
                         {data: 'id', name: 'id'},
-                        {data: 'group', name: 'group'},
-                        {data: 'key', name: 'key'},
-                        {data: 'text', name: 'text'},
+                        {data: 'date', name: 'date'},
+                        {data: 'employee_id', name: 'employee_id'},
+                        {data: 'price_total', name: 'price_total'},
+                        {data: 'discount_total', name: 'discount_total'},
+                        {data: 'total', name: 'total'},
+                        {data: 'last_update', name: 'last_update'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
-                    ],
-                    "columnDefs": [
-                        {
-                            "render": function ( data, type, row ) {
-                                var render = '';
-                                for (const [key, value] of Object.entries(data)) {
-                                    render += '<span class="right badge badge-primary" style="width: 2rem;">' + `${key}` + '</span> ' + `${value}` + '<br>';
-                                }
-                            return render;
-                            },
-                            "targets": 3
-                        },
                     ],
                     "lengthChange": true,
                     "lengthMenu": [
@@ -157,12 +154,12 @@
                             "previous": "<"
                         },
                     }
-                }).buttons().container().appendTo('#datatable-translation_wrapper .col-md-6:eq(0)');
+                }).buttons().container().appendTo('#datatable-sell_summary_wrapper .col-md-6:eq(0)');
             });
 
             $(document).ready(function() {
                 // move "showing x out of y" info to header
-                $("#datatable_info_stack").html($("#datatable-translation_info"))
+                $("#datatable_info_stack").html($("#datatable-sell_summary_info"))
                     .css('display', 'inline-flex')
                     .css('font-size', '17px');
             });

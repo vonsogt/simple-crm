@@ -116,4 +116,14 @@ class Employee extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function sells()
+    {
+        return $this->hasMany(Sell::class);
+    }
+
+    public function sell_summaries()
+    {
+        return $this->hasMany(SellSummary::class);
+    }
 }

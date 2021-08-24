@@ -33,7 +33,9 @@ class TranslationController extends Controller
                 ->make();
         }
 
-        return view('admin.translations.index');
+        $data['title'] = trans('simplecrm.translation.title');
+
+        return view('admin.translations.index', compact('data'));
     }
 
     /**

@@ -7,6 +7,8 @@ use App\Http\Requests\SellRequest;
 use App\Models\Employee;
 use App\Models\Item;
 use App\Models\Sell;
+use App\Models\SellSummary;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -43,7 +45,9 @@ class SellController extends Controller
                 ->make();
         }
 
-        return view('admin.sells.index');
+        $data['title'] = trans('simplecrm.sell.title');
+
+        return view('admin.sells.index', compact('data'));
     }
 
     /**
@@ -75,6 +79,9 @@ class SellController extends Controller
     public function store(SellRequest $request)
     {
         $sell = Sell::create($request->all());
+
+        // Store or Update the sell_summary
+        $this->storeUpdateSellSummary($request);
 
         return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.insert_success'));
     }
@@ -129,6 +136,9 @@ class SellController extends Controller
     {
         $sell = Sell::findOrFail($id);
 
+        // Store or Update the sell_summary
+        $this->storeUpdateSellSummary($request, $id);
+
         $sell->update($request->all());
 
         return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.update_success'));
@@ -143,5 +153,50 @@ class SellController extends Controller
     public function destroy($id)
     {
         return DB::table('sells')->delete($id);
+    }
+
+    public function storeUpdateSellSummary($request, $id = null)
+    {
+        $sell = $id != null ? Sell::findOrFail($id) : false;
+
+        // Get the old value
+        $sell_price_old =    $sell ? $sell->price : 0;
+        $sell_discount_old = $sell ? $sell->discount : 0;
+        $sell_total_old =    $sell ? ($sell_price_old - ($sell_price_old * $sell_discount_old / 100)) : 0;
+
+        // Get the current value from request
+        $price =    $request->price;
+        $discount = $request->discount;
+        $total =    $price - ($price * $discount / 100);
+
+        // Create/Update relationship query
+        $sell_summary = SellSummary::where('date', Carbon::make($request->created_date)->format('Y-m-d'))
+            ->where('employee_id', $request->employee_id)->first();
+        $is_exists_sell_summary = $sell_summary ? $sell_summary->exists() : false;
+
+        // Create new sell_summary if doesn't have one
+        if (!$is_exists_sell_summary) {
+            SellSummary::create([
+                'date' =>           $request->created_date,
+                'employee_id' =>    $request->employee_id,
+                'created_date' =>   $request->created_date,
+                'last_update' =>    $request->created_date,
+                'price_total' =>    $price,
+                'discount_total' => $discount,
+                'total' =>          $total,
+            ]);
+        } else {
+            // Set the new value for update sell_summary
+            $new_price_total =      $sell_summary->price_total - $sell_price_old + $price;
+            $new_discount_total =   $sell_summary->discount_total - $sell_discount_old + $discount;
+            $new_total =            $sell_summary->total - $sell_total_old + $total;
+
+            $sell_summary->update([
+                'last_update' =>    Carbon::now(),
+                'price_total' =>    $new_price_total,
+                'discount_total' => $new_discount_total,
+                'total' =>          $new_total,
+            ]);
+        }
     }
 }

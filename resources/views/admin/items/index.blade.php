@@ -120,29 +120,30 @@
 
                 // Data table
                 var table = $("#datatable-item").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "order": [0, "desc"],
-                    "processing": true,
-                    "serverSide": true,
-                    "ajax": "{{ route('admin.item.index') }}",
-                    "columns": [
-                        {data: 'id', name: "{{ trans('simplecrm.item.fields.id') }}"},
-                        {data: 'name', name: "{{ trans('simplecrm.item.fields.name') }}"},
-                        {data: 'price', name: "{{ trans('simplecrm.item.fields.price') }}"},
+                    responsive: true,
+                    lengthChange: false,
+                    autoWidth: false,
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                        url: "{{ route('admin.item.index') }}",
+                    },
+                    columns: [
+                        {data: 'id', name: "id"},
+                        {data: 'name', name: "name"},
+                        {data: 'price', name: "price"},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ],
-                    "lengthChange": true,
-                    "lengthMenu": [
+                    lengthChange: true,
+                    lengthMenu: [
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"]
                     ],
-                    "buttons": [{
-                            "extend": "collection",
-                            "text": '<i class="fa fa-download"></i> {{ trans('simplecrm.datatable.export') }}',
-                            "dropup": true,
-                            "buttons": [{
+                    buttons: [{
+                            extend: "collection",
+                            text: '<i class="fa fa-download"></i> {{ trans('simplecrm.datatable.export') }}',
+                            dropup: true,
+                            buttons: [{
                                     extend: "copy",
                                     exportOptions: {
                                         columns: 'th:not(:last-child)'
@@ -180,11 +181,11 @@
                             dropup: true
                         }
                     ],
-                    "language": {
-                        "info":         "{{ trans('simplecrm.datatable.info') }}",
-                        "infoEmpty":    "{{ trans('simplecrm.datatable.info_empty') }}",
-                        "infoFiltered": "{{ trans('simplecrm.datatable.info_filtered') }}",
-                        "paginate": {
+                    language: {
+                        info:         "{{ trans('simplecrm.datatable.info') }}",
+                        infoEmpty:    "{{ trans('simplecrm.datatable.info_empty') }}",
+                        infoFiltered: "{{ trans('simplecrm.datatable.info_filtered') }}",
+                        paginate: {
                             "next":     ">",
                             "previous": "<"
                         },

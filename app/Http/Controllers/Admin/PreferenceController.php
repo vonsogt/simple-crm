@@ -13,6 +13,7 @@ class PreferenceController extends Controller
     public function index()
     {
         $data['quote'] = explode(' - ', Inspiring::quote());
+        $data['title'] = trans('simplecrm.preference.title');
 
         return view('admin.preferences.index', compact('data'));
     }

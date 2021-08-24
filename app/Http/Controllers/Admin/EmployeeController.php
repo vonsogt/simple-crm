@@ -46,7 +46,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $data['employees'] = Employee::all();
-        $data['title'] = trans('simplecrm.employee.title_singular');
+        $data['title'] = trans('simplecrm.employee.title');
 
         return view('admin.employees.index', compact('data'));
     }

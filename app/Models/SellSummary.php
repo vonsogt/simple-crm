@@ -22,4 +22,38 @@ class SellSummary extends Model
      * @var string
      */
     // protected $primaryKey = 'id';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['date', 'employee_id', 'created_date', 'last_update', 'price_total', 'discount_total', 'total'];
+
+    /**
+     * Relationship
+     *
+     */
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    /**
+     * Accessor
+     *
+     */
+    public function getDiscountTotalAttribute($value)
+    {
+        return (int) ($value * 100);
+    }
+
+    /**
+     * Mutators
+     *
+     */
+    public function setDiscountTotalAttribute($value)
+    {
+        $this->attributes['discount_total'] = $value / 100;
+    }
 }

@@ -139,7 +139,8 @@ return [
 
     // Translation
     'translation' => [
-        'title'             => 'Translation',
+        'title'             => 'Translations',
+        'title_singular'    => 'Translation',
         'fields'            => [
             'id'            => 'ID',
             'group'         => 'Group',
@@ -179,11 +180,17 @@ return [
     ],
 
     // Sell Summary READ only
-    'sell_summary'          => [
-        'title'             => 'Sell Summaries',
-        'title_singular'    => 'Sell Summary',
-        'fields'            => [
-            'id'            => 'ID',
+    'sell_summary'              => [
+        'title'                 => 'Sell Summaries',
+        'title_singular'        => 'Sell Summary',
+        'fields'                => [
+            'id'                => 'ID',
+            'date'              => 'Date',
+            'created_date'      => 'Created Date',
+            'last_update'       => 'Last Update',
+            'price_total'       => 'Price Total',
+            'discount_total'    => 'Discount Total',
+            'total'             => 'Total',
         ],
     ],
 ];

@@ -48,7 +48,7 @@ class CompanyController extends Controller
     public function index()
     {
         $data['companies'] = Company::all();
-        $data['title'] = trans('simplecrm.company.title_singular');
+        $data['title'] = trans('simplecrm.company.title');
 
         return view('admin.companies.index', compact('data'));
     }

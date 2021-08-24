@@ -140,6 +140,7 @@ return [
     // Translation
     'translation' => [
         'title'             => 'Terjemahan',
+        'title_singular'    => 'Terjemahan',
         'fields'            => [
             'id'            => 'ID',
             'group'         => 'Grup',

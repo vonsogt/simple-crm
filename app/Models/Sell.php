@@ -55,7 +55,7 @@ class Sell extends Model
 
     public function getDiscountAttribute($value)
     {
-        return $value / 100;
+        return (int) ($value * 100);
     }
 
     /**
@@ -69,6 +69,6 @@ class Sell extends Model
 
     public function setDiscountAttribute($value)
     {
-        $this->attributes['discount'] = $value * 100;
+        $this->attributes['discount'] = $value / 100;
     }
 }
