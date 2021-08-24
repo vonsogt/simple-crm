@@ -180,11 +180,17 @@ return [
     ],
 
     // Sell Summary READ only
-    'sell_summary'          => [
-        'title'             => 'Ringkasan Penjualan',
-        'title_singular'    => 'Ringkasan Penjualan',
-        'fields'            => [
-            'id'            => 'ID',
+    'sell_summary'              => [
+        'title'                 => 'Ringkasan Penjualan',
+        'title_singular'        => 'Ringkasan Penjualan',
+        'fields'                => [
+            'id'                => 'ID',
+            'date'              => 'Tanggal',
+            'created_date'      => 'Tanggal Dibuat',
+            'last_update'       => 'Terakhir Diubah',
+            'price_total'       => 'Total Harga',
+            'discount_total'    => 'Total Diskon',
+            'total'             => 'Total',
         ],
     ],
 ];
