@@ -51,6 +51,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
+                                        <th>{{ trans('simplecrm.sell.fields.total') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </thead>
@@ -65,6 +66,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
+                                        <th>{{ trans('simplecrm.sell.fields.total') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
                                     </tr>
                                 </tfoot>
@@ -140,6 +142,7 @@
                         {data: 'price', name: 'price'},
                         {data: 'discount', name: 'discount'},
                         {data: 'employee_id', name: 'employee_id'},
+                        {data: 'total', name: 'total'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ],
                     "lengthChange": true,

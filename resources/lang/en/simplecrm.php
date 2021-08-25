@@ -176,6 +176,7 @@ return [
             'discount'              => 'Discount',
             'discount_input'        => 'Enter discount',
             'employee_select'       => 'Choose employee',
+            'total'                 => 'Total',
         ],
     ],
 

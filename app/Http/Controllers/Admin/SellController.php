@@ -34,6 +34,13 @@ class SellController extends Controller
                     $employee = $sell->employee;
                     return $employee->first_name . ' ' . $employee->last_name;
                 })
+                ->addColumn('total', function ($row) {
+                    $price = $row->price;
+                    $discount_total = $price * $row->discount / 100;
+                    $total = $price - $discount_total;
+
+                    return round($total, 2);
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.sell.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
                     $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.sell.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
@@ -79,9 +86,6 @@ class SellController extends Controller
     public function store(SellRequest $request)
     {
         $sell = Sell::create($request->all());
-
-        // Store or Update the sell_summary
-        $this->storeUpdateSellSummary($request);
 
         return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.insert_success'));
     }
@@ -136,9 +140,6 @@ class SellController extends Controller
     {
         $sell = Sell::findOrFail($id);
 
-        // Store or Update the sell_summary
-        $this->storeUpdateSellSummary($request, $id);
-
         $sell->update($request->all());
 
         return redirect()->route('admin.sell.index')->with('message', trans('simplecrm.update_success'));
@@ -152,9 +153,9 @@ class SellController extends Controller
      */
     public function destroy($id)
     {
-        $this->removeOldSellFromSellSummary($id);
+        $sell = Sell::findOrFail($id);
 
-        return DB::table('sells')->delete($id);
+        return $sell->delete();
     }
 
     public function removeOldSellFromSellSummary($sell_id)

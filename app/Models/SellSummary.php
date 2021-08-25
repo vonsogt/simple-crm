@@ -43,17 +43,37 @@ class SellSummary extends Model
      * Accessor
      *
      */
+    public function getPriceTotalAttribute($value)
+    {
+        return $value / 100;
+    }
+
     public function getDiscountTotalAttribute($value)
     {
         return (int) ($value * 100);
+    }
+
+    public function getTotalAttribute($value)
+    {
+        return $value / 100;
     }
 
     /**
      * Mutators
      *
      */
+    public function setPriceTotalAttribute($value)
+    {
+        $this->attributes['price_total'] = $value * 100;
+    }
+
     public function setDiscountTotalAttribute($value)
     {
         $this->attributes['discount_total'] = $value / 100;
+    }
+
+    public function setTotalAttribute($value)
+    {
+        $this->attributes['total'] = $value * 100;
     }
 }
