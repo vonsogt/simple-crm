@@ -27,7 +27,15 @@ class SellObserver
      */
     public function updating(Sell $sell)
     {
-        $this->addSellToSellSummary($sell);
+        $old_date = Carbon::make($sell->getOriginal('created_date'))->format('Y-m-d');
+        $date = Carbon::make($sell->created_date)->format('Y-m-d');
+
+        // Check if date or employee have changed, remove sell from sell_summary and add the new one
+        if ($old_date != $date || $sell->employee_id != $sell->getOriginal('employee_id')) {
+            $this->removeSellFromSellSummary($sell);
+            $this->addSellToSellSummary($sell);
+        } else
+            $this->addSellToSellSummary($sell, 'update');
     }
 
     /**
@@ -49,12 +57,12 @@ class SellObserver
      */
     public function removeSellFromSellSummary($sell)
     {
-        $price =    $sell->price;
-        $discount = $sell->discount;
+        $price =    $sell->getOriginal('price');
+        $discount = $sell->getOriginal('discount');
         $total =    $price - ($price * $discount / 100);
 
         $date = Carbon::make($sell->getOriginal('created_date'))->format('Y-m-d');
-        $sell_summary = SellSummary::where('date', $date)->where('employee_id', $sell->employee_id)->first();
+        $sell_summary = SellSummary::where('date', $date)->where('employee_id', $sell->getOriginal('employee_id'))->first();
 
         if ($sell_summary !== null) {
             $sell_summary->last_update =    Carbon::now();
@@ -64,7 +72,7 @@ class SellObserver
 
             $sell_summary->save();
 
-            if ($sell_summary->price_total == 0)
+            if ($sell_summary->price_total <= 0)
                 $sell_summary->delete();
         }
     }
@@ -75,17 +83,17 @@ class SellObserver
      * @param  mixed $sell
      * @return void
      */
-    public function addSellToSellSummary($sell)
+    public function addSellToSellSummary($sell, $type = 'store')
     {
         $price =    $sell->price;
         $discount = $sell->discount;
         $total = $price - ($price * $discount / 100);
-        // dd($total);
+
         $date =     Carbon::make($sell->created_date)->format('Y-m-d');
         $sell_summary = SellSummary::where('date', $date)->where('employee_id', $sell->employee_id)->first();
 
         // Check if an update
-        if ($sell->getOriginal() != []) {
+        if (count($sell->getOriginal()) > 0 && $type == 'update') {
             $price =    $price - $sell->getOriginal('price');
             $discount = $discount - $sell->getOriginal('discount');
             $total = $total - ($sell->getOriginal('price') - ($sell->getOriginal('price') * $sell->getOriginal('discount') / 100));
