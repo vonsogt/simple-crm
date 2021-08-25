@@ -37,7 +37,6 @@ class Sell extends Model
      */
     protected $casts = [
         'price' =>      'integer',
-        'discount' =>   'float',
     ];
 
     /**
@@ -65,7 +64,7 @@ class Sell extends Model
 
     public function getDiscountAttribute($value)
     {
-        return (int) ($value * 100);
+        return round($value * 100, 2);
     }
 
     /**
@@ -79,6 +78,6 @@ class Sell extends Model
 
     public function setDiscountAttribute($value)
     {
-        $this->attributes['discount'] = $value / 100;
+        $this->attributes['discount'] = round($value / 100, 2);
     }
 }

@@ -50,7 +50,7 @@ class SellSummary extends Model
 
     public function getDiscountTotalAttribute($value)
     {
-        return (int) ($value * 100);
+        return round($value * 100, 2);
     }
 
     public function getTotalAttribute($value)
@@ -69,7 +69,7 @@ class SellSummary extends Model
 
     public function setDiscountTotalAttribute($value)
     {
-        $this->attributes['discount_total'] = $value / 100;
+        $this->attributes['discount_total'] = round($value / 100, 2);
     }
 
     public function setTotalAttribute($value)
