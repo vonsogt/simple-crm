@@ -927,6 +927,267 @@ class LanguageLinesTableSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ),
+            101 =>
+            array(
+                'id' => 102,
+                'group' => 'simplecrm.translation',
+                'key' => 'title_singular',
+                'text' => '{"en":"Translation","id":"Terjemahan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            102 =>
+            array(
+                'id' => 103,
+                'group' => 'simplecrm.item',
+                'key' => 'title',
+                'text' => '{"en":"Items","id":"Item"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            103 =>
+            array(
+                'id' => 104,
+                'group' => 'simplecrm.item',
+                'key' => 'title_singular',
+                'text' => '{"en":"Item","id":"Item"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            104 =>
+            array(
+                'id' => 105,
+                'group' => 'simplecrm.item.fields',
+                'key' => 'id',
+                'text' => '{"en":"ID","id":"ID"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            105 =>
+            array(
+                'id' => 106,
+                'group' => 'simplecrm.item.fields',
+                'key' => 'name',
+                'text' => '{"en":"Name","id":"Nama"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            107 =>
+            array(
+                'id' => 108,
+                'group' => 'simplecrm.item.fields',
+                'key' => 'name_input',
+                'text' => '{"en":"Enter name","id":"Masukkan nama"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            108 =>
+            array(
+                'id' => 109,
+                'group' => 'simplecrm.item.fields',
+                'key' => 'price',
+                'text' => '{"en":"Price","id":"Harga"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            110 =>
+            array(
+                'id' => 111,
+                'group' => 'simplecrm.item.fields',
+                'key' => 'price_input',
+                'text' => '{"en":"Enter price","id":"Masukkan harga"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            111 =>
+            array(
+                'id' => 112,
+                'group' => 'simplecrm.sell',
+                'key' => 'title',
+                'text' => '{"en":"Sells","id":"Penjualan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            112 =>
+            array(
+                'id' => 113,
+                'group' => 'simplecrm.sell',
+                'key' => 'title_singular',
+                'text' => '{"en":"Sell","id":"Penjualan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            113 =>
+            array(
+                'id' => 114,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'id',
+                'text' => '{"en":"ID","id":"ID"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            115 =>
+            array(
+                'id' => 116,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'created_date',
+                'text' => '{"en":"Created Date","id":"Tanggal Dibuat"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            116 =>
+            array(
+                'id' => 117,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'created_date_input',
+                'text' => '{"en":"Enter created date","id":"Masukkan tanggal dibuat"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            117 =>
+            array(
+                'id' => 118,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'item_select',
+                'text' => '{"en":"Choose item","id":"Pilih item"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            118 =>
+            array(
+                'id' => 119,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'price',
+                'text' => '{"en":"Price","id":"Harga"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            119 =>
+            array(
+                'id' => 120,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'price_input',
+                'text' => '{"en":"Enter price","id":"Masukkan harga"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            120 =>
+            array(
+                'id' => 121,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'discount',
+                'text' => '{"en":"Discount","id":"Diskon"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            121 =>
+            array(
+                'id' => 122,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'discount_input',
+                'text' => '{"en":"Enter discount","id":"Masukkan diskon"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            122 =>
+            array(
+                'id' => 123,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'employee_select',
+                'text' => '{"en":"Choose employee","id":"Pilih karyawan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            123 =>
+            array(
+                'id' => 124,
+                'group' => 'simplecrm.sell.fields',
+                'key' => 'total',
+                'text' => '{"en":"Total","id":"Total"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            124 =>
+            array(
+                'id' => 125,
+                'group' => 'simplecrm.sell_summary',
+                'key' => 'title',
+                'text' => '{"en":"Sell Summaries","id":"Ringkasan Penjualan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            125 =>
+            array(
+                'id' => 126,
+                'group' => 'simplecrm.sell_summary',
+                'key' => 'title_singular',
+                'text' => '{"en":"Sell Summary","id":"Ringkasan Penjualan"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            126 =>
+            array(
+                'id' => 127,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'id',
+                'text' => '{"en":"ID","id":"ID"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            127 =>
+            array(
+                'id' => 128,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'date',
+                'text' => '{"en":"Date","id":"Tanggal"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            128 =>
+            array(
+                'id' => 129,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'created_date',
+                'text' => '{"en":"Created Date","id":"Tanggal Dibuat"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            129 =>
+            array(
+                'id' => 130,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'last_update',
+                'text' => '{"en":"Last Update","id":"Terakhir Diubah"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            130 =>
+            array(
+                'id' => 131,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'price_total',
+                'text' => '{"en":"Price Total","id":"Total Harga"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            131 =>
+            array(
+                'id' => 132,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'discount_total',
+                'text' => '{"en":"Discount Total","id":"Total Diskon"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
+            132 =>
+            array(
+                'id' => 133,
+                'group' => 'simplecrm.sell_summary.fields',
+                'key' => 'total',
+                'text' => '{"en":"Total","id":"Total"}',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ),
         );
 
         // Checking if the table already have a query
