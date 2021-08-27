@@ -63,7 +63,7 @@
                                     <label for="created_date">
                                         {{ trans('simplecrm.sell.fields.created_date') }}
                                     </label>
-                                    <div class="input-group date" id="created_date-datetime" data-target-input="nearest">
+                                    <div class="input-group" id="created_date-datetime" data-target-input="nearest">
                                         <input type="text"
                                             class="form-control datetimepicker-input {{ $errors->has('created_date') ? 'is-invalid' : '' }}"
                                             data-target="#created_date-datetime" id="created_date" name="created_date"

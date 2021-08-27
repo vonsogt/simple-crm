@@ -19,18 +19,36 @@ class SellSummaryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
+
+            $sell_summaries = new SellSummary();
+
             // Date Range filter
             if (!empty($request->get('date'))) {
                 $date = explode(' - ', $request->get('date'));
                 $from_date = $date[0];
                 $to_date = $date[1];
 
-                $sell_summaries = SellSummary::with(['employee', 'employee.company'])->whereBetween('date', [$from_date, $to_date])->orderBy('id', 'DESC')->get();
-            } else {
-                $sell_summaries = SellSummary::with(['employee', 'employee.company'])->orderBy('id', 'DESC')->get();
+                $sell_summaries = $sell_summaries->whereBetween('date', [$from_date, $to_date]);
             }
 
-            return DataTables::of($sell_summaries)
+            // Employee filter
+            if (!empty($search_employee = $request->get('employee'))) {
+                $sell_summaries = $sell_summaries->whereHas('employee', function ($query) use ($search_employee) {
+                    return $query->where('first_name', 'LIKE', "%$search_employee%")
+                        ->orWhere('last_name', 'LIKE', "%$search_employee%");
+                });
+            }
+
+            // Company filter
+            if (!empty($search_company = $request->get('company'))) {
+                $sell_summaries = $sell_summaries->whereHas('employee', function ($query) use ($search_company) {
+                    return $query->whereHas('company', function ($q) use ($search_company) {
+                        return $q->where('name', 'LIKE', "%$search_company%");
+                    });
+                });
+            }
+
+            return DataTables::of($sell_summaries->orderBy('id', 'DESC')->get())
                 ->addIndexColumn()
                 ->editColumn('employee_id', function (SellSummary $sell_summary) {
                     $employee = $sell_summary->employee;
@@ -40,43 +58,6 @@ class SellSummaryController extends Controller
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.sell-summary.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
 
                     return $btn;
-                })
-                ->filter(function ($instance) use ($request) {
-                    // Filter Employee
-                    if (!empty($request->get('employee'))) {
-                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                            $search_employee = strtolower($request->get('employee'));
-                            $row_employee_name = strtolower($row['employee_id']);
-                            return Str::contains($row_employee_name, $search_employee) ? true : false;
-                        });
-                    }
-
-                    // Filter Company
-                    if (!empty($request->get('company'))) {
-                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                            $search_company = strtolower($request->get('company'));
-                            $row_company_name = strtolower($row['employee']['company']['name']);
-                            return Str::contains($row_company_name, $search_company) ? true : false;
-                        });
-                    }
-
-                    // Default filter
-                    if ($request->input('search.value') != "") {
-                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                            // The rows
-                            $date = $row['date'];
-                            $row_employee_name = strtolower($row['employee_id']);
-                            $row_price_total = $row['price_total'];
-                            $row_discount_total = $row['discount_total'];
-                            $row_total = $row['total'];
-
-                            return Str::containsAll(
-                                strtolower($request->input('search.value')),
-                                [$date, $row_employee_name, $row_price_total, $row_discount_total, $row_total]
-                                // $row_employee_name,
-                            ) ? true : false;
-                        });
-                    }
                 })
                 ->rawColumns(['action'])
                 ->make();
