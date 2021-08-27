@@ -176,7 +176,7 @@
 
                 // Add responsive filter navbar
                 $("#datatable-sell_summary_wrapper .col-sm-6:eq(0)").append(
-                    '<nav class="navbar navbar-expand-lg mb-0 pb-0 pt-0">' +
+                    '<nav class="navbar navbar-expand-lg navbar-filters mb-0 pb-0 pt-0">' +
                         '<span class="navbar-item mb-0 d-none d-lg-block"><span class="fa fa-filter"></span></span>' +
                         '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#filters-navbar" aria-controls="filters-navbar" aria-expanded="false" aria-label="Toggle navigation">' +
                             '<span class="fa fa-filter"></span> Filters' +
@@ -192,9 +192,9 @@
                 // START FILTER DATE
                 // Add filter date range button
                 $("#filters-navbar .navbar-nav").append(
-                    '<li class="nav-item mr-1 dropdown rounded" id="filter-date">' +
+                    '<li class="nav-item dropdown rounded" id="filter-date">' +
                         '<a class="nav-link dropdown-toggle text-secondary" href="#" id="filter-date-navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            '{{ trans("simplecrm.sell_summary.fields.date") }} Range'  +
+                            '{{ trans("simplecrm.sell_summary.fields.date") }}'  +
                         '</a>' +
                         '<div class="dropdown-menu p-0" aria-labelledby="filter-date-navbar-dropdown">' +
                             '<div class="form-group mb-0">' +
@@ -243,7 +243,7 @@
                 // START FILTER EMPLOYEE
                 // Add filter employee button
                 $("#filters-navbar .navbar-nav").append(
-                    '<li class="nav-item mr-1 dropdown rounded" id="filter-employee">' +
+                    '<li class="nav-item dropdown rounded" id="filter-employee">' +
                         '<a class="nav-link dropdown-toggle text-secondary" href="#" id="filter-employee-navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
                             '{{ trans("simplecrm.employee.title_singular") }}' +
                         '</a>' +
@@ -282,7 +282,7 @@
                 // START FILTER COMPANY
                 // Add filter company button
                 $("#filters-navbar .navbar-nav").append(
-                    '<li class="nav-item mr-1 dropdown rounded" id="filter-company">' +
+                    '<li class="nav-item dropdown rounded" id="filter-company">' +
                         '<a class="nav-link dropdown-toggle text-secondary" href="#" id="filter-company-navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
                             '{{ trans("simplecrm.company.title_singular") }}' +
                         '</a>' +
@@ -343,9 +343,9 @@
                 var company = $("#text-filter-company").val();
                 var date = $("#date-filter-date").val();
 
-                employee.length > 0 ? $("#filter-employee").addClass('bg-secondary') : $("#filter-employee").removeClass('bg-secondary');
-                company.length > 0 ? $("#filter-company").addClass('bg-secondary') : $("#filter-company").removeClass('bg-secondary');
-                date.length > 0 ? $("#filter-date").addClass('bg-secondary') : $("#filter-date").removeClass('bg-secondary');
+                employee.length > 0 ? $("#filter-employee").addClass('active') : $("#filter-employee").removeClass('active');
+                company.length > 0 ? $("#filter-company").addClass('active') : $("#filter-company").removeClass('active');
+                date.length > 0 ? $("#filter-date").addClass('active') : $("#filter-date").removeClass('active');
 
                 if (employee.length == 0 && company.length == 0 && date.length == 0)
                     $('#remove_filters_button').addClass('invisible');

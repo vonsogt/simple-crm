@@ -1,4 +1,72 @@
 .form-group.required label:not(:empty):not(.form-check-label)::after {
-    content: ' *';
+    content: " *";
     color: #ff0000;
+}
+
+.navbar-filters {
+    min-height: 25px;
+    border-radius: 0;
+    margin-bottom: 6px;
+    margin-top: 0px;
+    background: transparent;
+    border-color: #f4f4f4;
+    border: none;
+}
+
+.navbar-filters .navbar-collapse {
+    padding: 0;
+    border: 0;
+}
+
+.navbar-filters .navbar-toggle {
+    padding: 10px 15px;
+    border-radius: 0;
+}
+
+.navbar-filters .navbar-brand {
+    height: 25px;
+    padding: 5px 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+    .navbar-filters .navbar-nav>li>a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-filters .navbar-nav {
+        margin: 0;
+    }
+}
+
+.navbar-filters li>a:active,
+.navbar-filters .navbar-nav>.active>a,
+.navbar-filters .navbar-nav>.active>a:focus,
+.navbar-filters .navbar-nav>.active>a:hover,
+.navbar-filters .navbar-nav>.open>a,
+.navbar-filters .navbar-nav>.open>a:focus,
+.navbar-filters .navbar-nav>.open>a:hover {
+    background-color: #e4e7ea;
+    border-radius: 3px;
+}
+
+.navbar-filters li {
+    margin: 0 2px;
+}
+
+.navbar-filters li>a {
+    border-radius: 2px;
+}
+
+.navbar-filters .nav.navbar-nav {
+    float: none;
+}
+
+.input-group.date {
+    width: 320px;
+    max-width: 100%;
 }
