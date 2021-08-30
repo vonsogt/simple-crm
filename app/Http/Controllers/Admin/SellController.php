@@ -30,6 +30,12 @@ class SellController extends Controller
                 ->editColumn('item_id', function (Sell $sell) {
                     return $sell->item->name;
                 })
+                ->editColumn('price', function (Sell $sell) {
+                    return number_format($sell->price, 2);
+                })
+                ->editColumn('discount', function (Sell $sell) {
+                    return $sell->discount . '%';
+                })
                 ->editColumn('employee_id', function (Sell $sell) {
                     $employee = $sell->employee;
                     return $employee->first_name . ' ' . $employee->last_name;
@@ -39,7 +45,7 @@ class SellController extends Controller
                     $discount_total = $price * $row->discount / 100;
                     $total = $price - $discount_total;
 
-                    return round($total, 2);
+                    return number_format(round($total, 2), 2);
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.sell.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';

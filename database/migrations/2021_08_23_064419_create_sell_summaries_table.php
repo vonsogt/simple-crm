@@ -20,7 +20,7 @@ class CreateSellSummariesTable extends Migration
             $table->dateTime('created_date');
             $table->dateTime('last_update');
             $table->integer('price_total');
-            $table->decimal('discount_total');
+            $table->integer('discount_total');
             $table->integer('total');
             $table->timestamps();
         });

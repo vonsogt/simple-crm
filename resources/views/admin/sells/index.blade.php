@@ -49,7 +49,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.created_date') }}</th>
                                         <th>{{ trans('simplecrm.item.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
-                                        <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
+                                        <th>{{ trans('simplecrm.sell.fields.discount') }}</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.total') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>
@@ -64,7 +64,7 @@
                                         <th>{{ trans('simplecrm.sell.fields.created_date') }}</th>
                                         <th>{{ trans('simplecrm.item.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.price') }}</th>
-                                        <th>{{ trans('simplecrm.sell.fields.discount') }} (%)</th>
+                                        <th>{{ trans('simplecrm.sell.fields.discount') }}</th>
                                         <th>{{ trans('simplecrm.employee.title_singular') }}</th>
                                         <th>{{ trans('simplecrm.sell.fields.total') }}</th>
                                         <th>{{ trans('simplecrm.actions') }}</th>

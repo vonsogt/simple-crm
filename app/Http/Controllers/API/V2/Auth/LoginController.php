@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V2\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,11 +69,12 @@ class LoginController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|string',
+            'website_link' => 'required',
         ]);
 
         // Return errors
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            return response()->json(['error' => $validator->errors()], 422);
         }
 
         // Get remember me request
@@ -81,20 +83,17 @@ class LoginController extends Controller
         // Change guards
         Config::set('auth.defaults.guard', 'employees');
 
-        // // Checking the employee
-        // $token = false;
-        // $employee = Employee::where('email', '=', $request->email)->first();
-        // if (Hash::check($request->password, $employee->password ?? null)) {
-        //     $token = \JWTAuth::fromUser($employee);
-        // }
+        // Checking the employee
+        $employee = Employee::where('email', $request->email)->first();
+        $company = Company::where('id', $employee->company_id)->where('website_link', $request->website_link)->first();
 
         // // Return response unauthorized
-        // if (!$token || $employee == null) {
-        //     return response()->json(['error' => ['email' => trans('auth.failed')]], 401);
-        // }
+        if ($company == null) {
+            return response()->json(['error' => ['email' => trans('auth.failed')]], 401);
+        }
 
         // Return response unauthorized
-        if (!$token = auth()->setTTL($expire_in)->attempt($validator->validated())) {
+        if (!$token = auth()->setTTL($expire_in)->attempt($request->only(['email', 'password']))) {
             return response()->json(['error' => ['email' => trans('auth.failed')]], 401);
         }
 

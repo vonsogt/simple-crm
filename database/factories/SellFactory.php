@@ -25,7 +25,7 @@ class SellFactory extends Factory
     public function definition()
     {
         return [
-            'created_date' =>   Carbon::now(),
+            'created_date' =>   Carbon::now()->subDays(rand(0, 7)),
             'item_id' =>        rand(1, Item::count()),
             'price' =>          $this->faker->numberBetween(3000, 200000),
             'discount' =>       $this->faker->randomFloat(2, 1, 50),

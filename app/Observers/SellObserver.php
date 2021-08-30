@@ -86,8 +86,8 @@ class SellObserver
     public function addSellToSellSummary($sell, $type = 'store')
     {
         $price =    $sell->price;
-        $discount = $sell->discount;
-        $total = $price - ($price * $discount / 100);
+        $discount = $price * $sell->discount / 100;
+        $total = $price - $discount;
 
         $date =     Carbon::make($sell->created_date)->format('Y-m-d');
         $sell_summary = SellSummary::where('date', $date)->where('employee_id', $sell->employee_id)->first();

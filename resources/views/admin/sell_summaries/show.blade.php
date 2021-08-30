@@ -52,7 +52,7 @@
                                                     <span class="info-box-text text-center text-muted">
                                                         {{ trans('simplecrm.sell_summary.fields.price_total') }}
                                                     </span>
-                                                    <span class="info-box-number text-center text-muted mb-0">{{ $data['sell_summary']->price_total }}</span>
+                                                    <span class="info-box-number text-center text-muted mb-0">{{ number_format($data['sell_summary']->price_total, 2) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@
                                                     <span class="info-box-text text-center text-muted">
                                                         {{ trans('simplecrm.sell_summary.fields.discount_total') }}
                                                     </span>
-                                                    <span class="info-box-number text-center text-muted mb-0">{{ $data['sell_summary']->discount_total }}%</span>
+                                                    <span class="info-box-number text-center text-muted mb-0">{{ number_format($data['sell_summary']->discount_total, 2) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                                     <span class="info-box-text text-center text-muted">
                                                         {{ trans('simplecrm.sell_summary.fields.total') }}
                                                     </span>
-                                                    <span class="info-box-number text-center text-muted mb-0">{{ $data['sell_summary']->total }}</span>
+                                                    <span class="info-box-number text-center text-muted mb-0">{{ number_format($data['sell_summary']->total, 2) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,9 +161,9 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $sell->item->name }}</td>
-                                            <td>{{ $sell->price }}</td>
+                                            <td>{{ number_format($sell->price, 2) }}</td>
                                             <td>{{ $sell->discount }}%</td>
-                                            <td>{{ round($sell->price - ($sell->price * $sell->discount / 100), 2) }}</td>
+                                            <td>{{ number_format(round($sell->price - ($sell->price * $sell->discount / 100), 2), 2) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

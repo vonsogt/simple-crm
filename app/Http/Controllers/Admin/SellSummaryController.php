@@ -54,6 +54,15 @@ class SellSummaryController extends Controller
                     $employee = $sell_summary->employee;
                     return $employee->first_name . ' ' . $employee->last_name;
                 })
+                ->editColumn('price_total', function (SellSummary $sell_summary) {
+                    return number_format($sell_summary->price_total, 2);
+                })
+                ->editColumn('discount_total', function (SellSummary $sell_summary) {
+                    return number_format($sell_summary->discount_total, 2);
+                })
+                ->editColumn('total', function (SellSummary $sell_summary) {
+                    return number_format($sell_summary->total, 2);
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.sell-summary.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
 

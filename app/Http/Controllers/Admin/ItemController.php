@@ -24,6 +24,9 @@ class ItemController extends Controller
 
             return DataTables::of($items)
                 ->addIndexColumn()
+                ->editColumn('price', function (Item $item) {
+                    return number_format($item->price, 2);
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<a class="btn btn-primary mt-md-1" title="Show" href="' . route("admin.item.show", [$row->id]) . '"><i class="far fa-eye"></i></a> ';
                     $btn .= '<a class="btn btn-success mt-md-1" title="Edit" href="' . route('admin.item.edit', [$row->id]) . '"><i class="fas fa-edit"></i></a> ';
