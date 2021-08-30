@@ -85,9 +85,9 @@ class LoginController extends Controller
 
         // Checking the employee
         $employee = Employee::where('email', $request->email)->first();
-        $company = Company::where('id', $employee->company_id)->where('website_link', $request->website_link)->first();
+        $company = Company::where('id', $employee->company_id ?? 0)->where('website_link', $request->website_link)->first();
 
-        // // Return response unauthorized
+        // Return response unauthorized
         if ($company == null) {
             return response()->json(['error' => ['email' => trans('auth.failed')]], 401);
         }
