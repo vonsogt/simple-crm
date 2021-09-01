@@ -4,7 +4,6 @@ namespace Tests\Browser\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
@@ -23,7 +22,7 @@ class LoginTest extends DuskTestCase
             'email' => 'admin@admin.com'
         ]);
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function ($browser) use ($user) {
             // Begin test
             $browser->visit('/login')
                 ->type('email', $user->email)
@@ -42,32 +41,16 @@ class LoginTest extends DuskTestCase
     {
         // Create new user
         $user = User::factory()->create([
-            'name' => 'Example User',
             'email' => 'admin@admin.com'
         ]);
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function ($browser) use ($user) {
             // Begin test
             $browser->loginAs($user)
                 ->visit('/admin')
-                ->press('Example User')
-                ->press(trans('simplecrm.sign_out'))
+                ->click('.dropdown-toggle')
+                ->click('.float-right')
                 ->assertPathIs('/login');
         });
-    }
-
-    /**
-     * Get the element shortcuts for the page.
-     *
-     * @return array
-     */
-    public function elements()
-    {
-        return [
-            '@name' => 'input[name="name"]',
-            '@email' => 'input[name="email"]',
-            '@password' => 'input[name="password"]',
-            '@password_confirmation' => 'input[name="password_confirmation"]',
-        ];
     }
 }

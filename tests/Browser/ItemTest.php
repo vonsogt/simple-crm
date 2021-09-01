@@ -2,13 +2,12 @@
 
 namespace Tests\Browser;
 
-use App\Models\Company;
+use App\Models\Item;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class CompanyTest extends DuskTestCase
+class ItemTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
@@ -33,8 +32,9 @@ class CompanyTest extends DuskTestCase
 
             // Begin test
             $browser->loginAs($user)
-                ->visit('/admin/company')
-                ->assertSee(trans('simplecrm.company.title'));
+                ->visit('/admin/item')
+                ->waitUntil('!$.active')
+                ->assertSee(trans('simplecrm.item.title'));
         });
     }
 
@@ -49,15 +49,17 @@ class CompanyTest extends DuskTestCase
         $user = User::factory()->create([
             'email' => 'admin@admin.com'
         ]);
-        // Create new company
-        $company = Company::factory()->create();
+        // Create new item
+        $item = Item::factory()->create();
 
-        $this->browse(function ($browser) use ($user, $company) {
+        $this->browse(function ($browser) use ($user, $item) {
             // Begin test
             $browser->loginAs($user)
-                ->visit('/admin/company')
+                ->visit('/admin/item')
+                ->waitUntil('!$.active')
+                ->waitFor('a[title="' . trans('simplecrm.show') . '"]')
                 ->click('a[title="' . trans('simplecrm.show') . '"]')
-                ->assertSee($company->name);
+                ->assertSee($item->name);
         });
     }
 
@@ -73,16 +75,19 @@ class CompanyTest extends DuskTestCase
             'email' => 'admin@admin.com'
         ]);
 
-        // Create new company
-        $company = Company::factory()->create();
+        // Create new item
+        $item = Item::factory()->create();
 
-        $this->browse(function ($browser) use ($user, $company) {
+        $this->browse(function ($browser) use ($user, $item) {
             // Begin test
             $browser->loginAs($user)
-                ->visit('/admin/company')
+                ->visit('/admin/item')
+                ->waitUntil('!$.active')
+                ->waitFor('a[title="' . trans('simplecrm.edit') . '"]')
                 ->click('a[title="' . trans('simplecrm.edit') . '"]')
                 ->type('name', 'Edited')
                 ->press(trans('simplecrm.save'))
+                ->waitUntil('!$.active')
                 ->assertSee('Edited');
         });
     }
@@ -99,17 +104,20 @@ class CompanyTest extends DuskTestCase
             'email' => 'admin@admin.com'
         ]);
 
-        // Create new company
-        $company = Company::factory()->create();
+        // Create new item
+        $item = Item::factory()->create();
 
-        $this->browse(function ($browser) use ($user, $company) {
+        $this->browse(function ($browser) use ($user, $item) {
             // Begin test
             $browser->loginAs($user)
-                ->visit('/admin/company')
+                ->visit('/admin/item')
+                ->waitUntil('!$.active')
+                ->waitFor('a[title="' . trans('simplecrm.delete') . '"]')
                 ->click('a[title="' . trans('simplecrm.delete') . '"]')
                 ->press(trans('simplecrm.delete_confirmation_confirm_button'))
+                ->waitUntil('!$.active')
                 ->waitFor('.dataTables_empty')
-                ->assertDontSee($company->name);
+                ->assertDontSee($item->name);
         });
     }
 }
