@@ -11,16 +11,19 @@ class CompanyTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
-    public function testIndex()
+    public function test_index()
     {
+        // Create new user
         $user = User::factory()->create([
             'email' => 'admin@admin.com'
         ]);
 
         $this->browse(function (Browser $browser) use ($user) {
+            // Begin test
             $browser->loginAs($user)
-                ->visit(route('admin.company.index'))
-                ->assertRouteIs('admin.company.index');
+                ->visit('/admin/company')
+                ->scrollTo('.text-capitalize')
+                ->assertSee(trans('simplecrm.company.title'));
         });
     }
 }
