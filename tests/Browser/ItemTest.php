@@ -4,6 +4,7 @@ namespace Tests\Browser;
 
 use App\Models\Item;
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\DuskTestCase;
 
@@ -35,6 +36,37 @@ class ItemTest extends DuskTestCase
                 ->visit('/admin/item')
                 ->waitUntil('!$.active')
                 ->assertSee(trans('simplecrm.item.title'));
+        });
+    }
+
+    /**
+     * Dusk test create
+     *
+     * @return void
+     */
+    public function test_create()
+    {
+        // Create new user
+        $user = User::factory()->create([
+            'email' => 'admin@admin.com'
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+
+            $faker = Factory::create();
+            $name =     $faker->name();
+            $price =    $faker->numberBetween(2000, 100000);
+
+            $browser->loginAs($user)
+                ->visit('/admin/item')
+                ->waitUntil('!$.active')
+                ->click('.d-print-none a')
+                ->type('name', $name)
+                ->type('price', $price)
+                ->scrollIntoView('.card-footer')
+                ->press(trans('simplecrm.save'))
+                ->waitUntil('!$.active')
+                ->assertSee($name);
         });
     }
 

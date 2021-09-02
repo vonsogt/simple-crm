@@ -171,7 +171,9 @@ class SellTest extends DuskTestCase
         // Create new item
         $item = Item::factory()->create();
         // Create new sell
-        $sell = Sell::factory()->create();
+        $sell = Sell::factory()->create([
+            'price' =>  18081999,
+        ]);
 
         $this->browse(function ($browser) use ($user, $item, $sell) {
             // Begin test
