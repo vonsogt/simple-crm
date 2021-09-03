@@ -189,7 +189,6 @@ class EmployeeTest extends DuskTestCase
                 ->visit('/admin/employee')
                 ->press(trans('simplecrm.import_excel'))
                 ->attach('input[name=excel_import]', storage_path('app/public/employees/excel-import/sample-excel-import.xlsx'))
-                ->assertSee('sample-excel-import.xlsx')
                 ->press(trans('simplecrm.import'))
                 ->assertSee('Sample Test5');
         });
