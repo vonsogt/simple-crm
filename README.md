@@ -2,7 +2,7 @@
   <h1 align="center">Simple CRM</h1>
   
   <p align="center">
-    <a href="http://simple-crm.vonso.online/">Lihat Demo</a>
+    <a href="http://simple-crm.batam-jasa.online/">Lihat Demo</a>
     ·
     <a href="https://github.com/vonsogt/simple-crm/issues">Laporkan Kesalahan</a>
     ·
@@ -103,4 +103,4 @@ Lihat [open issues](https://github.com/vreedom-base/perpuskita/issues) untuk daf
 
 ## Kontak
 
-Vonso - admin@vonso.online
+Vonso - vonsogt18081999@gmail.com
